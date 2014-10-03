@@ -1,0 +1,13 @@
+*.swp
+*.o
+*.hi
+*.chi
+*.chs.h
+cabal.sandbox.config
+cabal.config
+
+dist/
+.cabal-sandbox/
+
+_cache/
+_site/

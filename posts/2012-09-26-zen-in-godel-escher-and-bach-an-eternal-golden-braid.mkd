@@ -1,6 +1,7 @@
 ---
 title: Zen in Gödel, Escher and Bach: An Eternal Golden Braid
 tags: excerpt, literature, philosophy, spirituality, zen
+date: 2012-09-26
 ---
 > [...] in general, the Zen attitude is that words and truth are incompatible, or at least that no words can capture truth.
 

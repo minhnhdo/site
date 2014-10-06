@@ -4,11 +4,10 @@
     by $author$
   $endif$
 </div>
-<!--<div class="tags">Tagged with
-{{#tags}}
- #{{.}}
-{{/tags}}
-</div>-->
+
+$if(tags)$
+<div class="tags">Tagged with $tags$ </div>
+$endif$
 
 <article>
 $body$

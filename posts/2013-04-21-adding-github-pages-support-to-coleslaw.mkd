@@ -1,6 +1,7 @@
 ---
 title: Adding Github Pages Support to Coleslaw
 tags: hack, common lisp, coleslaw, github, pages
+date: 2013-04-21
 ---
 _This post wraps up how I hacked [coleslaw](https://github.com/redline6561/coleslaw) to add [Github pages](http://pages.github.com/) integration._
 

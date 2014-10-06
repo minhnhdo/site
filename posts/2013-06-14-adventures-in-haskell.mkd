@@ -1,6 +1,7 @@
 ---
 title: Adventures in Haskell
 tags: haskell, lisp
+date: 2013-06-14
 ---
 Recently, I switched from the Lisp family of languages to Haskell. The difference is quite pronounced as writing in Lisp has many conveniences. For example, Lisp's macro system is still unparalleled by other languages. Despite being a functional language, Lisp still allows mutation so its break from imperative languages is not so wide, except for its eccentric syntax (or lack thereof).
 

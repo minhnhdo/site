@@ -1,6 +1,7 @@
 ---
 title: Hacking on coleslaw
 tags: hack, common lisp, coleslaw, github, pages
+date: 2013-04-19
 ---
 _In this post, I document how I hacked [coleslaw](https://github.com/redline6561/coleslaw) to add [Github's pages](http://pages.github.com/) integration._
 

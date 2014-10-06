@@ -1,6 +1,7 @@
 ---
 title: How to set up NTUVPN on Ubuntu
 tags: ntu, vpn, setup, ubuntu
+date: 2013-03-06
 ---
 _For Ubuntu users, the NTU's [official instruction](http://www.ntu.edu.sg/cits/itnetworking/remoteaccess/Pages/quickstartguide.aspx#sslvpn) to setup a [VPN](http://en.wikipedia.org/wiki/Vpn "Virtual private network") client requires them to install a java plugin in order to connect to its server. However, the client can only run on a 32-bit JVM, and even if it is running on one, the client seems to hang. Therefore, to save you from all these hassles, this post will help you set up a VPN client that runs natively on Ubuntu._
 

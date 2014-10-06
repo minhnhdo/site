@@ -1,6 +1,7 @@
 ---
 title: Building Rust on Fedora
 tags: rust, fedora, build
+date: 2013-07-27
 ---
 ## What is Rust? ##
 [Rust](http://rust-lang.org) is a new programming language headed by [Mozilla](http://mozilla.org), the same people bringing you the [Firefox browser](http://firefox.com).

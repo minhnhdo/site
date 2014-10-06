@@ -6,4 +6,5 @@ site clean && site build &&
   pushd ../mrordinaire.github.io &&
   git add -A &&
   git commit -m "updated at `date +%Y-%m-%dT%H:%M:%S`" &&
+  git push origin master &&
   popd

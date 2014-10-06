@@ -1,0 +1,77 @@
+---
+title: Maths and Programs
+tags: existential quantifiers, functional programming, universal quantifiers
+---
+Let's solve this question (taken from the second assignment of [Functional Programming in Scala](https://www.coursera.org/course/progfun)):
+
+> Using `forall`, implement a function `exists` which tests whether a set contains at least one element for which the given predicate is true. Note that the functions `forall` and `exists` behave like the universal and existential quantifiers of first-order logic.
+
+The code listing for `forall` is as follows:
+
+```scala
+def forall(s: Set, p: Int => Boolean): Boolean = {
+  def iter(a: Int): Boolean = {
+    if (a > bound) true
+    else if (contains(s, a) && !p(a)) false
+    else iter(a + 1)
+  }
+  iter(-bound)
+}
+```
+
+where `bound` is `1000`.
+
+A set is a defined as follows, along with the predicate to test for containment.
+
+```scala
+type Set = Int => Boolean
+def contains(s: Set, x: Int) = s(x)
+```
+
+Here is how I arrive at the answer for the question:
+
+> 1. From the question, it is intuitive to try to stop the iteration when there is an element that satisfies the predicate `p`, which is exactly what `exists` should do.
+> 2. The iteration is stopped only when the current element `a` does not satisfy `p`.
+> 3. However, we need to satisfy `p` in order for `exists` to correctly do its job.
+
+> In conclusion, we need a double negation here. In other words, we need to negate `p` and then negate the answer returned by `forall` when called with the negation of `p`.
+
+From that reasoning, it is easy to code up the first attempt at a solution.
+
+```scala
+def exists(s: Set, p: Int => Boolean): Boolean = !forall(s, x => !p(x))
+```
+
+Now, let's see how this solution fares.
+
+```scala
+scala> def natural = (x: Int) => x > 0
+scala> forall(natural, x % 2 == 0) // should return false, as not all naturals are even
+Res01 = false
+scala> exists(natural, x % 2 == 0) // should return true
+Res02 = true
+```
+
+The solution passes the tests. Let's look at how to explain the code simply. The code says
+
+> There exists in set `s` an element that satisfies the predicate `p` when not all of the elements in `s` satisfies the negation of `p`.
+
+That makes sense. But lo and behold, the code reflects a mathematical truth, and it even looks like it is translated verbatim from mathematical symbols to programmatical symbols!
+
+&exist;x:P(x) &equiv; &not;&forall;x:&not;P(x)
+
+compared with
+
+```scala
+def exists(s: Set, p: Int => Boolean): Boolean = !forall(s, x => !p(x))
+```
+
+The correspondence is remarkable!
+
+After reading this post, you should try this question. The answer will pleasantly surprise you.
+
+> Finally, write a function `map` which transforms a given set into another one by applying to each of its element the given function. `map` has the following signature:
+
+```scala
+def map(s: Set, f: Int => Int): Set
+```

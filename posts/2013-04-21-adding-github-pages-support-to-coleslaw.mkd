@@ -1,0 +1,105 @@
+---
+title: Adding Github Pages Support to Coleslaw
+tags: hack, common lisp, coleslaw, github, pages
+---
+_This post wraps up how I hacked [coleslaw](https://github.com/redline6561/coleslaw) to add [Github pages](http://pages.github.com/) integration._
+
+## What's missing ##
+
+1. Github pages does not support symlinks. Therefore, instead of symlinking `index.html` to `1.html`, I should just copy `1.html` as `index.html`.
+2. I need a way to robustly parse the domain given in `~/.coleslawrc`.
+
+## Fixing it ##
+
+### Symlinks ###
+
+For the symlinking problem, I can just change the code from symlinking to copying it over. However, it is safer to change the behavior of the code only when the user explicitly asks for it.
+
+Grepping through the code, I can see that `render-indices` produces the indices, e.g. `1.html`, etc., and symlinking `1.html` to `index.html`. This is where I should make the modification. I added another argument to `render-indices` to tell the code to make the symlink or not.
+
+```commonlisp
+;;;; in src/coleslaw.lisp
+; [...]
+      (when (probe-file dir)
+        (run-program "cp -R ~a ." dir)))
+    (do-ctypes (publish ctype))
+    (render-indices (not (github-pages *config*)))
+    (render-feeds (feeds *config*))))
+; [...]
+
+;;;; in src/indices.lisp
+; [...]
+                              :posts (subseq content start end)
+                              :title "Recent Posts")))
+
+(defun render-indices (make-symlink-p)
+  "Render the indices to view content in groups of size N, by month, and by tag"
+  (let ((results (by-date (hash-table-values *content*))))
+    (dolist (tag (all-tags))
+; [...]
+                                  :prev (and (plusp i) i)
+                                  :next (and (< (* (1+ i) 10) (length results))
+                                             (+ 2 i)))))))
+  (if make-symlink-p
+    (update-symlink "index.html" "1.html")
+    (run-program "cp 1.html index.html"))
+```
+
+### Domain ###
+Previously, my ad-hoc solution was to find the first forward-slash in the domain string and substring the domain string from after the second forward-slash. Here's the previous code.
+
+```commonlisp
+(defgeneric deploy (staging)
+  (((
+        ; [...]
+        (run-program "mv ~a ~a" staging new-build)
+        (when (github *config*)
+          (let ((cname-filename (rel-path "" "~a/CNAME" new-build))
+                (stripped-url (subseq (domain *config*)
+                                      (+ 2 (position #\/ (domain *config*))))))
+            (with-open-file (cname cname-filename
+                                   :direction :output
+                                   :if-exists :supersede)
+              (format cname "~a~%" stripped-url))))
+        (when (probe-file prev)
+        ; [...]
+        )))))
+```
+
+Now, I can instead use the [puri](http://puri.b9.com/) library to parse the URL and extract only the domain. Here's the new code using `puri`.
+
+```commonlisp
+(defgeneric deploy (staging)
+  (((
+        ; [...]
+        (run-program "mv ~a ~a" staging new-build)
+        (when (github *config*)
+          (let ((cname-filename (rel-path "" "~a/CNAME" new-build))
+                (stripped-url (puri:uri-host (puri:parse-uri
+                                               (domain *config*)))))
+            (with-open-file (cname cname-filename
+                                   :direction :output
+                                   :if-exists :supersede)
+              (format cname "~a~%" stripped-url))))
+        (when (probe-file prev)
+        ; [...]
+        )))))
+```
+
+Of course, I need to add puri as a dependency to coleslaw.
+
+```commonlisp
+;;;; in coleslaw.asd
+               :inferior-shell
+               :cl-fad
+               :cl-ppcre
+               :closer-mop
+               :puri)
+  :serial t
+  :components ((:file "packages")
+               (:file "util"
+```
+
+## Really Wrap Up ##
+
+All that's left now is to send a pull request to the original author, which I have already done.

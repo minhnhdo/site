@@ -1,0 +1,25 @@
+---
+title: Zen in Gödel, Escher and Bach: An Eternal Golden Braid
+tags: excerpt, literature, philosophy, spirituality, zen
+---
+> [...] in general, the Zen attitude is that words and truth are incompatible, or at least that no words can capture truth.
+
+<p align="right">page 246</p>
+
+> [...] Perhaps the most concise summary of enlightenment would be: trainscending dualism.
+
+<p align="right">page 251</p>
+
+> [...] it is perhaps wrong to say that the enemy of enlightenment is logic; rather, it is dualistic, verbal thinking. In fact, it is even more basic than that: it is perception. As soon as you perceive an object, you draw a line between it and the rest of the world; you divide the world, artificially, into parts, and you thereby miss the Way.
+
+<p align="right">page 251</p>
+
+> Zen is holism, carried to its logical extreme. If holism claims that things can only be understood as wholes, not as sums of their parts, Zen goes one further, in maintaining that the world cannot be broken into parts at all. To divide the world into parts is to be deluded, and to miss enlightenment.
+
+<p align="right">page 254</p>
+
+> Zen is a system and cannot be its own metasystem; there is always something outside of Zen, which cannot be fully understood or described within Zen.
+
+<p align="right">page 255</p>
+
+Taken from [Gödel, Escher and Bach: An Eternal Golden Braid](http://en.wikipedia.org/wiki/G%C3%B6del,_Escher,_Bach) by [Douglas R. Hofstadter](http://en.wikipedia.org/wiki/Douglas_Hofstadter).

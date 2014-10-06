@@ -1,0 +1,21 @@
+---
+title: Home
+---
+
+## Welcome ##
+
+Hi, I'm Do Nhat Minh. I'm an Computer Science alumnus from [Nanyang
+Technological University](http://ntu.edu.sg). I like to build software with
+esoteric languages, e.g. [Haskell](http://haskell.org),
+[Rust](http://rust-lang.org), and [Clojure](http://clojure.org).
+
+This is my blog about my interests in programming and in other stuff.
+
+You can check out my résumé [here](/resume.pdf).
+
+## Recent posts ##
+
+$partial("templates/post-list.html")$
+
+…or you can find more in the [archive](/archive.html).
+

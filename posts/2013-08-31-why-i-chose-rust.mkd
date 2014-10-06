@@ -1,0 +1,92 @@
+---
+title: Why I chose Rust
+tags: rust, pattern maching, algebraic type
+---
+This post is about less-talked-about features of Rust, namely Algebraic Types and Pattern Matching, that I find very interesting and for which I have chosen Rust.
+
+Let's say you have to build an arithmetic calculator for evaluating expessions like `2 + 2`. How would you do that? To simplify the problem a bit, let's say the calculator only deals with integers and four operators, i.e. plus, minus, multiplication and division.
+
+In C, you might write something like this.
+
+```c
+struct Exp {
+    enum {
+        Number,
+        Plus,
+        Minus,
+        Mult,
+        Div
+    } type;
+
+    union {
+        struct {
+            struct Exp* a;
+            struct Exp* b;
+        } pair;
+        int i;
+    } val;
+};
+
+int eval(struct Exp* exp) {
+    switch (exp->type) {
+        case Number: return exp->val.i;
+        case Plus: return eval(exp->val.pair.a) + eval(exp->val.pair.b);
+        case Minus: return eval(exp->val.pair.a) - eval(exp->val.pair.b);
+        case Mult: return eval(exp->val.pair.a) * eval(exp->val.pair.b);
+        case Div: return eval(exp->val.pair.a) / eval(exp->val.pair.b);
+    }
+}
+```
+
+The complicated looking `struct` declaration is what's called a tagged union, where the enum `type` is used to figure out that the union `val` is holding. This is the C version of one type of Algebraic Types, the [sum type](http://en.wikipedia.org/wiki/Sum_type). Another type of Algebraic Types is to use `struct` to hold multiple types together, which allows the structure to hold even more than each type alone; this one is called the [product type](Ahttp://en.wikipedia.org/wiki/Product_type).
+
+An intuitive way to think of the two types is that for sum type, the variable of that type can only be of one constituent type at a time, so the total range of values that type can hold is the sum of the ranges of the types. On the other hand, for the product type, for each field in the structure, it can hold any value of that type at any time, so the possible range of values of the structure is the product of each of its field's range of value.
+
+In Rust, this is what I will write.
+
+```rust
+enum Exp {
+    Number(int),
+    Plus(~Exp, ~Exp),
+    Minus(~Exp, ~Exp),
+    Mult(~Exp, ~Exp),
+    Div(~Exp, ~Exp),
+}
+
+fn eval(exp: &Exp) -> int {
+    match *exp {
+        Number(i) => i,
+        Plus(a, b) => eval(a) + eval(b),
+        Minus(a, b) => eval(a) - eval(b),
+        Mult(a, b) => eval(a) * eval(b),
+        Div(a, b) => eval(a) / eval(b),
+    }
+}
+```
+
+The `eval` function expects an already parsed expression, so the above `2 + 2` when passed to `eval` should be in some form like `Plus(~Number(2), ~Number(2))`. The reason for putting a pointer to another expression inside `Plus`, `Minus`, `Mult` and `Div` is to allow expressions like `(2 + 2) * 3`, whose parsed form is `Mult(~Plus(~Number(2), ~Number(2)), ~Number(3))`.
+
+Here are some strange notations the above Rust code has.
+
+* The `enum` block declares that an `Exp` can be either a `Number` with the accompanying integer value or a `Plus` between two `Exp`, etc. but not two or more thing at the same time; the very definition of a sum type. This declaration also embodies the product type, as each operator holds two different `Exp`s.
+* The tilda (`~`) before each `Exp` means that it's an owned pointer to an `Exp`. An owned pointer cannot be pointed to by two variables at the same time. When you assign the pointer to another variable, it will be moved to the new variable and the old one is no longer usable, unless you assign it to another one.
+* The ampersand (`&`) in the argument of eval means it's a borrowed pointer to an `Exp`. I won't delve into what a borrowed pointer is, but only say that a unique pointer can be used in place of a borrowed pointer, so you can write something like `eval(~Number(2))` and the compiler will happily generate the call for you.
+
+The first thing you might notice is the Rust version of the code is more concise than the C version. An `enum` in Rust is like a `struct`, `enum` and `union` in C combined, so you don't have to think about as many features of the language at the same time, and writing out as much code to achieve the same result in Rust.
+
+Moreover, in the Rust version of the `eval` function, I am using Pattern Matching to deconstruct `exp` to its correct constituent fields, which is aptly named `match` expressions. After the opening curly bracket, each line terminated by a comma (`,`) is called a matching arm. Each of the `a` and `b` in each matching arm have scope only in that matching arm, so if I replace `Mult(a, b) => ...` by `Mult(x, y) => ...`, using `x` or `y` in other matching arms is an unresolved name error.
+
+Let's take a look back at the C version. Here you have to decide which type of expression `exp` is holding by `switch`ing on `exp->type`. Afterwards, you still have to use the right field in the union for your code to be correct. The C compiler will do nothing whatsoever to stop you from writing something like this.
+
+```c
+switch (exp->type) {
+    // ...
+    case Plus: eval(exp->val.pair.a) + exp->val.i;
+    // ...
+}
+```
+
+In this case, you're screwed. This coding error will only be detected after some bug hunting at 4am during a crunch.
+
+### Conclusion
+I hope after reading this post, you will see the point of adding Pattern Matching and Algebraic Type to the feature list of Rust. They not only allow you to write more concise code but also prevent some errors encountered in languages without them. If you like what you see in Rust like I do, please check out its [home page](http://rust-lang.org) for more documentation and tutorials. And if you really like Rust, please consider contributing to it. You can start by looking through the [easy bugs](https://github.com/mozilla/rust/issues?labels=E-easy&page=1&state=open), some of which are documenting the code, to familiarize yourself with Rust and then work your way up to harder ones. Happy Hacking!

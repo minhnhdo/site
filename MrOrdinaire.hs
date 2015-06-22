@@ -70,7 +70,7 @@ main = hakyll $ do
 
       getResourceBody
         >>= applyAsTemplate indexCtx
-        >>= compileWithPandoc
+        >>= renderPandoc
         >>= loadAndApplyTemplate "templates/default.html" indexCtx
         >>= relativizeUrls
 
@@ -85,9 +85,6 @@ postCtx = dateField "date" "%B %e, %Y" `mappend` defaultContext
 
 postCtxWithTags :: Tags -> Context String
 postCtxWithTags tags = tagsField "tags" tags `mappend` defaultContext
-
-compileWithPandoc :: Item String -> Compiler (Item String)
-compileWithPandoc = return . writePandoc . readPandoc
 
 compileWithClay :: Css -> Compiler (Item String)
 compileWithClay = makeItem . unpack . renderWith compact []

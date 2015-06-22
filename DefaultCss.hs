@@ -40,19 +40,19 @@ defaultCss =
     a # hover ? color (rgb 0x00 0x33 0x66)
     h1 # "#pagetitle" <> h1 # firstOfType ? do
       fontSize (pct 300)
-      marginTop 0
+      marginTop (px 0)
       marginBottom vMargin
       lineHeight (pct 100)
     body ? do
       fontSize (px 16)
-      sym2 margin 0 auto
+      sym2 margin (px 0) auto
     div # "#header-strip" ? do
       sym2 padding (px 10) 0
       backgroundColor sBlue
       overflow auto
     div # "#header" ? do
       width pageWidth
-      sym2 margin 0 auto
+      sym2 margin (px 0) auto
     div # "#logo" ? do
       float floatLeft
       a ? do
@@ -86,7 +86,7 @@ defaultCss =
       fontSize (px 12)
       textAlign end
       width pageWidth
-      sym2 margin 0 auto
+      sym2 margin (px 0) auto
     h1 ? fontSize (px 24)
     h2 ? fontSize (px 20)
     div # ".info" <> div # ".tags" ? do

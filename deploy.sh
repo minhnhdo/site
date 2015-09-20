@@ -1,6 +1,6 @@
 #! /bin/sh
 
-site clean && site build &&
+stack exec site clean && stack exec site build &&
   rsync -avz ../mrordinaire.github.io/.git _site/ &&
   rsync -avz --delete _site/ ../mrordinaire.github.io &&
   echo $(cd ../mrordinaire.github.io &&

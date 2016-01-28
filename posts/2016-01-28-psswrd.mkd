@@ -1,0 +1,41 @@
+---
+title: PSSWRD
+tags: combinatorics, search, game
+date: 2016-01-28
+---
+## A Challenge
+
+My friend just wrote a guessing game, called [psswrd](http://walisu.com/psswrd), and challenged me to solve it. Being a lazy programmer, it follows naturally that I want to solve it with programming.
+
+The game asks the player to guess a password, which consists of all distinct characters drawn from a provided character set, and whose length is also provided. After submitting a guess, the server sends back hints for that guess and all previous hints and guesses. The hints for each guess consist of what the game calls `gold` and `silver`, where a `gold` means that the guess contains a character in the same position as in the password, and a `silver` means that the guess contains a character in the password but in the wrong position. For example, let's say the password is `1234` and the guess is `5231`; the hints then will be `2 GOLD 1 SILVER`.
+
+My first thought is a simple generate-and-test solution, where all the possible guesses are generated and tested against the hints returned from the server.
+
+## Test Generation
+Let's think of the easier part of the generate-and-test solution, i.e. testing the possible solution. For each hint provided by the game server, I generate a function testing a new guess against the old guess, comparing the number of golds and silvers for a match. In other words, this test function checks my newly generated solution to make sure it returns the same hint as the server would; otherwise, this is not the solution I'm looking for.
+
+## First Attempt - Generate All Possible Solutions
+My first attempt is very simple; just generate all the possible solutions and test them against the returned hints. This solution searches a space of `mCn * n!` where `m` is the number of possible characters, `n` is the length of the password, `mCn` is the number of ways to choose `n` characters from a set of `m` characters without replacement, `n!` is the total number of ways of arranging `n` characters. For example, let's assume the character set is `0123456789` and the length of the password is 4. In this example, `m` is 10, `n` is 4 and the total number of solutions is `10C4 * 4!`, or 5040.
+
+This first attempt gets me to level 5 or so. Not bad for a very first attempt.
+
+#### Optimization - Discarding Impossible Characters
+When I run the solution, I notice that sometimes the guess submitted returns `0 GOLD and 0 SILVER`. From this hint, I know that the characters contained in the guess cannot be in the final solution. I add in this optimization to help reduce the search space. As the functions `mCn` and `n!` increase very fast, any trick to reduce the search space helps. After implementing this trick, my program can get to level 8 or so.
+
+## Second Attempt - Segment the Search Space
+My second attempt is to segment the character set into multiple smaller character sets and then generate the solutions from the segmented character sets. For example, let's assume the character set is `0123456789a` and the length of the password is 4. My solution will submit the first two guesses as `0123` and `4567`. From the returned hints, I can deduce if the character set `89a` contains a character in the real password or not. After submitting the first two guesses, my solution selects the appropriate number of characters from each smaller set, permutes the selected characters, tests the resulting guess against the hints and submits it if it passes all the tests. Continuing with the above example, let's assume the hint for `0123` is `0 GOLD 2 SILVER` and for `5678` is `1 GOLD 1 SILVER`. From the two hints, I can deduce that the password cannot contain any character from the set `89a`. Next, I select two characters from the first set, say `23`, two characters from the second set, say `67`, permute to get a guess out of them, say `6237`, and submit the guess. I keep repeating that until I get the correct password. As the combined search space from smaller search spaces is still drastically smaller than the original search space, this solution gets me to level 12 or so.
+
+#### Optimization - Change Search Space when a Near Match is Found
+A near match is a guess where the sum of golds and silvers is at worst two less than the length of the password. Whenever the solution finds such a guess, it changes the character sets to that guess and the remaining characters from the original character set, selecting the correct number of characters from each set. For example, let's assume the character set is `0123456789abcde`, the password length is 6 and the near match guess `3276ed` returns `2 GOLD and 2 SILVER`. The solution will switch to the character sets `3276ed` and `014589abc`, selecting 4 characters from the former set and 2 characters from the latter.
+
+This optimization plus removing impossible characters, implemented on top of the second attempt, gets me to level 15 or so. Sometimes luck strikes and this solution gets me to level 17 but no more than that.
+
+## Third Attempt - Guess the Correct Characters First and then Find the Correct Permutation
+This attempt is born out of the observation that after guessing the correct constituent characters, the solution hones in on the correct permutation very quickly. Instead of testing permutations of the selected characters, I submit the concatenation of selections of characters. However, the test generated by testing the number of golds and silvers against the ones returned from the hint is too strict, as it will incorrectly reject concatentations based on the number of golds. I have to relax the test by testing only for the sum of the number of golds and silvers instead. Only after finding the correct constituent characters do I test more rigorously like previously done.
+
+The previous attempts frequently time out before they can give a guess to the server. This latest attempt, however, generates solutions more quickly but takes many more tries. The disadvantage of the third attempt makes it unsuitable for the first few levels where the number of guesses is more limited. Therefore, I use the second attempted solution for the first few level (up to and including level 2) instead of this solution.
+
+This third and final attempt helps me beat the game. Phew!
+
+## Conclusion
+Being able to calculate how large the search space is helps me find alternative solutions by tweaking the components of the calculation. This is a fun game for practicing programming and combinatorics.

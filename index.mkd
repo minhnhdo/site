@@ -4,7 +4,7 @@ title: Home
 
 ## Welcome ##
 
-Hi, I'm Do Nhat Minh. I'm an Computer Science master student from [University of
+Hi, I'm Do Nhat Minh. I'm an Computer Science master student at [University of
 British Columbia](http://ubc.ca). I like to build software with esoteric
 languages, e.g. [Haskell](http://haskell.org), [Rust](http://rust-lang.org), and
 [Clojure](http://clojure.org).

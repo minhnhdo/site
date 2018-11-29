@@ -27,11 +27,11 @@ main = hakyll $ do
 
   tags <- buildTags "posts/*" (fromCapture "tags/*.html")
 
-  match "posts/*" $ do
+  match "posts/*.mkd" $ do
     route $ setExtension "html"
     compile $ pandocCompiler
-      >>= loadAndApplyTemplate "templates/post.html" (postCtxWithTags tags)
-      >>= loadAndApplyTemplate "templates/default.html" postCtx
+      >>= loadAndApplyTemplate "_templates/post.html" (postCtxWithTags tags)
+      >>= loadAndApplyTemplate "_templates/default.html" postCtx
       >>= relativizeUrls
 
   tagsRules tags $ \tag pattern -> do
@@ -43,8 +43,8 @@ main = hakyll $ do
                 listField "posts" postCtx (return posts) `mappend`
                 defaultContext
       makeItem ""
-        >>= loadAndApplyTemplate "templates/tag.html" ctx
-        >>= loadAndApplyTemplate "templates/default.html" ctx
+        >>= loadAndApplyTemplate "_templates/tag.html" ctx
+        >>= loadAndApplyTemplate "_templates/default.html" ctx
         >>= relativizeUrls
 
   create ["archive.html"] $ do
@@ -56,8 +56,8 @@ main = hakyll $ do
             defaultContext
 
       makeItem ""
-        >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
-        >>= loadAndApplyTemplate "templates/default.html" archiveCtx
+        >>= loadAndApplyTemplate "_templates/archive.html" archiveCtx
+        >>= loadAndApplyTemplate "_templates/default.html" archiveCtx
         >>= relativizeUrls
 
 
@@ -71,10 +71,10 @@ main = hakyll $ do
       getResourceBody
         >>= applyAsTemplate indexCtx
         >>= renderPandoc
-        >>= loadAndApplyTemplate "templates/default.html" indexCtx
+        >>= loadAndApplyTemplate "_templates/default.html" indexCtx
         >>= relativizeUrls
 
-  match "templates/*" $ compile templateCompiler
+  match "_templates/*.html" $ compile templateCompiler
 
 --------------------------------------------------------------------------------
 allPosts :: Compiler [Item String]

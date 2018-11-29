@@ -94,7 +94,7 @@ main = hakyll $ do
 --------------------------------------------------------------------------------
 postsPattern, coursesPattern :: Pattern
 postsPattern = "posts/*.mkd"
-coursesPattern = "notes/courses/*/notes.mkd"
+coursesPattern = "notes/courses/*/notes.tex"
 
 allPosts :: Compiler [Item String]
 allPosts = recentFirst =<< loadAll postsPattern

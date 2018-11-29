@@ -19,7 +19,7 @@ My first attempt is very simple; just generate all the possible solutions and te
 
 This first attempt gets me to level 5 or so. Not bad for a very first attempt.
 
-#### Optimization - Discarding Impossible Characters
+#### Optimization - Discard Impossible Characters
 When I run the solution, I notice that sometimes the guess submitted returns `0 GOLD and 0 SILVER`. From this hint, I know that the characters contained in the guess cannot be in the final solution. I add in this optimization to help reduce the search space. As the functions `mCn` and `n!` increase very fast, any trick to reduce the search space helps. After implementing this trick, my program can get to level 8 or so.
 
 ## Second Attempt - Segment the Search Space

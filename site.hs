@@ -51,7 +51,7 @@ main = hakyll $ do
     route idRoute
     compile $ do
       let archiveCtx = listField "posts" postCtx allPosts
-                    <> constField "title" "Archives"
+                    <> constField "title" "Archive"
                     <> defaultContext
 
       makeItem ""

@@ -7,7 +7,7 @@ import       Data.Text.Lazy (unpack)
 import       Clay (Css, compact, renderWith)
 import       Hakyll
 
-import       DefaultCss (defaultCss)
+import       SiteCss (siteCss)
 
 
 --------------------------------------------------------------------------------
@@ -21,9 +21,9 @@ main = hakyll $ do
     route idRoute
     compile $ makeItem ("minhdo.org" :: String)
 
-  create ["css/default.css"] $ do
+  create ["css/site.css"] $ do
     route idRoute
-    compile $ compileWithClay defaultCss
+    compile $ compileWithClay siteCss
 
   tags <- buildTags postsPattern (fromCapture "tags/*.html")
 

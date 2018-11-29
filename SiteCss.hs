@@ -1,13 +1,13 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module DefaultCss (defaultCss) where
+module SiteCss (siteCss) where
 
 import Prelude hiding ((**), div, span)
 import Data.Monoid ((<>))
 import Clay
 
-defaultCss :: Css
-defaultCss =
+siteCss :: Css
+siteCss =
   let sBase03   = rgb 0x00 0x2b 0x36
       sBase02   = rgb 0x07 0x36 0x42
       sBase01   = rgb 0x58 0x6e 0x75

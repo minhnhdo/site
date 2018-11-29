@@ -9,5 +9,6 @@ executable site
                   , hakyll
                   , clay
                   , text
+  other-modules: DefaultCss
   ghc-options:      -threaded
   default-language: Haskell2010

@@ -8,7 +8,7 @@ _In this post, I document how I hacked [coleslaw](https://github.com/redline6561
 ## What is coleslaw? ##
 coleslaw is a static blog generator written in Common Lisp, much like [Jekyll](http://jekyllrb.com/), albeit with less features.
 
-I've been using [Octopress](http://octopress.org/) to generate this site. Since I don't know [Ruby](http://ruby-lang.org/), and have to intention to learn it, I can't hack on Octopress's code nor on Jekyll's, which is a shame. As I am learning [Common Lisp](http://http://en.wikipedia.org/wiki/Common_Lisp/), and wanting to work on something in it, switching to coleslaw seems perfect for me.
+I've been using [Octopress](http://octopress.org/) to generate this site. Since I don't know [Ruby](http://ruby-lang.org/), and have to intention to learn it, I can't hack on Octopress's code nor on Jekyll's, which is a shame. As I am learning [Common Lisp](http://en.wikipedia.org/wiki/Common_Lisp/), and wanting to work on something in it, switching to coleslaw seems perfect for me.
 
 ## Trying coleslaw out ##
 Here's how I set up and use coleslaw.

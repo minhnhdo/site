@@ -67,7 +67,7 @@ Previously, my ad-hoc solution was to find the first forward-slash in the domain
         )))))
 ```
 
-Now, I can instead use the [puri](http://puri.b9.com/) library to parse the URL and extract only the domain. Here's the new code using `puri`.
+Now, I can instead use the `puri` library to parse the URL and extract only the domain. Here's the new code using `puri`.
 
 ```commonlisp
 (defgeneric deploy (staging)

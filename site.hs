@@ -59,6 +59,23 @@ main = hakyll $ do
         >>= loadAndApplyTemplate "_templates/default.html" archiveCtx
         >>= relativizeUrls
 
+  match coursesPattern $ do
+    route $ setExtension "html"
+    compile $ pandocCompiler
+          >>= loadAndApplyTemplate "_templates/default.html" defaultContext
+          >>= relativizeUrls
+
+  match "notes.mkd" $ do
+    route $ setExtension "html"
+    compile $ do
+      let notesCtx = listField "courses" defaultContext (loadAll coursesPattern)
+                  <> defaultContext
+
+      getResourceBody
+        >>= applyAsTemplate notesCtx
+        >>= renderPandoc
+        >>= loadAndApplyTemplate "_templates/default.html" notesCtx
+        >>= relativizeUrls
 
   match "index.mkd" $ do
     route $ setExtension "html"
@@ -75,8 +92,9 @@ main = hakyll $ do
   match "_templates/*.html" $ compile templateCompiler
 
 --------------------------------------------------------------------------------
-postsPattern :: Pattern
-postsPattern = "posts/**.mkd"
+postsPattern, coursesPattern :: Pattern
+postsPattern = "posts/*.mkd"
+coursesPattern = "notes/courses/*/notes.mkd"
 
 allPosts :: Compiler [Item String]
 allPosts = recentFirst =<< loadAll postsPattern

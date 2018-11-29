@@ -1,6 +1,6 @@
 ---
 title: Maths and Programs
-tags: existential quantifiers, functional programming, universal quantifiers
+tags: existential-quantifiers, functional-programming, universal-quantifiers
 date: 2012-10-01
 ---
 Let's solve this question (taken from the second assignment of [Functional Programming in Scala](https://www.coursera.org/course/progfun)):

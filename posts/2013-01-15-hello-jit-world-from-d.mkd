@@ -1,6 +1,6 @@
 ---
 title: Hello, JIT World from D
-tags: just-in-time, d programming language, beginner
+tags: just-in-time, d-programming-language, beginner
 date: 2013-01-15
 ---
 _This post is inspired by [Hello, JIT World: The Joy of Simple JITs](http://blog.reverberate.org/2012/12/hello-jit-world-joy-of-simple-jits.html), especially the first short program that he used to demonstrate that JIT programming can be simple. In this post, I will convert the program he wrote in C to [D][wiki] to show some capabilities and convenience of D._

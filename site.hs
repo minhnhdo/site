@@ -47,11 +47,11 @@ main = hakyll $ do
         >>= loadAndApplyTemplate "_templates/default.html" ctx
         >>= relativizeUrls
 
-  create ["archive.html"] $ do
+  create ["posts/index.html"] $ do
     route idRoute
     compile $ do
       let archiveCtx = listField "posts" postCtx allPosts
-                    <> constField "title" "Archive"
+                    <> constField "title" "Posts"
                     <> defaultContext
 
       makeItem ""

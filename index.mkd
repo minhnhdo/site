@@ -17,4 +17,4 @@ You can check out my résumé [here](/resume.pdf).
 
 $partial("_templates/post-list.html")$
 
-…or you can find more in the [archive](/archive.html).
+…or you can find more in the [archive](/posts/).

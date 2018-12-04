@@ -174,6 +174,8 @@ A pushdown automaton is a 6-tuple $M = (Q, \Sigma, \Gamma, \delta, q_0, F)$, whe
 	\item $F \subseteq Q$ is a finite set of accepting states.
 \end{itemize}
 
+Labels: $a, b \rightarrow c$: if input symbol is $a$, and top of stack is $b$, pop it and push $c$. In other words, input symbol read, stack symbol popped $\rightarrow$ stack symbol pushed, e.g. $0, \epsilon \rightarrow \$$.
+
 Suppose $u, v, w$ are strings of variables and terminals, and there is a rule $A \rightarrow w$. From the string $uAv$, we can obtain $uwv$. We write $uAv \rightarrow uwv$, and say $uAv$ yields $uwv$.
 
 If $u_1 \rightarrow u_2 \rightarrow \dots \rightarrow u_k$, then $u_1 \rightarrow^\star u_k$, or $u_1$ derives $u_k$. There must be a finite number of arrows between $u_1$ and $u_k$.
@@ -191,6 +193,105 @@ A \emph{left-most derivation} is a sequence $S \rightarrow u_1 \rightarrow u_2 \
 \begin{theorem}
 	Context-free languages are closed under union, concatenation, star.
 \end{theorem}
+
+\section{Recognizable Languages}
+Differences from previous models
+\begin{itemize}
+	\item The input is written on tape.
+	\item It can write to the tape.
+	\item It can move left and right on tape.
+	\item It halts immediately when it reaches an accepting or rejecting state. The rejecting state must exist but may not be shown.
+\end{itemize}
+
+A deterministic Turing machine is a 7-tuple $M = (Q, \Sigma, \Gamma, \delta, q_0, q_{accept}, q_{reject})$, where
+\begin{itemize}
+	\item $Q$ is its finite non-empty set of states,
+	\item $\Sigma$ is its input alphabet,
+	\item $\Gamma$ is its tape alphabet ($\Sigma \subset \Gamma$ and $\text{\textvisiblespace } \in \Gamma \setminus \Sigma$),
+	\item $\delta : Q \times \Gamma \rightarrow Q \times \Gamma \times \{L, R\}$ is its transition function,
+	\item $q_0 \in Q$ is its starting state,
+	\item $q_{accept} \in Q$ is its accepting state, and
+	\item $q_{reject} \in Q$ is its rejecting state ($q_{reject} \neq q_{accept}$).
+\end{itemize}
+
+Labels: $a \rightarrow b, R$: if tape symbol is $a$, write $b$ and move head right. $a \rightarrow R$: if tape symbol is $a$, move head right. $a, b, c \rightarrow R$: if tape symbol is $a, b$, or $c$, move head right.
+
+On input $x$, a Turing machine can (1) accept, (2) reject, or (3) run in an infinite loop.
+
+The language \emph{recognized} by a Turing machine $M$ is $L(M) = \{x : \text{on input } x, M \text{ halts in } q_{accept}\}$. A language is \emph{recognizable} if there exists a Turing machine which recognizes it.
+
+Regular languages $\subseteq$ context-free languages $\subseteq$ decidable languages $\subseteq$ recognizable languages
+
+A \emph{configuration} is a way to describe the entire state of the Turing machine. It is a string $aqb$ where $a \in \Gamma^\star, q \in Q, b \in \Gamma^\star$, which indicates that $q$ is the current state of the Turing machine, the tape content currently is $ab$ and its head is currently pointing at the first symbol of $b$. Any Turing machine halts if its configuration is of the form $aq_{accept}b$, or $aq_{reject}b$ for any $ab$. Config($i$) uniquely determines Config($i + 1$).
+
+\begin{theorem}
+	Every $k$-tape Turing machine has an equivalent single tape Turing machine.
+\end{theorem}
+If the alphabet of the multitape Turing machine is $\Gamma$, we can make the single tape Turing machine's alphabet $(\Gamma \cup \{\#\}) \times \{\texttt{normal}, \texttt{bold}\}$.
+
+A non-deterministic Turing machine is a 7-tuple $M = (Q, \Sigma, \Gamma, \delta, q_0, q_{accept}, q_{reject})$, where the only difference from a deterministic Turing machine is the transition function $delta : Q \times \Gamma \rightarrow 2^{Q \times \Gamma \times \{L, R\}}$.
+
+A non-deterministic Turing machine accepts its input iff some node in the configuration tree has $q_{accept}$. It does not accept its input iff the configuration tree grows forever (infinite loop) or no node in the tree has $q_{accept}$.
+
+\emph{Acceptance of a non-deterministic Turing machine:} input $w$ is accepted if there exist configurations $c_0, c_1, \dots, c_k$ where
+\begin{itemize}
+	\item $c_0 = q_{start}w$, and
+	\item $c_i \Rightarrow c_{i+1}$ ($c_{i+1}$ is a possible configuration from $c_i$, following the transition function $\delta$).
+\end{itemize}
+
+The outcomes could be
+\begin{itemize}
+	\item $w$ is accepted, i.e. there exists a node in the tree which is an accepting configuration,
+	\item $w$ is explicitly rejected, i.e. the tree is finite but no node is an accepting configuration (all leaves are rejecting configurations), or
+	\item the non-deterministic Turing machine runs forever on $w$, i.e. the tree is infinite but no node is an accepting configuration (there might be finite branches terminating in a rejecting configuration in the tree).
+\end{itemize}
+
+A Turing machien is a \emph{decider} if it halts on all inputs, i.e. it either rejects or accepts all inputs.
+
+\begin{theorem}
+	Every non-deterministic Turing machine has an equivalent deterministic Turing machine. If that non-deterministic Turing machine is a decider, there is an equivalent deterministic Turing machine decider.
+\end{theorem}
+
+\begin{theorem}
+	Recognizable languages are closed under union, intersection, concatenation, star.
+\end{theorem}
+
+Implementation level description of a multitape Turing machine for $L = \{x\#x : x \in \{0, 1\}^\star\}$:
+\begin{itemize}
+	\item Scan the first head to the right until it reads a $\#$. Move right. The second head is still at the start of the second tape.
+	\item Repeatedly read symbol from the first tape (reject if the symbol is not $0$ or $1$), write it to the second tape, and move both heads right, until seeing a blank on the first tape.
+	\item Move the first head left until a $\#$ is under it. Replace the symbol with a blank (\textvisiblespace).
+	\item Move both heads left until they reach the start of their respective tapes (using the $\$$ sign hack to mark the start of the tape).
+	\item Repeat until seeing a blank on both tapes.
+	\begin{itemize}
+		\item If the symbols on the two tapes differ, reject.
+		\item Otherwise, move both head right.
+	\end{itemize}
+\end{itemize}
+
+$\langle O \rangle$ is a string encoding for the object $O$.
+
+\emph{Cardinality of Sets:} two sets $A$ and $B$ have the same \emph{cardinality} if there exists a bijection $f : A \rightarrow B$.
+
+$\mathbb{N} = \{1, 2, 3, \dots\}$ is the set of all natural numbers. A set is \emph{finite} if it has a bijection to \{1..n\} for some natural number $n$. A set is \emph{countably infinite} if it has the same cardinality as $\mathbb{N}$. A set is \emph{countable} or \emph{at most countable} if it is finite or countably infinite.
+
+\begin{lemma}
+	Any language $L$ is countable.
+\end{lemma}
+
+\begin{lemma}
+	The set of all Turing machines is countable.
+\end{lemma}
+
+\begin{lemma}
+	The set $\mathcal{B}$ of all infinite bit-sequences is not countable.
+\end{lemma}
+
+\begin{lemma}
+	$2^{\Sigma^\star}$ is uncountable.
+\end{lemma}
+
+$A_{TM} = \{\langle M, w \rangle : M \text{ accepts } w\}$ is recognizable but not decidable.
 
 \End{multicols}
 

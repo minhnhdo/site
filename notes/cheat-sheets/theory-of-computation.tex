@@ -152,6 +152,31 @@ Limitations of finite automata:
 	\item Only finite memory.
 \end{itemize}
 
+\section{Context-Free Languages}
+A pushdown automaton is a 6-tuple $M = (Q, \Sigma, \Gamma, \delta, q_0, F)$, where
+\begin{itemize}
+	\item $Q$ is a finite set of states,
+	\item $\Sigma$ is its input alphabet,
+	\item $\Gamma$ is its stack alphabet,
+	\item $\delta : Q \times (\Sigma \cup \{\epsilon\}) \times (\Gamma \cup \{\epsilon\}) \rightarrow 2^{Q \times (\Gamma \cup \epsilon)}$ is its transition function,
+	\item $q_0 \in  Q$ is its starting state, and
+	\item $F \subseteq Q$ is a finite set of accepting states.
+\end{itemize}
+
+Suppose $u, v, w$ are strings of variables and terminals, and there is a rule $A \rightarrow w$. From the string $uAv$, we can obtain $uwv$. We write $uAv \rightarrow uwv$, and say $uAv$ yields $uwv$.
+
+If $u_1 \rightarrow u_2 \rightarrow \dots \rightarrow u_k$, then $u_1 \rightarrow^\star u_k$, or $u_1$ derives $u_k$. There must be a finite number of arrows between $u_1$ and $u_k$.
+
+Given a grammar $G$, the language derived by the grammar is $L(G) = \{w \in \Sigma^\star : S \rightarrow^\star w \text{ and } S \text{ is the start variable}\}$
+
+\emph{Context-free grammar:} the lhs of rules is a single variable, rhs is any string of variables and terminals. A \emph{context-free language} is one that can be derived from a context-free grammar. An example context-free grammar is $G = (V, \Sigma, R, \langle \texttt{EXPR} \rangle)$, where $V = \{\langle \texttt{EXPR} \rangle, \langle \texttt{TERM} \rangle, \langle \texttt{FACTOR} \rangle\}$, $\Sigma = \{a, +, \times, (, )\}$, and $R = \{\langle \texttt{EXPR} \rangle \rightarrow \langle \texttt{EXPR} \rangle + \langle \texttt{TERM} \rangle | \langle \texttt{TERM} \rangle, \langle \texttt{TERM} \rangle \rightarrow \langle \texttt{TERM} \rangle \times \langle \texttt{FACTOR} \rangle | \langle \texttt{FACTOR} \rangle, \langle \texttt{FACTOR} \rangle \rightarrow (\langle \texttt{EXPR} \rangle)\}$.
+
+A \emph{left-most derivation} is a sequence $S \rightarrow u_1 \rightarrow u_2 \rightarrow \dots \rightarrow u_k \rightarrow w$ where each step applies a rule to the left-most variable. A grammar is \emph{ambiguous} when it has multiple left-most derivations for the same string.
+
+\begin{theorem}
+	A language $L$ is recognized by a pushdown automaton iff $L$ is described by a context-free grammar.
+\end{theorem}
+
 \End{multicols}
 
 \end{document}

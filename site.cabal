@@ -7,8 +7,9 @@ executable site
   hs-source-dirs:   _src/
   main-is:          Site.hs
   build-depends:    base >=4.7 && <5
-                  , hakyll
                   , clay
+                  , hakyll
+                  , pandoc
                   , text
   other-modules:    SiteCss
   ghc-options:      -threaded

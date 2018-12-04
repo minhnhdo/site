@@ -1,11 +1,12 @@
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
 
-import       Control.Monad (liftM)
-import       Data.Monoid ((<>))
-import       Data.Text.Lazy (unpack)
-import       Clay (Css, compact, renderWith)
-import       Hakyll
+import           Clay (Css, compact, renderWith)
+import           Control.Monad (liftM)
+import           Data.Monoid ((<>))
+import           Data.Text.Lazy (unpack)
+import qualified Text.Pandoc as P
+import           Hakyll
 
 import       SiteCss (siteCss)
 
@@ -59,16 +60,16 @@ main = hakyll $ do
         >>= loadAndApplyTemplate "_templates/default.html" archiveCtx
         >>= relativizeUrls
 
-  match coursesPattern $ do
+  match cheatSheetsPattern $ do
     route $ setExtension "html"
-    compile $ pandocCompiler
+    compile $ pandocLaTexCompiler
           >>= loadAndApplyTemplate "_templates/default.html" defaultContext
           >>= relativizeUrls
 
   match "notes.mkd" $ do
     route $ setExtension "html"
     compile $ do
-      let notesCtx = listField "courses" defaultContext (loadAll coursesPattern)
+      let notesCtx = listField "cheatSheets" defaultContext (loadAll cheatSheetsPattern)
                   <> defaultContext
 
       getResourceBody
@@ -92,9 +93,9 @@ main = hakyll $ do
   match "_templates/*.html" $ compile templateCompiler
 
 --------------------------------------------------------------------------------
-postsPattern, coursesPattern :: Pattern
+postsPattern, cheatSheetsPattern :: Pattern
 postsPattern = "posts/*.mkd"
-coursesPattern = "notes/courses/*/notes.tex"
+cheatSheetsPattern = "notes/cheat-sheets/*.tex"
 
 allPosts :: Compiler [Item String]
 allPosts = recentFirst =<< loadAll postsPattern
@@ -107,3 +108,16 @@ postCtxWithTags tags = tagsField "tags" tags <> defaultContext
 
 compileWithClay :: Css -> Compiler (Item String)
 compileWithClay = makeItem . unpack . renderWith compact []
+
+pandocLaTexCompiler :: Compiler (Item String)
+pandocLaTexCompiler =
+  pandocCompilerWith modifiedReaderOptions defaultHakyllWriterOptions
+  where modifiedReaderOptions :: P.ReaderOptions
+        modifiedReaderOptions = defaultHakyllReaderOptions {
+          P.readerExtensions = P.extensionsFromList
+                             [ P.Ext_old_dashes
+                             , P.Ext_smart
+                             , P.Ext_raw_html
+                             , P.Ext_auto_identifiers ],
+          P.readerStandalone = True
+        }

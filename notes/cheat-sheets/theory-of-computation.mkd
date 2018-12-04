@@ -1,0 +1,9 @@
+---
+title: Theory of Computation
+---
+
+\Begin{multicol}{4}
+
+An *alphabet*, denoted $\Sigma$ or $\Gamma$, is a finite non-empty set of symbols.
+
+\Begin{multicol}

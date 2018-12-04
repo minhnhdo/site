@@ -1,0 +1,42 @@
+\documentclass[letterpaper,landscape,11pt]{article}
+\usepackage{../../_latex/usenix2019}
+\usepackage{epsfig}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{csquotes}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage[lmargin=0.25in,tmargin=0.25in]{geometry}
+\usepackage{cleveref}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{lipsum}
+
+\setlength{\textheight}{8in}
+\setlength{\textwidth}{10.5in}
+
+\hypersetup{
+	colorlinks=true,
+	urlcolor=blue,
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\crefname{lemma}{Lemma}{Lemmas}
+
+\usetikzlibrary{automata,positioning}
+
+\newcommand{\hideFromPandoc}[1]{#1}
+\hideFromPandoc{
+  \let\Begin\begin
+  \let\End\end
+}
+
+\begin{document}
+
+$body$
+
+\end{document}

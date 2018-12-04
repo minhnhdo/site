@@ -1,6 +1,6 @@
 ---
 title: Why I chose Rust
-tags: rust, pattern-maching, algebraic-data-type
+tags: rust, pattern-matching, algebraic-data-type
 date: 2013-08-31
 ---
 This post is about less-talked-about features of Rust, namely Algebraic Types and Pattern Matching, that I find very interesting and for which I have chosen Rust.

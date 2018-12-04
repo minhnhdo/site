@@ -63,49 +63,49 @@ A decision problem be thought of as the set of all strings for which the functio
 A \emph{language} is a set of strings, so any set $S \subseteq \Sigma^\star$ is a language, even $\emptyset$. Thus, decision problems are equivalent to languages.
 
 \section{Regular Languages}
- $L(M)$ is the language accepted by machine $M$.
+$L(M)$ is the language accepted by machine $M$.
 
- A deterministic finite automaton is a 5-tuple $M = (Q, \Sigma, \delta, q_0, F)$, where
- \begin{itemize}
+A deterministic finite automaton is a 5-tuple $M = (Q, \Sigma, \delta, q_0, F)$, where
+\begin{itemize}
 	\item $Q$ is a finite set of states,
 	\item $\Sigma$ is an alphabet,
 	\item $\delta : Q \times \Sigma \rightarrow Q$ is a transition function describing its transitions and labels,
 	\item $q_0 \in Q$ is the starting state, and
 	\item $F \subseteq Q$ is a set of accepting states.
- \end{itemize}
+\end{itemize}
 If $\delta$ is not fully specified, we assume an implicit transition to an \emph{error state}.
 
- A deterministic finite automaton $M$ accepts input string $w = w_1w_2 \dots w_n$ ($w_i \in \Sigma^\star$) if there exists a sequence of states $r_0, r_1, r_2, \dots, r_n$ ($r_i \in Q$) such that
- \begin{itemize}
+A deterministic finite automaton $M$ accepts input string $w = w_1w_2 \dots w_n$ ($w_i \in \Sigma^\star$) if there exists a sequence of states $r_0, r_1, r_2, \dots, r_n$ ($r_i \in Q$) such that
+\begin{itemize}
 	\item $r_0 = q_0$,
 	\item for all $i \in \{1, \dots, n\}$, $r_i = \delta(r_{i-1}, w_i)$, and
 	\item $r_n \in F$.
- \end{itemize}
- $r_0, r_1, r_2, \dots, r_n$ are the sequence of states visited during the machine's computation.
+\end{itemize}
+$r_0, r_1, r_2, \dots, r_n$ are the sequence of states visited during the machine's computation.
 
- A non-deterministic finite automaton is a 5-tuple $M = (Q, \Sigma, \delta, q_0, F)$, where
- \begin{itemize}
+A non-deterministic finite automaton is a 5-tuple $M = (Q, \Sigma, \delta, q_0, F)$, where
+\begin{itemize}
 	\item $Q, \Sigma, q_0, F$ are the same as a deterministic finite automaton's, and
 	\item $\delta : Q \times (\Sigma \cup \{\epsilon\}) \rightarrow 2^Q$.
- \end{itemize}
+\end{itemize}
 
- A non-deterministic finite automaton accepts the string $w = w_1w_2 \dots w_n$ ($w_i \in \Sigma^\star$) if there exist a string $y = y_1y_2 \dots y_m$ ($y_i \in (\Sigma \cup \{\epsilon\})^\star$) and a sequence $r = r_0, r_1, \dots, r_n$ ($r_i \in Q$) such that
- \begin{itemize}
+A non-deterministic finite automaton accepts the string $w = w_1w_2 \dots w_n$ ($w_i \in \Sigma^\star$) if there exist a string $y = y_1y_2 \dots y_m$ ($y_i \in (\Sigma \cup \{\epsilon\})^\star$) and a sequence $r = r_0, r_1, \dots, r_n$ ($r_i \in Q$) such that
+\begin{itemize}
 	\item $w = y_1 \circ y_2 \circ \cdots \circ y_m$ (i.e. $y$ is $w$ with some $\epsilon$ inserted),
 	\item $r_0 = q_0$,
 	\item for all $i = \{1, \dots, m\}$, $r_i \in \delta(r_{i-1}, q_i)$, and
 	\item $r_m \in F$.
- \end{itemize}
+\end{itemize}
 
- The \emph{$\epsilon$-closure} for any set $S \subseteq Q$ is denoted $E(S)$, which is the set of all states in $Q$ that can be reachable by following any number of $\epsilon$-transition.
+The \emph{$\epsilon$-closure} for any set $S \subseteq Q$ is denoted $E(S)$, which is the set of all states in $Q$ that can be reachable by following any number of $\epsilon$-transition.
 
- \begin{theorem}
+\begin{theorem}
 	A non-deterministic finite automaton can be converted to an equivalent deterministic finite automaton.
- \end{theorem}
+\end{theorem}
 
- A \emph{regular language} is any language accepted by some finite automaton. The set of all regular languages is called the \emph{class of regular languages}.
+A \emph{regular language} is any language accepted by some finite automaton. The set of all regular languages is called the \emph{class of regular languages}.
 
- \begin{theorem}
+\begin{theorem}
 	Regular languages are closed under
 	\begin{itemize}
 		\item Concatenation $L_1 \circ L_2 = \{x \circ y : x \in L_1 \text{ and } y \in L_2\}$. Note: $L_1 \not\subseteq L_1 \circ L_2$.
@@ -114,10 +114,10 @@ If $\delta$ is not fully specified, we assume an implicit transition to an \emph
 		\item Complement $\overline{L} = \Sigma^\star \setminus L = \{x : x \notin L\}$.
 		\item Star $L^\star = \{x_1 \circ x_2 \circ \cdots \circ x_k : x_i \in L \text{ and } k \geq 0\}$.
 	\end{itemize}
- \end{theorem}
+\end{theorem}
 
- $R$ is a regular expression if $R$ is
- \begin{itemize}
+$R$ is a regular expression if $R$ is
+\begin{itemize}
 	\item $a \in \Sigma$,
 	\item $\epsilon$,
 	\item $\emptyset$,
@@ -125,26 +125,32 @@ If $\delta$ is not fully specified, we assume an implicit transition to an \emph
 	\item $R_1 \circ R_2$, or $R_1R_2$,
 	\item $R_1^\star$,
 	\item Shorthand: $\Sigma = (a_1 | a_2 | \dots | a_k)$, $a_i \in \Sigma$,
- \end{itemize}
- where $R_i$ is a regular expression.
+\end{itemize}
+where $R_i$ is a regular expression.
 
- \begin{theorem}
+\begin{theorem}
 	Languages accepted by DFAs = languages accepted by NFAs = regular languages
- \end{theorem}
+\end{theorem}
 
- \begin{theorem}
+\begin{theorem}
 	If $L$ is a finite language, $L$ is regular.
- \end{theorem}
+\end{theorem}
 
- If a computation path of any finite automaton is longer than the number of states it has, there must be a cycle in that computation path.
+If a computation path of any finite automaton is longer than the number of states it has, there must be a cycle in that computation path.
 
- \begin{lemma}[Pumping Lemma]
+\begin{lemma}[Pumping Lemma]
 	Every regular language satisfies the pumping condition.
- \end{lemma}
+\end{lemma}
 
- \emph{Pumping condition}: There exists an integer $p$ such that for every string $w \in L$, with $|w| \geq p$, there exist strings $x, y, z \in \Sigma^\star$ with $w = xyz, y \neq \epsilon, |xy| \leq p$ such that for all $i \geq 0$, $xy^iz \in L$.
+\emph{Pumping condition}: There exists an integer $p$ such that for every string $w \in L$, with $|w| \geq p$, there exist strings $x, y, z \in \Sigma^\star$ with $w = xyz, y \neq \epsilon, |xy| \leq p$ such that for all $i \geq 0$, $xy^iz \in L$.
 
- \emph{Negation of pumping condition}: For all integers $p$, there exists a string $w \in L$, with $|w| \geq p$, for all $x, y, z \in \Sigma^\star$ with $w = xyz, y \neq \epsilon, |xy| \leq p$, there exists $i \geq 0, i \neq 1$ such that $xy^iz \notin L$.
+\emph{Negation of pumping condition}: For all integers $p$, there exists a string $w \in L$, with $|w| \geq p$, for all $x, y, z \in \Sigma^\star$ with $w = xyz, y \neq \epsilon, |xy| \leq p$, there exists $i \geq 0, i \neq 1$ such that $xy^iz \notin L$.
+
+Limitations of finite automata:
+\begin{itemize}
+	\item Only read input once, left to right.
+	\item Only finite memory.
+\end{itemize}
 
 \End{multicols}
 

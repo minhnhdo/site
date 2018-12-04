@@ -4,11 +4,12 @@ build-type:         Simple
 cabal-version:      >= 1.10
 
 executable site
-  main-is:          site.hs
+  hs-source-dirs:   _src/
+  main-is:          Site.hs
   build-depends:    base >=4.7 && <5
                   , hakyll
                   , clay
                   , text
-  other-modules: SiteCss
+  other-modules:    SiteCss
   ghc-options:      -threaded
   default-language: Haskell2010

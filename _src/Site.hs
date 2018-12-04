@@ -66,10 +66,14 @@ main = hakyll $ do
           >>= loadAndApplyTemplate "_templates/default.html" defaultContext
           >>= relativizeUrls
 
+  match compiledCheatSheetsPattern $ do
+    route idRoute
+    compile copyFileCompiler
+
   match "notes.mkd" $ do
     route $ setExtension "html"
     compile $ do
-      let notesCtx = listField "cheatSheets" defaultContext (loadAll cheatSheetsPattern)
+      let notesCtx = listField "cheatSheets" cheatSheetsCtx (loadAll cheatSheetsPattern)
                   <> defaultContext
 
       getResourceBody
@@ -93,15 +97,23 @@ main = hakyll $ do
   match "_templates/*.html" $ compile templateCompiler
 
 --------------------------------------------------------------------------------
-postsPattern, cheatSheetsPattern :: Pattern
+postsPattern, cheatSheetsPattern, compiledCheatSheetsPattern :: Pattern
 postsPattern = "posts/*.mkd"
 cheatSheetsPattern = "notes/cheat-sheets/*.tex"
+compiledCheatSheetsPattern = "notes/cheat-sheets/*.pdf"
 
 allPosts :: Compiler [Item String]
 allPosts = recentFirst =<< loadAll postsPattern
 
 postCtx :: Context String
 postCtx = dateField "date" "%B %e, %Y" <> defaultContext
+
+cheatSheetsCtx :: Context String
+cheatSheetsCtx = field "pdfUrl" ( return
+                                . replaceAll ".tex" (const ".pdf")
+                                . toFilePath
+                                . itemIdentifier )
+              <> defaultContext
 
 postCtxWithTags :: Tags -> Context String
 postCtxWithTags tags = tagsField "tags" tags <> defaultContext

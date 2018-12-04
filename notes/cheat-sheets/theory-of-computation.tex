@@ -128,6 +128,17 @@ $R$ is a regular expression if $R$ is
 \end{itemize}
 where $R_i$ is a regular expression.
 
+Identities of Regular Languages
+\begin{itemize}
+	\item $\emptyset \cup R = R \cup \emptyset = R$
+	\item $\emptyset \circ R = R \circ \emptyset = \emptyset$
+	\item $\epsilon \circ R = R \circ \epsilon = $
+	\item $\epsilon^\star = \epsilon$
+	\item $\emptyset^\star = \emptyset$
+	\item $\emptyset \cup R \circ R^\star = R \circ R^\star \cup \epsilon = R^\star$
+	\item $(a | b)^\star = (a^\star | b^\star)^\star = (a^\star b^\star)^\star = (a^\star | b)^\star = (a | b^\star)^\star = a^\star(ba^\star)^\star = b^\star(ab^\star)^\star$
+\end{itemize}
+
 \begin{theorem}
 	Languages accepted by DFAs = languages accepted by NFAs = regular languages
 \end{theorem}
@@ -175,6 +186,10 @@ A \emph{left-most derivation} is a sequence $S \rightarrow u_1 \rightarrow u_2 \
 
 \begin{theorem}
 	A language $L$ is recognized by a pushdown automaton iff $L$ is described by a context-free grammar.
+\end{theorem}
+
+\begin{theorem}
+	Context-free languages are closed under union, concatenation, star.
 \end{theorem}
 
 \End{multicols}

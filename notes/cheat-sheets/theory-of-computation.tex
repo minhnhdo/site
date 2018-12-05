@@ -433,6 +433,134 @@ $BPP$, or bounded error probabilistic polynomial time: $\forall x \in L$, Pr[rea
 	$RP$ is closed under composition.
 \end{lemma}
 
+\section{Communication Complexity}
+Model:
+\begin{itemize}
+	\item Finite sets $X, Y, Z$
+	\item Function $f : X \times Y \rightarrow Z$
+	\item Two player, Alice and Bob
+	\item Decide on a communication protocol beforehand
+	\item Alice has $x \in X$, Bob has $y \in Y$
+	\item Goal: collaboratively compute $f(x, y)$ by sending bits back and forth (must end with both side knowing $f(x, y)$)
+\end{itemize}
+
+\noindent The \emph{trivial prototol:}
+\begin{itemize}
+	\item Alice sends $x$ to Bob ($\log |X|$)
+	\item Bob computes and sends $z = f(x, y)$ to Alice ($\log |Z|$)
+\end{itemize}
+Total: $\log |X| + \log |Z|$ or $\log |Y| + \log |Z|$
+
+A \emph{communication protocol} is a binary tree where each node is labelled by either $a_v : X \rightarrow \{L, R\}$ or $b_v : Y \rightarrow \{L, R\}$ and each leaf is labelled by an element of $Z$. The depth of the protocol tree is the maximum number of bits sent by the protocol.
+
+The deterministic communication complexity of a function $f$ is
+\begin{align*}
+	D(f) & = \min\limits_{\text{tree for } f} \left(\max\limits_{(x, y)}(\text{number of bits}) \right) \\
+	& = \min\limits_{\text{tree for } f} (\text{depth of tree})
+\end{align*}
+
+\begin{lemma}
+	$D(EQ_n) \leq n + 1$
+\end{lemma}
+
+A \emph{rectangle} in $X \times Y$ is a set of the form $R = A \times B$ where $A \subseteq X$ and $B \subseteq Y$. $R$ is a rectangle iff $(x, y) \in R \land (x', y') \in R \Leftrightarrow (x, y') \in R \land (x', y) \in R$
+
+\begin{lemma}
+	Let $T$ be a protocol tree, $R_v$ be the set of inputs that causes the protocol to arrive at node $v$. Then $R_v$ is a rectangle.
+\end{lemma}
+
+A rectangle is called \emph{$f$-monochromatic} if $f(x, y)$ is the same for all $(x, y) \in R$.
+
+Let $R_i \subset X \times Y$ be a rectangle for $i = 1, \dots, k$. The set $\mathcal{R} = \{R_1, \dots, R_k\}$ is called an \emph{$f$-monochromatic partition (into rectangles)} if each $R_i$ is $f$-monochromatic, and each $(x, y) \in X \times Y$ is contained in exactly one $R_i$.
+
+$C^{\text{partition}}(f) = \min \{|\mathcal{R}| : \mathcal{R} \text{ is an }f\text{-monochromatic partition}\}$
+
+\begin{lemma}
+	For any protocol tree $T$, the rectangles $\{R : v \text{ is a leaf in } T\}$ are an $f$-monochromatic partition.
+\end{lemma}
+
+\begin{lemma}
+	$C^{\text{partition}}(f) \leq \min\limits_{\text{protocol tree } T} |\text{number of leaves in } T|$
+\end{lemma}
+
+\begin{lemma}
+	$D(f) \geq \left \lceil \log_2 C^{\text{partition}}(f) \right \rceil$
+\end{lemma}
+
+A \emph{fooling set} $S \subseteq X \times Y$ is a set where all points $(x, y) \in S$ have the same value $f(x, y) = z$, and for any distinct points $(x, y)$ and $(x', y')$ in $S$, either $f(x, y') \neq z$ or $f(x', y) \neq z$.
+
+\begin{lemma}
+	$C^{\text{partition}}(f) \geq |S| + 1$, where $S$ is a fooling set for $f$
+\end{lemma}
+
+\begin{lemma}
+	$D(f) \geq \left \lceil \log_2(|S| + 1) \right \rceil$, where $S$ is a fooling set for $f$
+\end{lemma}
+
+\begin{lemma}
+	$D(EQ_n) = D(GTE_n) = D(DISJ_n) = n + 1$
+\end{lemma}
+
+Model for \emph{non-deterministic communication complexity}:
+\begin{itemize}
+	\item Function $f : X \times Y \rightarrow Z$ is known to all
+	\item Bob does not know $x$, Alice does not know $y$
+	\item Alice and Bob do not communicate
+	\item Piere tries to force Alice and Bob to accept by sending certificate $z$. How short can $z$ be?
+\end{itemize}
+
+$N(f) = \min\limits_{nondet protocol}(\text{length of cert})$. Or, $N(f) = \min\{k\}$ such that there exist $A$ and $B$, for all $x \in X$, $y \in Y$, $f(x, y) = 1 \Rightarrow \exists z \in \{0, 1\}^k, A(x, z) = 1 \land B(y, z) = 1$, $f(x, y) = 0 \Rightarrow \forall z \in \{0, 1\}^k, A(x, z) = 0 \lor B(y, z) = 0$.
+
+\begin{lemma}
+	$N(\lnot DISJ_n) \leq \log n$
+\end{lemma}
+
+\begin{lemma}
+	For all $f$, $D(f) = D(\lnot f)$.
+\end{lemma}
+
+\begin{lemma}
+	$N(\lnot EQ_n) \leq \log(n) + 1$
+\end{lemma}
+
+\begin{lemma}
+	Let $S$ be a fooling set where $f(x, y) = 1$ for all $(x, y) \in S$. Then $N(f) \geq \left \lceil \log_2(|S|) \right \rceil$.
+\end{lemma}
+
+\begin{lemma}
+	$N(EQ_n) \geq n$
+\end{lemma}
+
+The set $\mathcal{R} = \{R_1, \dots, R_k\}$ is a cover of the $1$-entries (by rectangles) if (1) each $R_i$ is a rectangle containing only $1$s, and (2) every $(x, y) \in X \times Y$ with $f(x, y) = 1$ is contained in at least one $R_i$.
+
+$C^{1\text{-cover}}(f) = \min \{|\mathcal{R}| : \mathcal{R} \text{ is a cover of the } 1\text{-entries}\}$
+
+$C^{0\text{-cover}}(f) = C^{1\text{-cover}}(\lnot f)$. 
+
+\begin{lemma}
+	$C^{\text{partition}}(f) = C^{1\text{-cover}}(f) + C^{0\text{-cover}}(f)$. 
+\end{lemma}
+
+\begin{lemma}
+	$N(f) = \left \lceil \log_2(C^{1\text{-cover}}(f) ) \right \rceil$
+\end{lemma}
+
+\begin{lemma}
+	$D(f) \geq N(f)$
+\end{lemma}
+
+\begin{lemma}
+	$D(\lnot f) = N(f)$
+\end{lemma}
+
+\begin{theorem}
+	Let $f : X \times Y \rightarrow \{0, 1\}$ be arbitrary, $C_0$ be a cover of the $0$-entries, and $C_1$ be a cover of the $1$-entries. Then $D(f) = O(\log C_0 * \log C_1)$.
+\end{theorem}
+
+\begin{lemma}
+	$D(f) = O(N(f) * N(\lnot f))$
+\end{lemma}
+
 \End{multicols}
 
 \end{document}

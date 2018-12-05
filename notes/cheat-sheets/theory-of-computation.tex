@@ -291,7 +291,147 @@ $\mathbb{N} = \{1, 2, 3, \dots\}$ is the set of all natural numbers. A set is \e
 	$2^{\Sigma^\star}$ is uncountable.
 \end{lemma}
 
-$A_{TM} = \{\langle M, w \rangle : M \text{ accepts } w\}$ is recognizable but not decidable.
+\section{Reductions}
+
+$A_{TM} = \{\langle M, w \rangle : M \text{ accepts } w\}$ and $HALT_{TM} = \{\langle M, w \rangle : M \text{ halts on input } w\}$ are recognizable but not decidable.
+
+\begin{theorem}
+	If $L$ and $\overline{L}$ are recognizable, then $L$ is decidable (and so is $\overline{L}$).
+\end{theorem}
+
+\begin{lemma}
+	$\overline{A_{TM}}$ is unrecognizable.
+\end{lemma}
+
+\emph{Proof template for undecidability via Turing reduction:} Reduce a problem known to be undecidable to that language $L$, usually $A_{TM}$, i.e. $A_{TM} \leq_T L$. Assume a Turing machine decider $R$ for $L$. Construct $S$ that decides $A_{TM}$ using $R$.
+
+\emph{Runtime of a deterministic Turing machine} is a function $f : \mathbb{N} \rightarrow \mathbb{N}$ given by $f(n) = max_{x \in \Sigma^\star, |x| = n} (\text{no. of steps of } M \text{ on input } x)$.
+
+$TIME(t(n)) = \{\text{language } L : \exists \text{deterministic Turing machine that} \\ \text{decides } L \text{ in time } O(t(n))\}$.
+
+$P = \bigcup_{c \geq 0} TIME(n^c)$
+
+$EXP = \bigcup_{k \geq 0} TIME(2^{n^k})$
+
+\begin{theorem}[Time hierarchy theorem]
+	If $f : \mathbb{N} \rightarrow \mathbb{N}$ is reasonable and $f = \Omega(n\log n)$ then $TIME(f(n)) \subset TIME(f(n)^2)$.
+\end{theorem}
+
+\begin{lemma}
+	$P \subset EXP$
+\end{lemma}
+
+\emph{Runtime of a non-deterministic Turing machine} is the height of the configuration tree.
+
+$NTIME(t(n)) = \{\text{language } L : \exists \text{ non-deterministic Turing machine that} \\ \text{decides } L \text{ in time } t(n)\}$
+
+$NP = \bigcup_{c > 0} NTIME(n^c)$, i.e. languages for which it is easy to verify membership.
+
+\begin{lemma}
+	$P \subseteq NP$
+\end{lemma}
+
+\begin{lemma}
+	$NP \subseteq EXP$
+\end{lemma}
+
+\emph{Verifier-based definition for $L \in NP$:} there exists a deterministic polytime Turing machine $V$ and a constant $c$ such that $L = \{x \in \Sigma^\star : \exists y \in \Sigma^\star, |y| \leq |x|^c, V \text{ accepts } (x, y)\}$.
+
+A function is \emph{polytime computable} if $f : \Sigma^\star \rightarrow \Sigma^\star$ if there exists a Turing machine $M$ that has $x$ as input, runs for time poly($|x|$) and halts with $f(x)$ written on the tape.
+
+$f$ is a \emph{polytime reduction} from language $A$ to language $B$, denoted $A \leq_P B$ if (1) $f(A) \subseteq B$, (2) $f(\overline{A}) \subseteq \overline{B}$, and (3) $f$ is a polytime computable function.
+
+\begin{theorem}
+	If $A \leq_P B$ and $B \in P$ then $A \in P$.
+\end{theorem}
+
+A language $L$ is \emph{$NP$-hard} if $A \leq_P L$ for all $A \in NP$. A language $L$ is \emph{$NP$-complete} if $L$ is $NP$-hard and $L \in NP$.
+
+\begin{theorem}
+	If $P \neq NP$, then there exists language $L$ such that $L \notin NP$-complete, $L \notin P$, and $L \in NP$.
+\end{theorem}
+
+\begin{theorem}
+	If (1) $B$ is $NP$-complete, (2) $C \in NP$, and (3) $B \leq_P C$, then $C$ is $NP$-complete.
+\end{theorem}
+
+\begin{theorem}
+	$CLIQUE$ is $NP$-complete
+\end{theorem}
+
+\begin{theorem}
+	$3SAT \leq_P CLIQUE$
+\end{theorem}
+
+\begin{theorem}
+	$3SAT \leq_P MAXCLIQUE$
+\end{theorem}
+
+Reductions from $3SAT$ often involves \emph{gadgets}:
+\begin{itemize}
+	\item \emph{Clause gadgets:} for the assignemnt to pick a true literal in each clause (a clique must pick a vertex from each group)
+	\item \emph{Variable gadget:} force assignemnt to set each variable either to true or false but not both (a clique cannot pick both $x_i$ and $\overline{x_i}$).
+\end{itemize}
+
+\begin{theorem}
+	$SAT$ is $NP$-complete via $a$ where
+	\begin{gather*}
+		C = Q \cup \{\#\} \cup \Gamma \\
+		x_{i, j, s} = true \Leftrightarrow cell[i, j] = s \\
+		\Phi_{start} = x_{1, 1, \#} \land x_{1, 2, q_{start}} \land x_{1, 3, w_1} \land \dots \\
+		\land x_{1, n^k-1, \text{\textvisiblespace}} \land x_{1, n^k, \#} \\
+		\Phi_{cell} = \bigwedge\limits_{i, j = 1}^{n^k} \left(\bigvee\limits_{s \in C} x_{i, j, s} \land \right. \\
+		\left. \bigwedge\limits_{s, t \in C, 1 \leq i, j \leq n^k} \lnot (x_{i, j, s} \land x_{i, j, t})\right) \\
+		\Phi_{moves} = \bigwedge\limits_{i, j \geq n^k} \text{(window}[i, j] \text{ is valid)} \\
+		\Phi_{accept} = \bigvee\limits_{1 \leq i, j \leq n^k} x_{i, j, q_{accept}}
+	\end{gather*}
+\end{theorem}
+
+$coNP = \{\text{language } L : \overline{L} \in NP\}$, i.e. languages for which it is easy to verify non-membership. Machine model for $L \in coNP$ is when $x \in L$, all leaves are accepting configurations; otherwise, when $x \notin L$, there exists one leaf which is a rejecting configuration.
+
+$coNP$-complete $ = \{\text{language } B : B \in coNP, \forall A \in coNP, A \leq_P B\}$.
+
+\begin{theorem}
+	$NOSAT$ is $coNP$-complete.
+\end{theorem}
+
+\begin{lemma}
+	$L \in NP$-complete iff $\overline{L} \in coNP$-complete.
+\end{lemma}
+
+\section{Probabilistic Turing Machines}
+
+$RP$, or randomized polynomial time, are the languages $L$ for which there is a \emph{probabilistic} Turing machine that, on input $x$, runs in poly($|x|$) and when $x \in L$, Pr[reaching accept] $\geq \frac{1}{2}$; otherwise, when $x \notin L$, Pr[reaching reject] $ = 1$.
+
+\emph{Second definition for $RP$:} it contains languages $L$ for which there exists a deterministic polytime Turing machine $V$ such that when $x \in L$, for at least half of all $y$ with $|y| \leq \text{poly}(|x|), V$ accepts $(x, y)$; when $x \notin L$, for all $y$ with $|y| \leq \text{poly}(|x|), V$ rejects $(x, y)$.
+
+Contrast with $NP$, where $\forall x \in L$, Pr[reaching accept] $ > 0$, $\forall x \notin L$, Pr[reaching reject] $ = 1$.
+
+\begin{theorem}
+	$RP \subseteq NP$
+\end{theorem}
+
+$coRP$: $\forall x \in L$, Pr[reaching accept] $ = 1$, $\forall x \notin L$, Pr[reaching reject] $\geq \frac{1}{2}$.
+
+$coNP$: $\forall x \in L$, Pr[reaching accept] $ = 1$, $\forall x \notin L$, Pr[reaching reject] $> 0$.
+
+$BPP$, or bounded error probabilistic polynomial time: $\forall x \in L$, Pr[reaching accept] $\geq \frac{2}{3}$, $\forall x \notin L$, Pr[reaching reject] $\geq \frac{2}{3}$.
+
+\begin{lemma}
+	$RP \subseteq BPP$
+\end{lemma}
+
+\begin{lemma}
+	$coRP \subseteq BPP$
+\end{lemma}
+
+\begin{lemma}
+	$RP(\frac{1}{2}) = RP(\frac{3}{4})$ (proof via amplification)
+\end{lemma}
+
+\begin{lemma}
+	$RP$ is closed under composition.
+\end{lemma}
 
 \End{multicols}
 

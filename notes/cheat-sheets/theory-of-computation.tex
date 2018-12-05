@@ -75,7 +75,7 @@ A deterministic finite automaton is a 5-tuple $M = (Q, \Sigma, \delta, q_0, F)$,
 \end{itemize}
 If $\delta$ is not fully specified, we assume an implicit transition to an \emph{error state}.
 
-A deterministic finite automaton $M$ accepts input string $w = w_1w_2 \dots w_n$ ($w_i \in \Sigma^\star$) if there exists a sequence of states $r_0, r_1, r_2, \dots, r_n$ ($r_i \in Q$) such that
+A deterministic finite automaton $M$ accepts input string $w = w_1w_2 \dots w_n$ ($w_i \in \Sigma$) if there exists a sequence of states $r_0, r_1, r_2, \dots, r_n$ ($r_i \in Q$) such that
 \begin{itemize}
 	\item $r_0 = q_0$,
 	\item for all $i \in \{1, \dots, n\}$, $r_i = \delta(r_{i-1}, w_i)$, and
@@ -89,7 +89,7 @@ A non-deterministic finite automaton is a 5-tuple $M = (Q, \Sigma, \delta, q_0, 
 	\item $\delta : Q \times (\Sigma \cup \{\epsilon\}) \rightarrow 2^Q$.
 \end{itemize}
 
-A non-deterministic finite automaton accepts the string $w = w_1w_2 \dots w_n$ ($w_i \in \Sigma^\star$) if there exist a string $y = y_1y_2 \dots y_m$ ($y_i \in (\Sigma \cup \{\epsilon\})^\star$) and a sequence $r = r_0, r_1, \dots, r_n$ ($r_i \in Q$) such that
+A non-deterministic finite automaton accepts the string $w = w_1w_2 \dots w_n$ ($w_i \in \Sigma$) if there exist a string $y = y_1y_2 \dots y_m$ ($y_i \in \Sigma \cup \{\epsilon\}$) and a sequence $r = r_0, r_1, \dots, r_n$ ($r_i \in Q$) such that
 \begin{itemize}
 	\item $w = y_1 \circ y_2 \circ \cdots \circ y_m$ (i.e. $y$ is $w$ with some $\epsilon$ inserted),
 	\item $r_0 = q_0$,
@@ -169,7 +169,7 @@ A pushdown automaton is a 6-tuple $M = (Q, \Sigma, \Gamma, \delta, q_0, F)$, whe
 	\item $Q$ is a finite set of states,
 	\item $\Sigma$ is its input alphabet,
 	\item $\Gamma$ is its stack alphabet,
-	\item $\delta : Q \times (\Sigma \cup \{\epsilon\}) \times (\Gamma \cup \{\epsilon\}) \rightarrow 2^{Q \times (\Gamma \cup \epsilon)}$ is its transition function,
+	\item $\delta : Q \times (\Sigma \cup \{\epsilon\}) \times (\Gamma \cup \{\epsilon\}) \rightarrow 2^{Q \times (\Gamma \cup \{\epsilon\})}$ is its transition function,
 	\item $q_0 \in  Q$ is its starting state, and
 	\item $F \subseteq Q$ is a finite set of accepting states.
 \end{itemize}

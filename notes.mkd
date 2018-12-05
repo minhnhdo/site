@@ -1,5 +1,0 @@
----
-title: Notes
----
-
-$partial("_templates/note-list.html")$

@@ -52,14 +52,21 @@ main = hakyll $ do
   create ["posts/index.html"] $ do
     route idRoute
     compile $ do
-      let archiveCtx = listField "posts" postCtx allPosts
-                    <> constField "title" "Posts"
+      let archiveCtx = constField "title" "Posts"
+                    <> listField "posts" postCtx allPosts
                     <> defaultContext
 
       makeItem ""
         >>= loadAndApplyTemplate "_templates/archive.html" archiveCtx
         >>= loadAndApplyTemplate "_templates/default.html" archiveCtx
         >>= relativizeUrls
+
+  match coursesPattern $ do
+    route $ setExtension "html"
+    compile $ pandocCompilerWith defaultHakyllReaderOptions writerOptions
+          >>= loadAndApplyTemplate "_templates/comment-section.html" defaultContext
+          >>= loadAndApplyTemplate "_templates/default.html" defaultContext
+          >>= relativizeUrls
 
   match cheatSheetsPattern $ do
     route $ setExtension "html"
@@ -71,15 +78,16 @@ main = hakyll $ do
     route idRoute
     compile copyFileCompiler
 
-  match "notes.mkd" $ do
+  create ["notes/index.html"] $ do
     route $ setExtension "html"
     compile $ do
-      let notesCtx = listField "cheatSheets" cheatSheetsCtx (loadAll cheatSheetsPattern)
+      let notesCtx = constField "title" "Notes"
+                  <> listField "courses" defaultContext (loadAll coursesPattern)
+                  <> listField "cheatSheets" cheatSheetsCtx (loadAll cheatSheetsPattern)
                   <> defaultContext
 
-      getResourceBody
-        >>= applyAsTemplate notesCtx
-        >>= renderPandocWith defaultHakyllReaderOptions writerOptions
+      makeItem ""
+        >>= loadAndApplyTemplate "_templates/note-list.html" notesCtx
         >>= loadAndApplyTemplate "_templates/default.html" notesCtx
         >>= relativizeUrls
 
@@ -109,8 +117,9 @@ writerOptions = defaultHakyllWriterOptions {
         defaultWriterExtensions = P.writerExtensions defaultHakyllWriterOptions
         newExtensions = foldr P.enableExtension defaultWriterExtensions mathExtensions
 
-postsPattern, cheatSheetsPattern, compiledCheatSheetsPattern :: Pattern
+postsPattern, coursesPattern, cheatSheetsPattern, compiledCheatSheetsPattern :: Pattern
 postsPattern = "posts/*.mkd"
+coursesPattern = "notes/courses/*/notes.mkd"
 cheatSheetsPattern = "notes/cheat-sheets/*.tex"
 compiledCheatSheetsPattern = "notes/cheat-sheets/*.pdf"
 

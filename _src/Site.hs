@@ -30,7 +30,7 @@ main = hakyll $ do
 
   match postsPattern $ do
     route $ setExtension "html"
-    compile $ pandocCompiler
+    compile $ pandocCompilerWith defaultHakyllReaderOptions writerOptions
           >>= loadAndApplyTemplate "_templates/comment-section.html" defaultContext
           >>= loadAndApplyTemplate "_templates/post.html" (postCtxWithTags tags)
           >>= loadAndApplyTemplate "_templates/default.html" postCtx
@@ -79,7 +79,7 @@ main = hakyll $ do
 
       getResourceBody
         >>= applyAsTemplate notesCtx
-        >>= renderPandoc
+        >>= renderPandocWith defaultHakyllReaderOptions writerOptions
         >>= loadAndApplyTemplate "_templates/default.html" notesCtx
         >>= relativizeUrls
 
@@ -91,13 +91,24 @@ main = hakyll $ do
 
       getResourceBody
         >>= applyAsTemplate indexCtx
-        >>= renderPandoc
+        >>= renderPandocWith defaultHakyllReaderOptions writerOptions
         >>= loadAndApplyTemplate "_templates/default.html" indexCtx
         >>= relativizeUrls
 
   match "_templates/*.html" $ compile templateCompiler
 
 --------------------------------------------------------------------------------
+writerOptions :: P.WriterOptions
+writerOptions = defaultHakyllWriterOptions {
+  P.writerExtensions = newExtensions,
+  P.writerHTMLMathMethod = P.MathJax ""
+}
+  where mathExtensions = [ P.Ext_tex_math_dollars
+                         , P.Ext_tex_math_double_backslash
+                         , P.Ext_latex_macros ]
+        defaultWriterExtensions = P.writerExtensions defaultHakyllWriterOptions
+        newExtensions = foldr P.enableExtension defaultWriterExtensions mathExtensions
+
 postsPattern, cheatSheetsPattern, compiledCheatSheetsPattern :: Pattern
 postsPattern = "posts/*.mkd"
 cheatSheetsPattern = "notes/cheat-sheets/*.tex"
@@ -123,8 +134,7 @@ compileWithClay :: Css -> Compiler (Item String)
 compileWithClay = makeItem . unpack . renderWith compact []
 
 pandocLaTexCompiler :: Compiler (Item String)
-pandocLaTexCompiler =
-  pandocCompilerWith modifiedReaderOptions defaultHakyllWriterOptions
+pandocLaTexCompiler = pandocCompilerWith modifiedReaderOptions writerOptions
   where modifiedReaderOptions :: P.ReaderOptions
         modifiedReaderOptions = defaultHakyllReaderOptions {
           P.readerExtensions = P.extensionsFromList

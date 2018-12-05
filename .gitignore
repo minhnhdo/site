@@ -320,3 +320,4 @@ tags
 ### Customizations ###
 _cache/
 _site/
+!_src/

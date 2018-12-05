@@ -31,6 +31,7 @@ main = hakyll $ do
   match postsPattern $ do
     route $ setExtension "html"
     compile $ pandocCompiler
+          >>= loadAndApplyTemplate "_templates/comment-section.html" defaultContext
           >>= loadAndApplyTemplate "_templates/post.html" (postCtxWithTags tags)
           >>= loadAndApplyTemplate "_templates/default.html" postCtx
           >>= relativizeUrls

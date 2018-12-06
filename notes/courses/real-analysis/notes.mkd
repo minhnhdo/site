@@ -5,13 +5,13 @@ subtitle: These are my notes for the Real Analysis course taught by Francis Su (
 
 ## Sets
 
-A _set_ is a collection of objects. For example, $S = \{1, \delta, \circ, \{2, \gamma\}\}$. Note that $|S| = 4$.
+A _set_ is a collection of objects. These objects are referred to as the _elements_ of the set. For example, $S = \{1, \delta, \circ, \{2, \gamma\}\}$. Note that $|S| = 4$.
 
 Another notation for writing down a set is $S = \{x : P(x) \text{ is true}\}$, which means "S is a set of $x$ such that $P(x)$ is true". $P$ is a _property_ of $x$ and if it is true, it will put $x$ in $S$. For example, $S = \{x : x < 2\}$ means $S$ is a set of $x$ such that $x$ is less than $2$.
 
 $x \in S$ means $x$ is in $S$. $x \notin S$ means $x$ is not in $S$. $\emptyset$ is the _empty set_.
 
-$A \subset B$ means $A$ is a subset of $B$, which means if $x \in A$ then $x \in B$ (or $x \in A \implies x \in B$).
+$A \subset B$ means $A$ is a _subset_ of $B$, or $B$ _contains_ $A$, which means if $x \in A$ then $x \in B$ (or $x \in A \implies x \in B$).
 
 If $A \subset B$ and $A \not\subset B$, then set $A$ is a _proper subset_ of $B$.
 
@@ -41,7 +41,7 @@ An _equivalent relation_ $R$ on $S$, often denoted as $\sim$, $\approx$, $\cong$
 2. symmetric, i.e. $aRb \implies bRa$,
 3. transitive, i.e. if $aRb$ and $bRc$ then $aRc$.
 
-A _function_ $F$ from $A$ to $B$, denoted $F : A \rightarrow B$, is a relation such that if $aFb$ and $aFb'$ then $b = b'$. Informally, $F$ assigns each $a \in A$ to a single $b \in B$. We also write $F(a) = b$.
+A _function_ $F$ from $A$ to $B$, denoted $F : A \rightarrow B$, is a relation such that if $aFb$ and $aFb'$ then $b = b'$. Informally, $F$ assigns each $a \in A$ to a single $b \in B$. $A$ is the _domain_ of $F$. $B$ is the _codomain_ of $F$. The _range_ of $F$ is a subset of $B$, given by $\{y \in B : y = F(x) \text{ for some } x \in A\}$. We also write $F(a) = b$.
 
 ## The Rational Numbers $\mathbb{Q}$
 

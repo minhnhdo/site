@@ -132,6 +132,7 @@ postCtx = dateField "date" "%B %e, %Y" <> defaultContext
 
 cheatSheetsCtx :: Context String
 cheatSheetsCtx = field "pdfUrl" ( return
+                                . toUrl
                                 . replaceAll ".tex" (const ".pdf")
                                 . toFilePath
                                 . itemIdentifier )

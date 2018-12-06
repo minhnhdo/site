@@ -220,3 +220,76 @@ $\mathbb{Q}$ is an _ordered field_, which is a field with an order such that the
 
 1. $y < z \implies x + y < x + z$, and
 2. $y < z, x > 0 \implies xy < xz$.
+
+## Bounds
+
+Let set $E \subset S$ be ordered. If there exists $\beta \in S$ such that for all $x \in E$, we have $x \leq \beta$, then $\beta$ is an _upper bound_ for $E$, and $E$ is _bounded above_. Similarly, if there exists $\beta \in S$ such that for all $x \in E$, we have $x \geq \beta$, then $\beta$ is a _lower bound_ for $E$, and $E$ is _bounded below_.
+
+For example, $\frac{3}{2}$ is an upper bound for $A = \{x : x^2 < 2\}$. If not, then there exists $x > \frac{3}{2}$, which implies $x^2 > \frac{9}{4} > 2$. So, $x \notin A$, which is a contradiction. Thus, $\frac{3}{2}$ is an upper bound for $A$.
+
+If there is an $\alpha \in S$ such that (1) $\alpha$ is an _upper bound_, and (2) if $\gamma < \alpha \implies \gamma$ is not an upper bound for $E$, then $\alpha$ is the _least upper bound_ for $E$, or _supremum_ of $E$, denoted $\sup E$.
+
+For example, let $S = \mathbb{Q}$.
+
+1. (Finite sets have a supremum) $E = \{\frac{1}{2}, 1, 2\}$. $\sup E = 2$ because all elements of $E$ is less than or equal to $2$ and if $\gamma < 2$ then $\gamma$ is not an upper bound for $E$.
+2. $E = \mathbb{Q}_{-}$, the negative rationals. $\sup E = 0$.
+3. $E = \mathbb{Q}$. $E$ is _unbounded above_, denoted $\sup E = +\infty$.
+4. $E = \{x : x^2 < 2\}$. $\sup E$ does not exist although $E$ is bounded. One such bound is $\frac{3}{2}$.
+
+## The Set of Real Numbers $\mathbb{R}$
+
+_Theorem:_ $\mathbb{R}$ is an ordered field, with the _least upper bound property_, and $\mathbb{R}$ contains $\mathbb{Q}$ as a _subfield_.
+
+### Construction of $\mathbb{R}$
+
+A set $S$ has the _least upper bound property_ (or satisfies the _completeness axiom_) if every nonempty subset of $S$ has an upper bound, also has least upper bound in $S$.
+
+Dedekind: A _cut_ $\alpha$ is a subset of $\mathbb{Q}$ satisfying
+
+1. (nontriviality) i.e. $\alpha \neq \emptyset, \mathbb{Q}$,
+2. (closed downwards or closed to the left) if $p \in \alpha$, $q \in \mathbb{Q}$, and $q < p$, then $q \in \alpha$, and
+3. (no largest member) if $p \in \alpha$ then $p < r$ for some $r \in \alpha$.
+
+For example, the set $A = \{x : x^2 < 2\}$ is not a cut because it does not satisfy (2). The set $\mathbb{Q}_{-}$ is a cut. The set $\beta = \{x \in \mathbb{Q} : x \leq 2\}$ is not a cut because it does not satisfy (3).
+
+Let $\mathbb{R} := \{\alpha : \alpha \text{ is a cut}\}$ ($:=$ means defined to be).
+
+### Order on $\mathbb{R}$
+
+$\alpha < \beta$ means $\alpha \subsetneq \beta$, or $\alpha$ is a proper subset of $\beta$.
+
+_Proof of well-definedness._
+
+### Operations on $\mathbb{R}$
+
+Let $\alpha + \beta := \{r + s : r \in \alpha, s \in \beta\}$.
+
+_Proof of well-definedness._
+
+Nontriviality: since $\alpha$ is a cut, there exists $r \in \alpha$. Similarly, there exists $s \in \beta$. So, there exists $r + s$.
+
+Closed downwards: let $p \in \alpha + \beta$, and $q < p$. Since $p \in \alpha + \beta$, there exist $r \in \alpha$ and $s \in \beta$ such that $p = r + s$. Since $q < p = r + s$, $q - s < r$, so $q - s \in \alpha$. Then $q = (q - s) + s$, as desired.
+
+No largest member: let $p, q \in \alpha + \beta$, and $q \neq p$. Either $p < q$ or $q < p$, due to order on $\mathbb{Q}$, as desired.
+
+QED.
+
+Additive identity $0^\star := \mathbb{Q}_{-}$.
+
+_Proof of well-definedness._
+
+Nontriviality: since there exist negative rationals and positive rationals, $0^\star$ is nontrivial.
+
+Closed downwards: let $p \in 0^\star$, and $q < p$. So, $q \in 0^\star$, as desired.
+
+No largest member: let $p \in 0^\star$. Consider $\frac{p}{2} > p$. It is also in $\mathbb{Q}_{-}$, as desired.
+
+QED.
+
+Additive inverse for $\alpha$ is $\beta := \{p : \exists r > 0 \text { such that } -p - r \notin \alpha\}$.
+
+Definition of multiplication: if $\alpha, \beta \in \mathbb{R}_{+}$ ($\alpha, \beta > 0^\star$), then $\alpha\beta := \{p : p < rs \text{ for some } r \in \alpha, s \in \beta, r > 0, s > 0\}$.
+
+Multiplicative identity $1^\star := \{q \in \mathbb{Q} : q < 1\}$.
+
+Given a set of cuts $A$, let $\gamma = \bigcup \{x : x \in \alpha\}$. $\gamma$ is a cut and is $\sup A$.

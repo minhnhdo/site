@@ -21,9 +21,9 @@ If $A \subset B$ and $B \subset A$, then $A = B$, else $A \neq B$.
 
 Union: $A \cup B = \{x : x \in A \text{ or } x \in B\}$.
 
-Intersection: $A \cup B = \{x : x \in A \text{ and } x \in B\}$.
+Intersection: $A \cap B = \{x : x \in A \text{ and } x \in B\}$.
 
-Complement: $A^C = \{x : x \notin A\}$.
+Complement: $A^c = \{x : x \notin A\}$.
 
 Minus: $A \setminus B = \{x : x \in A \text{ and } x \notin B\}$.
 

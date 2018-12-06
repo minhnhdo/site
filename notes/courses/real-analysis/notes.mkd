@@ -216,7 +216,7 @@ In $\mathbb{Q}$, $0$ element is $\frac{0}{1}$. $1$ element is $\frac{1}{1}$.
 
 $\mathbb{Z}$ is not a field because it does not satisfy (M5).
 
-$\mathbb{Q}$ is an _ordered field_, which is a field with an order so that the order is preserved by the field operations, i.e.
+$\mathbb{Q}$ is an _ordered field_, which is a field with an order such that the order is preserved by the field operations, i.e.
 
 1. $y < z \implies x + y < x + z$, and
 2. $y < z, x > 0 \implies xy < xz$.

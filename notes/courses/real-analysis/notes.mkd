@@ -1,3 +1,68 @@
 ---
 title: Real Analysis
+subtitle: These are my notes for the Real Analysis course taught by Francis Su (https://www.youtube.com/playlist?list=PL0E754696F72137EC) and the Understanding Analysis book written by Stephen Abbott (https://www.amazon.com/dp/1493927116/).
 ---
+
+## Sets
+
+A _set_ is a collection of objects. For example, $S = \{1, \delta, \circ, \{2, \gamma\}\}$. Note that $|S| = 4$.
+
+Another notation for writing down a set is $S = \{x : P(x) \text{ is true}\}$, which means "S is a set of $x$ such that $P(x)$ is true". $P$ is a _property_ of $x$ and if it is true, it will put $x$ in $S$. For example, $S = \{x : x < 2\}$ means $S$ is a set of $x$ such that $x$ is less than $2$.
+
+$x \in S$ means $x$ is in $S$. $x \notin S$ means $x$ is not in $S$. $\emptyset$ is the _empty set_.
+
+$A \subset B$ means $A$ is a subset of $B$, which means if $x \in A$ then $x \in B$ (or $x \in A \implies x \in B$).
+
+If $A \subset B$ and $A \not\subset B$, then set $A$ is a _proper subset_ of $B$.
+
+If $A \subset B$ and $B \subset A$, then $A = B$, else $A \neq B$.
+
+### Operations on Sets
+
+Union: $A \cup B = \{x : x \in A \text{ or } x \in B\}$.
+
+Intersection: $A \cup B = \{x : x \in A \text{ and } x \in B\}$.
+
+Complement: $A^C = \{x : x \notin A\}$.
+
+Minus: $A \setminus B = \{x : x \in A \text{ and } x \notin B\}$.
+
+Product: $A \times B = \{(x, y) : x \in A \text{ and } y \in B\}$.
+
+## Relations
+
+A _(binary) relation_ $R$ is a subset of $A \times B$. If $(a, b) \in R$, then we can write $aRb$.
+
+For example, $A$, "is an ancestor of", is a relation on $P \times P$, where $P$ is a set of people. Another example is $\lt$, "less than", is a relation on $\mathbb{Z} \times \mathbb{Z}$.
+
+An _equivalent relation_ $R$ on $S$, often denoted as $\sim$, $\approx$, $\cong$, etc, is a relation on $S \times S$ such that it is
+
+1. reflexive, i.e. $aRa$ is true,
+2. symmetric, i.e. $aRb \implies bRa$,
+3. transitive, i.e. if $aRb$ and $bRc$ then $aRc$.
+
+A _function_ $F$ from $A$ to $B$, denoted $F : A \rightarrow B$, is a relation such that if $aFb$ and $aFb'$ then $b = b'$. Informally, $F$ assigns each $a \in A$ to a single $b \in B$. We also write $F(a) = b$.
+
+## The Rational Numbers $\mathbb{Q}$
+
+### Construction of $\mathbb{Q}$
+
+Assume $\mathbb{Z}$, the integers, their arithmetic and order.
+
+An _equivalent class_ is a set whose members satisfy an equivalent relation. For example, $(1, 3) \sim (2, 6)$ are equivalent ordered pairs from the class "$\frac{1}{3}$".
+
+Informally, $\mathbb{Q}$, the _rational numbers_, is the set of all such equivalent classes. Formally, $\mathbb{Q} = \left \{\frac{m}{n} : m, n \in \mathbb{Z}, n \neq 0 \right \}$, where $\frac{m}{n}$ is an equivalent class of $(m, n)$ with relation $(p, q) \sim (m, n)$ if $pn = qm$ and $q, n \neq 0$.
+
+Check that $\sim$ is an equivalent relation:
+
+1. Reflexivity: Since $mn = nm$ for all $m, n \in \mathbb{Z}$ and $n \neq 0$, $(m, n) \sim (m, n)$ is true.
+2. Symmetry: Assume $(p, q) \sim (m, n)$ where $p, q, m, n \in \mathbb{Z}$ and $q, n \neq 0$. We have $pn = qm$, which is the same as $mq = np$, so $(m, n) \sim (p, q)$. Thus, $(p, q) \sim (m, n) \implies (m, n) \sim (p, q)$.
+3. Transitivity: Assume $(a, b) \sim (c, d)$ and $(c, d) \sim (e, f)$ where $a, b, c, d, e, f \in \mathbb{Z}$ and $b, d, f \neq 0$. We have $ad = bc$ since $(a, b) \sim (c, d)$ and $cf = de$ since $(c, d) \sim (e, f)$. We also have
+\begin{align}
+& ad = bc \\
+\implies & adf = bcf & \text{(since } f \neq 0 \text{)} \\
+\implies & adf = bde & \text{(since } cf = de \text{)} \\
+\implies & af = be & \text{(by cancellation law on } \mathbb{Z} \text{)} \\
+\implies & (a, b) \sim (e, f)
+\end{align}
+Thus, $(a, b) \sim (c, d)$ and $(c, d) \sim (e, f) \implies (a, b) \sim (e, f)$.

@@ -64,6 +64,7 @@ main = hakyll $ do
   match coursesPattern $ do
     route $ setExtension "html"
     compile $ pandocCompilerWith defaultHakyllReaderOptions writerOptions
+          >>= loadAndApplyTemplate "_templates/course.html" defaultContext
           >>= loadAndApplyTemplate "_templates/comment-section.html" defaultContext
           >>= loadAndApplyTemplate "_templates/default.html" defaultContext
           >>= relativizeUrls

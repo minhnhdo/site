@@ -7,7 +7,7 @@ subtitle: These are my notes for the Real Analysis course taught by Francis Su (
 
 A _set_ is a collection of objects. These objects are referred to as the _elements_ of the set. For example, $S = \{1, \delta, \circ, \{2, \gamma\}\}$. Note that $|S| = 4$.
 
-Another notation for writing down a set is $S = \{x : P(x) \text{ is true}\}$, which means "S is a set of $x$ such that $P(x)$ is true". $P$ is a _property_ of $x$ and if it is true, it will put $x$ in $S$. For example, $S = \{x : x < 2\}$ means $S$ is a set of $x$ such that $x$ is less than $2$.
+Another notation for writing down a set is $S = \{x : P(x) \text{ is true}\}$, which means "S is a set of $x$ such that $P(x)$ is true". $P$ is a _property_ and if it is true for $x$, it will put $x$ in $S$. For example, $S = \{x : x < 2\}$ means $S$ is a set of $x$ such that $x$ is less than $2$.
 
 $x \in S$ means $x$ is in $S$. $x \notin S$ means $x$ is not in $S$. $\emptyset$ is the _empty set_.
 

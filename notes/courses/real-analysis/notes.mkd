@@ -254,13 +254,15 @@ For example, the set $A = \{x : x^2 < 2\}$ is not a cut because it does not sati
 
 Let $\mathbb{R} := \{\alpha : \alpha \text{ is a cut}\}$ ($:=$ means defined to be).
 
-### Order on $\mathbb{R}$
+### Properties of $\mathbb{R}$
+
+#### Order on $\mathbb{R}$
 
 $\alpha < \beta$ means $\alpha \subsetneq \beta$, or $\alpha$ is a proper subset of $\beta$.
 
 _Proof of well-definedness._
 
-### Operations on $\mathbb{R}$
+#### Operations on $\mathbb{R}$
 
 Let $\alpha + \beta := \{r + s : r \in \alpha, s \in \beta\}$.
 
@@ -293,3 +295,49 @@ Definition of multiplication: if $\alpha, \beta \in \mathbb{R}_{+}$ ($\alpha, \b
 Multiplicative identity $1^\star := \{q \in \mathbb{Q} : q < 1\}$.
 
 Given a set of cuts $A$, let $\gamma = \bigcup \{x : x \in \alpha\}$. $\gamma$ is a cut and is $\sup A$.
+
+#### $\mathbb{R}$ is an Extension of $\mathbb{Q}$
+
+$\mathbb{R}$ contains $\mathbb{Q}$ as a _subfield_. Associate $q \in \mathbb{Q}$ with the cut $q^\star = \{r \in \mathbb{Q} : r < q\}$.
+
+Formally, $f : \mathbb{Q} \rightarrow \mathbb{R}$ is $f(q \in \mathbb{Q}) = q^\star$, where $q^\star = \{r \in \mathbb{Q} : r < q\}$.
+
+Then $\mathbb{Q}' = \{q^\star : q \in \mathbb{Q}\}$ is a subfield of $\mathbb{R}$.
+
+Notice "$\sqrt{2}$"  sits in $\mathbb{R}$ as the cut $\gamma = \{q : q^2 < 2 \text{ or } q < 0\}$.
+
+_Proof that $\gamma^2 = 2^\star$._ (using multiplication)
+
+#### $\mathbb{R}$ has the Least Upper Bound Property
+
+Let $A$ contain cuts with upper bound $\beta$, and $\gamma = \bigcup\{\alpha : \alpha \in A\}$, a subset of $\mathbb{Q}$.
+
+Check that $\gamma$ is a cut and $\gamma = \sup A$.
+
+_Proof._ $\gamma$ is a cut because
+
+- it is nontrivial since it contains cuts that are bounded above,
+- it is closed downwards since it is a union of cuts which are closed downwards, so for all $q \in \gamma$, there exists $\alpha \in A$ such that $\gamma \in \alpha$ and for all $r < q$, $r \in \alpha$, hence $r \in \gamma$, and
+- it has no largest member since for all $q \in \gamma$, there exists $\alpha \in A$ such that $\gamma \in \alpha$ but $\alpha$ has no largest member so there exists $r \in \alpha$ such that $q < r hence $r \in \gamma$.
+
+$\gamma$ is an upper bound because $\gamma$ contains all $\alpha \in A$ and order on cuts is defined by inclusion.
+
+$\gamma$ is the least upper bound because for all $\delta < \gamma$, there exists $x \in \gamma$ such that $x \notin \delta$, so there exists $\alpha \in A$ such that $x \in \alpha$, hence $\delta$ is not an upper bound for $\alpha$ and thus $\delta$ is not an upper bound for $A$.
+
+QED.
+
+$\mathbb{R}$ is the _only_ ordered field with the least upper bound property.
+
+Consequence: the length "$\sqrt{2}$" can be thought of as $\sup\{1, 1.4, 1.41, 1.414, 1.4142, \dots\}$, whose shorthand is $1.4142135\dots$.
+
+More generally, $a^{\frac{1}{n}} := \sup\{r \in \mathbb{Q} : r^n < a\}$, i.e. roots exist.
+
+Check that $\left(a^{\frac{1}{n}}\right)^n = a$.
+
+#### The Greatest Lower Bound
+
+The _greatest lower bound_, or _infinum_, of a set $A$ is denoted $\inf A$.
+
+Show that $\inf A = -\sup(-A)$.
+
+The infinum exists if a set if _bounded below_.

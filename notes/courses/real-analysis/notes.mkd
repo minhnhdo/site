@@ -272,9 +272,7 @@ Nontriviality: since $\alpha$ is a cut, there exists $r \in \alpha$. Similarly, 
 
 Closed downwards: let $p \in \alpha + \beta$, and $q < p$. Since $p \in \alpha + \beta$, there exist $r \in \alpha$ and $s \in \beta$ such that $p = r + s$. Since $q < p = r + s$, $q - s < r$, so $q - s \in \alpha$. Then $q = (q - s) + s$, as desired.
 
-No largest member: let $p, q \in \alpha + \beta$, and $q \neq p$. Either $p < q$ or $q < p$, due to order on $\mathbb{Q}$, as desired.
-
-QED.
+No largest member: let $p, q \in \alpha + \beta$, and $q \neq p$. Either $p < q$ or $q < p$, due to order on $\mathbb{Q}$, as desired. QED.
 
 Additive identity $0^\star := \mathbb{Q}_{-}$.
 
@@ -284,9 +282,7 @@ Nontriviality: since there exist negative rationals and positive rationals, $0^\
 
 Closed downwards: let $p \in 0^\star$, and $q < p$. So, $q \in 0^\star$, as desired.
 
-No largest member: let $p \in 0^\star$. Consider $\frac{p}{2} > p$. It is also in $\mathbb{Q}_{-}$, as desired.
-
-QED.
+No largest member: let $p \in 0^\star$. Consider $\frac{p}{2} > p$. It is also in $\mathbb{Q}_{-}$, as desired. QED.
 
 Additive inverse for $\alpha$ is $\beta := \{p : \exists r > 0 \text { such that } -p - r \notin \alpha\}$.
 
@@ -322,9 +318,7 @@ _Proof._ $\gamma$ is a cut because
 
 $\gamma$ is an upper bound because $\gamma$ contains all $\alpha \in A$ and order on cuts is defined by inclusion.
 
-$\gamma$ is the least upper bound because for all $\delta < \gamma$, there exists $x \in \gamma$ such that $x \notin \delta$, so there exists $\alpha \in A$ such that $x \in \alpha$, hence $\delta$ is not an upper bound for $\alpha$ and thus $\delta$ is not an upper bound for $A$.
-
-QED.
+$\gamma$ is the least upper bound because for all $\delta < \gamma$, there exists $x \in \gamma$ such that $x \notin \delta$, so there exists $\alpha \in A$ such that $x \in \alpha$, hence $\delta$ is not an upper bound for $\alpha$ and thus $\delta$ is not an upper bound for $A$. QED.
 
 $\mathbb{R}$ is the _only_ ordered field with the least upper bound property.
 

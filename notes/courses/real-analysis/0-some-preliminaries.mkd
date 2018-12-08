@@ -7,7 +7,7 @@ subtitle: Some Preliminaries
 
 A _set_ is a collection of objects. These objects are referred to as the _elements_ of the set. For example, $S = \{1, \delta, \circ, \{2, \gamma\}\}$. Note that $|S| = 4$.
 
-Another notation for writing down a set is $S = \{x : P(x) \text{ is true}\}$, which means "S is a set of $x$ such that $P(x)$ is true". $P$ is a _property_ and if it is true for $x$, it will put $x$ in $S$. For example, $S = \{x : x < 2\}$ means $S$ is a set of $x$ such that $x$ is less than $2$.
+Another notation for writing down a set is $S = \{x : P(x) \text{ is true}\}$, which means "$S$ is a set of $x$ such that $P(x)$ is true". $P$ is a _property_ and if it is true for $x$, it will put $x$ in $S$. For example, $S = \{x : x < 2\}$ means $S$ is a set of $x$ such that $x$ is less than $2$.
 
 $x \in S$ means $x$ is in $S$. $x \notin S$ means $x$ is not in $S$. $\emptyset$ is the _empty set_.
 
@@ -35,10 +35,14 @@ A _(binary) relation_ $R$ is a subset of $A \times B$. If $(a, b) \in R$, then w
 
 For example, $A$, "is an ancestor of", is a relation on $P \times P$, where $P$ is a set of people. Another example is $\lt$, "less than", is a relation on $\mathbb{Z} \times \mathbb{Z}$.
 
+### Equivalent Relations
+
 An _equivalent relation_ $R$ on $S$, often denoted as $\sim$, $\approx$, $\cong$, etc, is a relation on $S \times S$ such that it is
 
 1. reflexive, i.e. $aRa$ is true,
 2. symmetric, i.e. $aRb \implies bRa$, and
 3. transitive, i.e. if $aRb$ and $bRc$ then $aRc$.
+
+### Functions
 
 A _function_ $F$ from $A$ to $B$, denoted $F : A \rightarrow B$, is a relation such that if $aFb$ and $aFb'$ then $b = b'$. Informally, $F$ assigns each $a \in A$ to a single $b \in B$. $A$ is the _domain_ of $F$. $B$ is the _codomain_ of $F$. The _range_ of $F$ is a subset of $B$, given by $\{y \in B : y = F(x) \text{ for some } x \in A\}$. We also write $F(a) = b$.

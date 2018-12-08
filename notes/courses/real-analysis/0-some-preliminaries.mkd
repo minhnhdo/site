@@ -1,8 +1,6 @@
 ---
 title: Real Analysis
-subtitle: |
-  These are my notes for the Real Analysis course taught by Francis Su (https://www.youtube.com/playlist?list=PL0E754696F72137EC) and the Understanding Analysis book written by Stephen Abbott (https://www.amazon.com/dp/1493927116/).
-part: 0
+subtitle: Some Preliminaries
 ---
 
 ## Sets

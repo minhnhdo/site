@@ -3,6 +3,8 @@
 
 import           Clay (Css, compact, renderWith)
 import           Control.Monad (liftM)
+import           Data.Char (isDigit)
+import           Data.List (sortOn)
 import           Data.Monoid ((<>))
 import           Data.Text.Lazy (unpack)
 import qualified Text.Pandoc as P
@@ -84,7 +86,7 @@ main = hakyll $ do
     route $ setExtension "html"
     compile $ do
       let notesCtx = constField "title" "Notes"
-                  <> listField "courses" defaultContext (loadAll coursesPattern)
+                  <> listField "realAnalysisCourse" courseCtx (sortByNumbering =<< loadAll realAnalysisCoursePattern)
                   <> listField "cheatSheets" cheatSheetsCtx (loadAll cheatSheetsPattern)
                   <> defaultContext
 
@@ -119,17 +121,35 @@ writerOptions = defaultHakyllWriterOptions {
         defaultWriterExtensions = P.writerExtensions defaultHakyllWriterOptions
         newExtensions = foldr P.enableExtension defaultWriterExtensions mathExtensions
 
+sortByNumbering :: MonadMetadata m => [Item a] -> m [Item a]
+sortByNumbering = pure . sortOn f
+  where f :: Item a -> Int
+        f = read
+          . takeWhile isDigit
+          . reverse
+          .  takeWhile (/= '/')
+          . reverse
+          . toFilePath
+          . itemIdentifier
+
 postsPattern, coursesPattern, cheatSheetsPattern, compiledCheatSheetsPattern :: Pattern
 postsPattern = "posts/*.mkd"
-coursesPattern = "notes/courses/*/notes.mkd"
+coursesPattern = "notes/courses/*/*.mkd"
 cheatSheetsPattern = "notes/cheat-sheets/*.tex"
 compiledCheatSheetsPattern = "notes/cheat-sheets/*.pdf"
+
+realAnalysisCoursePattern :: Pattern
+realAnalysisCoursePattern = "notes/courses/real-analysis/*.mkd"
 
 allPosts :: Compiler [Item String]
 allPosts = recentFirst =<< loadAll postsPattern
 
 postCtx :: Context String
 postCtx = dateField "date" "%B %e, %Y" <> defaultContext
+
+courseCtx :: Context String
+courseCtx = defaultContext
+         <> metadataField
 
 cheatSheetsCtx :: Context String
 cheatSheetsCtx = field "pdfUrl" ( pure

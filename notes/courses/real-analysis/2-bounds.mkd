@@ -1,0 +1,20 @@
+---
+title: Real Analysis
+subtitle: Bounds
+---
+
+## Bounds
+
+Let set $E \subset S$ be ordered. If there exists $\beta \in S$ such that for all $x \in E$, we have $x \leq \beta$, then $\beta$ is an _upper bound_ for $E$, and $E$ is _bounded above_. Similarly, if there exists $\beta \in S$ such that for all $x \in E$, we have $x \geq \beta$, then $\beta$ is a _lower bound_ for $E$, and $E$ is _bounded below_.
+
+For example, $\frac{3}{2}$ is an upper bound for $A = \{x : x^2 < 2\}$. If not, then there exists $x > \frac{3}{2}$, which implies $x^2 > \frac{9}{4} > 2$. So, $x \notin A$, which is a contradiction. Thus, $\frac{3}{2}$ is an upper bound for $A$.
+
+If there is an $\alpha \in S$ such that (1) $\alpha$ is an _upper bound_, and (2) if $\gamma < \alpha \implies \gamma$ is not an upper bound for $E$, then $\alpha$ is the _least upper bound_ for $E$, or _supremum_ of $E$, denoted $\sup E$.
+
+For example, let $S = \mathbb{Q}$.
+
+1. (Finite sets have a supremum) $E = \{\frac{1}{2}, 1, 2\}$. $\sup E = 2$ because all elements of $E$ is less than or equal to $2$ and if $\gamma < 2$ then $\gamma$ is not an upper bound for $E$.
+2. $E = \mathbb{Q}_{-}$, the negative rationals. $\sup E = 0$.
+3. $E = \mathbb{Q}$. $E$ is _unbounded above_, denoted $\sup E = +\infty$.
+4. $E = \{x : x^2 < 2\}$. $\sup E$ does not exist although $E$ is bounded. One such bound is $\frac{3}{2}$.
+. To show $\sup A = \sup B$, one strategy is to show for all $a \in A$, there exists $b \in B$ such that $a \leq b$, so $\sup A \leq \sup B$; similarly, show $\sup B \leq \sup A$.

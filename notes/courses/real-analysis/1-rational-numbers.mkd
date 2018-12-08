@@ -1,0 +1,182 @@
+---
+title: Real Analysis
+subtitle: Rational Numbers
+---
+
+## The Set of Rational Numbers $\mathbb{Q}$
+
+### Construction of $\mathbb{Q}$
+
+Assume $\mathbb{Z}$, the integers, their arithmetic and order.
+
+An _equivalent class_ is a set whose members satisfy an equivalent relation. For example, $(1, 3) \sim (2, 6)$ are equivalent ordered pairs from the class "$\frac{1}{3}$".
+
+Informally, $\mathbb{Q}$, the _rational numbers_, is the set of all such equivalent classes. Formally, $\mathbb{Q} = \left \{\frac{m}{n} : m, n \in \mathbb{Z}, n \neq 0 \right \}$, where $\frac{m}{n}$ is an equivalent class of ordered pairs $(m, n)$ with relation $(p, q) \sim (m, n)$ if $pn = qm$ and $q, n \neq 0$.
+
+Check that $\sim$ is an equivalent relation:
+
+1. Reflexivity: Since $mn = nm$ for all $m, n \in \mathbb{Z}$ and $n \neq 0$, $(m, n) \sim (m, n)$ is true.
+2. Symmetry: Assume $(p, q) \sim (m, n)$ where $p, q, m, n \in \mathbb{Z}$ and $q, n \neq 0$. We have $pn = qm$, which is the same as $mq = np$, so $(m, n) \sim (p, q)$. Thus, $(p, q) \sim (m, n) \implies (m, n) \sim (p, q)$.
+3. Transitivity: Assume $(a, b) \sim (c, d)$ and $(c, d) \sim (e, f)$ where $a, b, c, d, e, f \in \mathbb{Z}$ and $b, d, f \neq 0$. We have $ad = bc$ since $(a, b) \sim (c, d)$ and $cf = de$ since $(c, d) \sim (e, f)$. We also have
+\begin{align}
+& ad = bc \\
+\implies & adf = bcf & \text{(since } f \neq 0 \text{)} \\
+\implies & adf = bde & \text{(since } cf = de \text{)} \\
+\implies & af = be & \text{(by cancellation law on } \mathbb{Z} \text{)} \\
+\implies & (a, b) \sim (e, f)
+\end{align}
+Thus, $(a, b) \sim (c, d)$ and $(c, d) \sim (e, f) \implies (a, b) \sim (e, f)$.
+
+### Properties of $\mathbb{Q}$
+
+#### Addition
+
+The chosen definition of addition should not depend on the representative chosen, i.e. it should be _well-defined_. The following definition is not well-defined.
+$$
+\frac{a}{b} + \frac{c}{d} = \frac{a + c}{b + d}
+$$
+Check: $\frac{1}{2} + \frac{2}{3} = \frac{3}{5}$ but $\frac{2}{4} + \frac{2}{3} = \frac{4}{7}$.
+
+A well-defined but useless definition is as follows.
+$$
+\frac{a}{b} + \frac{c}{d} = \frac{0}{1}
+$$
+
+The correct definition is as follows.
+$$
+\frac{a}{b} + \frac{c}{d} = \frac{ad + bc}{bd}
+$$
+To show that the definition is well-defined, we must show that if $(a, b) \sim (a', b')$ and $(c, d) \sim (c', d')$ then $(ad + bc, bd) \sim (a'd' + b'c', b'd')$.
+
+Proof. Assume $(a, b) \sim (a', b')$ and $(c, d) \sim (c', d')$. So, $ab' = ba'$ and $cd' = dc'$. Since $ab' = ba'$, $ab'dd' = ba'dd'$, which is the same as $adb'd' = bda'd'$. Since $cd' = dc'$, $cd'bb' = dc'bb'$, which is the same as $bcb'd' = bdb'c'$. Hence, $adb'd' + bcb'd' = bda'd' + bdb'c'$, which means $(ad + bc)b'd' = bd(a'd' b'c')$. So, $(ad + bc, bd) \sim (a'd' + b'c', b'd')$. Thus, if $(a, b) \sim (a', b')$ and $(c, d) \sim (c', d')$ then $(ad + bc, bd) \sim (a'd' + b'c', b'd')$. QED.
+
+#### Multiplication
+
+Definition of multiplication on $\mathbb{Q}$:
+$$
+\frac{a}{b} \cdot \frac{c}{d} = \frac{ac}{bd}
+$$
+
+Proof of well-definedness. Assume $(a, b) \sim (a', b')$ and $(c, d) \sim (c', d')$. So, $ab' = ba'$ and $cd' = dc'$. Hence, $ab'cd' = ba'dc'$, which is the same as $acb'd' = bda'c'$. So, $(ac, bd) \sim (a'c', b'd')$. Thus, if $(a, b) \sim (a', b')$ and $(c, d) \sim (c', d')$ then $(ac, bd) \sim (a'c', b'd')$. QED.
+
+#### $\mathbb{Q}$ is an Extension of $\mathbb{Z}$
+
+$\left\{\frac{n}{1} : n \in \mathbb{Z} \right\}$ behaves the same as $\mathbb{Z}$. The correspondence is $\frac{n}{1} \longleftrightarrow n$.
+
+Proof. Assume $m, n \in \mathbb{Z}$. Note that $\frac{n}{1} + \frac{m}{1} = \frac{n \cdot 1 + m \cdot 1}{1 \cdot 1} = \frac{n + m}{1}$ and $\frac{n}{1} \cdot \frac{m}{1} = \frac{n \cdot m}{1 \cdot 1} = \frac{nm}{1}$. QED.
+
+#### Order on $\mathbb{Q}$
+
+An _order_ on a set $S$ is a relation, denoted $\lt$, satisfying
+
+1. (law of trichotomy) if $x, y \in S$, exactly one of these is true: $x < y$, $x = y$, $y < x$, and
+2. (transitivity) if $x, y, z \in S$, $x < y$, and $y < z$, then $x < z$.
+
+A set $S$ is called an _ordered set_ if there is an order on it.
+
+For example, in $\mathbb{Z}$, $m < n$ if $n - m$ is positive. Another example is, in $\mathbb{Z} \times \mathbb{Z}$, $(a, b) < (c, d)$ if $a < c$ or $a = c$ and $b < d$ (_dictionary order_).
+
+$\frac{m}{n}$ is _positive_ if $mn > 0$.
+
+Proof of well-definedness. Assume $(a, b) \sim (a', b')$ and $\frac{a}{b}$ is positive. Since $\frac{a}{b}$ is positive, $ab > 0$. Since $(a, b) \sim (a', b')$, $ab' = ba'$, so $a'b'b = ab'b'$, which implies $a'b'b > a$ since $b'b' > 0$ for all $b' \neq 0$. Because $a'b'b > a$, $a'b'bb > ab$ since $b \neq 0$. This implies $a'b'bb > 0$ and thus $a'b' > 0$ because $bb > 0$ for all $b \neq 0$. Hence, $\frac{a'}{b'}$ is positive. Therefore, if $(a, b) \sim (a', b')$ and $\frac{a}{b}$ is positive then $\frac{a'}{b'}$ is positive. QED.
+
+_Order on $\mathbb{Q}$:_ $\frac{m}{n} < \frac{m'}{n'}$ if $\frac{m'}{n'} - \frac{m}{n}$ is positive (subtraction is defined by addition on the negation of the second operand).
+
+Proof of well-definedness. Assume $\frac{a}{b} < \frac{c}{d}$, $(a, b) \sim (a', b')$, and $(c, d) \sim (c', d')$. Since $\frac{a}{b} < \frac{c}{d}$, $\frac{c}{d} - \frac{a}{b}$ is positive, which means $(cb - ad)bd > 0$, so either $cb - ad > 0$ and $bd > 0$ or $cb - ad < 0$ and $bd < 0$. Since $(a, b) \sim (a', b')$, $ab' = ba'$. Since $(c, d) \sim (c', d')$, $cd' = dc'$. There are four cases to consider.
+
+_Case 1:_ $cb - ad > 0$, $bd > 0$, and $b'd' > 0$. We have
+\begin{align}
+  & cb - ad > 0 \\
+  \implies & cb > ad \\
+  \implies & cbb'd' > adb'd' & \text{(since } b'd' > 0 \text{)} \\
+  \implies & c'bb'd > a'dbd' & \text{(since } cd' = dc' \text{ and } ab' = ba' \text{)} \\
+  \implies & c'b' > a'd' & \text{(since } bd > 0 \text{)} \\
+  \implies & c'b' - a'd' > 0 \\
+  \implies & (c'b' - a'd')b'd' > 0 & \text{(since } b'd' > 0 \text{)} \\
+  \implies & \frac{c'b' - a'd'}{b'd'} \text{ is positive} \\
+  \implies & \frac{c'}{d'} - \frac{a'}{b'} \text{ is positive} \\
+  \implies & \frac{a'}{b'} < \frac{c'}{d'}
+\end{align}
+
+_Case 2:_ $cb - ad > 0$, $bd > 0$, and $b'd' < 0$. We have
+\begin{align}
+  & cb - ad > 0 \\
+  \implies & cb > ad \\
+  \implies & cbb'd' < adb'd' & \text{(since } b'd' < 0 \text{)} \\
+  \implies & c'bb'd < a'dbd' & \text{(since } cd' = dc' \text{ and } ab' = ba' \text{)} \\
+  \implies & c'b' < a'd' & \text{(since } bd > 0 \text{)} \\
+  \implies & c'b' - a'd' < 0 \\
+  \implies & (c'b' - a'd')b'd' > 0 & \text{(since } b'd' < 0 \text{)} \\
+  \implies & \frac{c'b' - a'd'}{b'd'} \text{ is positive} \\
+  \implies & \frac{c'}{d'} - \frac{a'}{b'} \text{ is positive} \\
+  \implies & \frac{a'}{b'} < \frac{c'}{d'}
+\end{align}
+
+_Case 3:_ $cb - ad < 0$, $bd < 0$, and $b'd' > 0$. We have
+\begin{align}
+  & cb - ad < 0 \\
+  \implies & cb < ad \\
+  \implies & cbb'd' < adb'd' & \text{(since } b'd' > 0 \text{)} \\
+  \implies & c'bb'd < a'dbd' & \text{(since } cd' = dc' \text{ and } ab' = ba' \text{)} \\
+  \implies & c'b' > a'd' & \text{(since } bd < 0 \text{)} \\
+  \implies & c'b' - a'd' > 0 \\
+  \implies & (c'b' - a'd')b'd' > 0 & \text{(since } b'd' > 0 \text{)} \\
+  \implies & \frac{c'b' - a'd'}{b'd'} \text{ is positive} \\
+  \implies & \frac{c'}{d'} - \frac{a'}{b'} \text{ is positive} \\
+  \implies & \frac{a'}{b'} < \frac{c'}{d'}
+\end{align}
+
+_Case 4:_ $cb - ad < 0$, $bd < 0$, and $b'd' < 0$. We have
+\begin{align}
+  & cb - ad < 0 \\
+  \implies & cb < ad \\
+  \implies & cbb'd' > adb'd' & \text{(since } b'd' < 0 \text{)} \\
+  \implies & c'bb'd > a'dbd' & \text{(since } cd' = dc' \text{ and } ab' = ba' \text{)} \\
+  \implies & c'b' < a'd' & \text{(since } bd < 0 \text{)} \\
+  \implies & c'b' - a'd' < 0 \\
+  \implies & (c'b' - a'd')b'd' > 0 & \text{(since } b'd' < 0 \text{)} \\
+  \implies & \frac{c'b' - a'd'}{b'd'} \text{ is positive} \\
+  \implies & \frac{c'}{d'} - \frac{a'}{b'} \text{ is positive} \\
+  \implies & \frac{a'}{b'} < \frac{c'}{d'}
+\end{align}
+
+Therefore, if $\frac{a}{b} < \frac{c}{d}$, $(a, b) \sim (a', b')$, and $(c, d) \sim (c', d')$ then $\frac{a'}{b'} < \frac{c'}{d'}$. QED.
+
+Write $x > y$ for $x < y$. Write $x \leq y$ for $x < y$ or $x = y$.
+
+#### $x^2 = 2$ has No Solution in $\mathbb{Q}$
+
+Proof (by constradiction). Assume that $x^2 = 2$ has a solution in $\mathbb{Q}$, i.e. let $x = \frac{p}{q}$, where $p, q \in \mathbb{Z}$, $q \neq 0$, and $p$ and $q$ are in _lowest terms_, i.e. they have no common factors.
+
+So, $\left(\frac{p}{q}\right)^2 = 2$, hence $p^2 = 2q^2$. Then $p^2$ is even (divisible by 2). Then $p$ is even (because if $p$ were odd, $p^2$ would be odd).
+
+So, $p = 2m$ for some $m \in \mathbb{Z}$, hence $p^2 = 4m^2$ and $4m^2 = 2q^2$. Then $q^2 = 2m^2$.
+
+Then $q^2$ is even, hence $q$ is even. This contradicts the fact that $p$ and $q$ are in lowest terms.
+
+Therefore, $x^2 = 2$ must have no solution in $\mathbb{Q}$. QED.
+
+#### $\mathbb{Q}$ is a Field
+
+A _field_ is a set $F$ with two _operations_ $+$, and $\times$, satisfying the following _axioms_:
+
+- (A1). $F$ is _closed_ under $+$.
+- (A2). $+$ is _commutative_.
+- (A3). $+$ is _associative_.
+- (A4). $F$ has an is _additive identity_. Call it $0$.
+- (A5). Every element has an _additive inverse_.
+- (M1). $F$ is _closed_ under $\times$.
+- (M2). $\times$ is _commutative_.
+- (M3). $\times$ is _associative_.
+- (M4). $F$ has an is _multiplicative identity_. Call it $1$.
+- (M5). Every element except $0$ has a _multiplicative inverse_.
+- (D). $\times$ _distributes_ over $+$.
+
+In $\mathbb{Q}$, $0$ element is $\frac{0}{1}$. $1$ element is $\frac{1}{1}$.
+
+$\mathbb{Z}$ is not a field because it does not satisfy (M5).
+
+$\mathbb{Q}$ is an _ordered field_, which is a field with an order such that the order is preserved by the field operations, i.e.
+
+1. $y < z \implies x + y < x + z$, and
+2. $y < z, x > 0 \implies xy < xz$.

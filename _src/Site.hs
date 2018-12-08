@@ -64,6 +64,22 @@ main = hakyll $ do
         >>= loadAndApplyTemplate "_templates/default.html" archiveCtx
         >>= relativizeUrls
 
+  match courseTitlesPattern $ do
+    route $ setExtension "html"
+    compile $ do
+      let parts = getUnderlying
+              >>= loadAll
+                . (.&&. complement courseTitlesPattern)
+                . fromGlob
+                . replaceAll "index.mkd" (const "*.mkd")
+                . toFilePath
+          courseTitleListingCtx = defaultContext
+                               <> listField "parts" defaultContext parts
+      pandocCompilerWith defaultHakyllReaderOptions writerOptions
+          >>= loadAndApplyTemplate "_templates/course-title.html" courseTitleListingCtx
+          >>= loadAndApplyTemplate "_templates/default.html" defaultContext
+          >>= relativizeUrls
+
   match coursesPattern $ do
     route $ setExtension "html"
     compile $ pandocCompilerWith defaultHakyllReaderOptions writerOptions
@@ -85,8 +101,22 @@ main = hakyll $ do
   create ["notes/index.html"] $ do
     route $ setExtension "html"
     compile $ do
-      let notesCtx = constField "title" "Notes"
-                  <> listField "realAnalysisCourse" courseCtx (sortByNumbering =<< loadAll realAnalysisCoursePattern)
+      let courseTitlesCtx :: Context String
+          courseTitlesCtx = field "url" ( pure
+                                        . toUrl
+                                        . replaceAll "index.mkd" (const "")
+                                        . toFilePath
+                                        . itemIdentifier )
+                         <> defaultContext
+          cheatSheetsCtx :: Context String
+          cheatSheetsCtx = field "pdfUrl" ( pure
+                                          . toUrl
+                                          . replaceAll ".tex" (const ".pdf")
+                                          . toFilePath
+                                          . itemIdentifier )
+                        <> defaultContext
+          notesCtx = constField "title" "Notes"
+                  <> listField "courses" courseTitlesCtx (loadAll courseTitlesPattern)
                   <> listField "cheatSheets" cheatSheetsCtx (loadAll cheatSheetsPattern)
                   <> defaultContext
 
@@ -132,10 +162,19 @@ sortByNumbering = pure . sortOn f
           . toFilePath
           . itemIdentifier
 
-postsPattern, coursesPattern, cheatSheetsPattern, compiledCheatSheetsPattern :: Pattern
+postsPattern :: Pattern
 postsPattern = "posts/*.mkd"
-coursesPattern = "notes/courses/*/*.mkd"
+
+courseTitlesPattern :: Pattern
+courseTitlesPattern = "notes/courses/*/index.mkd"
+
+coursesPattern :: Pattern
+coursesPattern = "notes/courses/*/*.mkd" .&&. complement courseTitlesPattern
+
+cheatSheetsPattern :: Pattern
 cheatSheetsPattern = "notes/cheat-sheets/*.tex"
+
+compiledCheatSheetsPattern :: Pattern
 compiledCheatSheetsPattern = "notes/cheat-sheets/*.pdf"
 
 realAnalysisCoursePattern :: Pattern
@@ -146,18 +185,6 @@ allPosts = recentFirst =<< loadAll postsPattern
 
 postCtx :: Context String
 postCtx = dateField "date" "%B %e, %Y" <> defaultContext
-
-courseCtx :: Context String
-courseCtx = defaultContext
-         <> metadataField
-
-cheatSheetsCtx :: Context String
-cheatSheetsCtx = field "pdfUrl" ( pure
-                                . toUrl
-                                . replaceAll ".tex" (const ".pdf")
-                                . toFilePath
-                                . itemIdentifier )
-              <> defaultContext
 
 postCtxWithTags :: Tags -> Context String
 postCtxWithTags tags = tagsField "tags" tags <> defaultContext

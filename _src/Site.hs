@@ -8,10 +8,11 @@ import           Data.Text.Lazy (unpack)
 import qualified Text.Pandoc as P
 import           Hakyll
 
-import       SiteCss (siteCss)
+import           SiteCss (siteCss)
 
 
 --------------------------------------------------------------------------------
+
 main :: IO ()
 main = hakyll $ do
   match "resume.pdf" $ do
@@ -42,7 +43,7 @@ main = hakyll $ do
     compile $ do
       posts <- recentFirst =<< loadAll pattern
       let ctx = constField "title" title
-             <> listField "posts" postCtx (return posts)
+             <> listField "posts" postCtx (pure posts)
              <> defaultContext
       makeItem ""
         >>= loadAndApplyTemplate "_templates/tag.html" ctx
@@ -131,7 +132,7 @@ postCtx :: Context String
 postCtx = dateField "date" "%B %e, %Y" <> defaultContext
 
 cheatSheetsCtx :: Context String
-cheatSheetsCtx = field "pdfUrl" ( return
+cheatSheetsCtx = field "pdfUrl" ( pure
                                 . toUrl
                                 . replaceAll ".tex" (const ".pdf")
                                 . toFilePath

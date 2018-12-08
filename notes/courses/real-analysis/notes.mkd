@@ -258,31 +258,24 @@ Let $\mathbb{R} := \{\alpha : \alpha \text{ is a cut}\}$ ($:=$ means defined to 
 
 #### Order on $\mathbb{R}$
 
-$\alpha < \beta$ means $\alpha \subsetneq \beta$, or $\alpha$ is a proper subset of $\beta$.
+$\alpha < \beta$ is defined as $\alpha \subsetneq \beta$, or $\alpha$ is a proper subset of $\beta$.
 
-_Proof of well-definedness._
+_Proof of well-definedness._ This definition is well-defined because it satisfies
+
+- trichotomy: for all cuts $\alpha$ and $\beta$, either $\alpha \subsetneq \beta$, $\alpha = \beta$, or $\beta \subsetneq \alpha$, and thus either $\alpha < \beta$, $\alpha = \beta$, or $\beta < \alpha$.
+- transitivity: let $\alpha, \beta, \gamma$ be cuts, $\alpha < \beta$, and $\beta < \gamma$. Since $\alpha < \beta$, $\alpha \subsetneq \beta$. Similarly, $\beta \subsetneq \gamma$. Thus, $\alpha \subsetneq \gamma$, due to transitivity of inclusion. Hence, $\alpha < \gamma$. QED.
 
 #### Operations on $\mathbb{R}$
 
 Let $\alpha + \beta := \{r + s : r \in \alpha, s \in \beta\}$.
 
-_Proof of well-definedness._
+_Proof of well-definedness._ Let $\alpha$ and $\beta$ be cuts. $\alpha + \beta$ is a cut because
 
-Nontriviality: since $\alpha$ is a cut, there exists $r \in \alpha$. Similarly, there exists $s \in \beta$. So, there exists $r + s$.
-
-Closed downwards: let $p \in \alpha + \beta$, and $q < p$. Since $p \in \alpha + \beta$, there exist $r \in \alpha$ and $s \in \beta$ such that $p = r + s$. Since $q < p = r + s$, $q - s < r$, so $q - s \in \alpha$. Then $q = (q - s) + s$, as desired.
-
-No largest member: let $p, q \in \alpha + \beta$, and $q \neq p$. Either $p < q$ or $q < p$, due to order on $\mathbb{Q}$, as desired. QED.
+- it is nontrivial: since $\alpha$ is a cut, there exists $r \in \alpha$. Similarly, there exists $s \in \beta$. So, there exists $r + s$.
+- it is closed downwards: let $p \in \alpha + \beta$, and $q < p$. Since $p \in \alpha + \beta$, there exist $r \in \alpha$ and $s \in \beta$ such that $p = r + s$. Since $q < p = r + s$, $q - s < r$, so $q - s \in \alpha$. Then $q = (q - s) + s$, as desired.
+- it has no largest member: let $p, q \in \alpha + \beta$, and $q \neq p$. Either $p < q$ or $q < p$, due to order on $\mathbb{Q}$, as desired. QED.
 
 Additive identity $0^\star := \mathbb{Q}_{-}$.
-
-_Proof of well-definedness._
-
-Nontriviality: since there exist negative rationals and positive rationals, $0^\star$ is nontrivial.
-
-Closed downwards: let $p \in 0^\star$, and $q < p$. So, $q \in 0^\star$, as desired.
-
-No largest member: let $p \in 0^\star$. Consider $\frac{p}{2} > p$. It is also in $\mathbb{Q}_{-}$, as desired. QED.
 
 Additive inverse for $\alpha$ is $\beta := \{p : \exists r > 0 \text { such that } -p - r \notin \alpha\}$.
 
@@ -301,8 +294,6 @@ Formally, $f : \mathbb{Q} \rightarrow \mathbb{R}$ is $f(q \in \mathbb{Q}) = q^\s
 Then $\mathbb{Q}' = \{q^\star : q \in \mathbb{Q}\}$ is a subfield of $\mathbb{R}$.
 
 Notice "$\sqrt{2}$"  sits in $\mathbb{R}$ as the cut $\gamma = \{q : q^2 < 2 \text{ or } q < 0\}$.
-
-_Proof that $\gamma^2 = 2^\star$._ (using multiplication)
 
 #### $\mathbb{R}$ has the Least Upper Bound Property
 
@@ -325,8 +316,6 @@ $\mathbb{R}$ is the _only_ ordered field with the least upper bound property.
 Consequence: the length "$\sqrt{2}$" can be thought of as $\sup\{1, 1.4, 1.41, 1.414, 1.4142, \dots\}$, whose shorthand is $1.4142135\dots$.
 
 More generally, $a^{\frac{1}{n}} := \sup\{r \in \mathbb{Q} : r^n < a\}$, i.e. roots exist.
-
-Check that $\left(a^{\frac{1}{n}}\right)^n = a$.
 
 #### The Greatest Lower Bound
 

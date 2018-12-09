@@ -71,10 +71,13 @@ main = hakyll $ do
               >>= loadAll
                 . (.&&. complement courseTitlesPattern)
                 . fromGlob
-                . replaceAll "index.mkd" (const "*.mkd")
+                . (++ "*.mkd")
+                . reverse
+                . dropWhile (/= '/')
+                . reverse
                 . toFilePath
-          courseTitleListingCtx = defaultContext
-                               <> listField "parts" defaultContext parts
+          courseTitleListingCtx = listField "parts" defaultContext parts
+                               <> defaultContext
       pandocCompilerWith defaultHakyllReaderOptions writerOptions
           >>= loadAndApplyTemplate "_templates/course-title.html" courseTitleListingCtx
           >>= loadAndApplyTemplate "_templates/default.html" defaultContext
@@ -104,14 +107,19 @@ main = hakyll $ do
       let courseTitlesCtx :: Context String
           courseTitlesCtx = field "url" ( pure
                                         . toUrl
-                                        . replaceAll "index.mkd" (const "")
+                                        . reverse
+                                        . dropWhile (/= '/')
+                                        . reverse
                                         . toFilePath
                                         . itemIdentifier )
                          <> defaultContext
           cheatSheetsCtx :: Context String
           cheatSheetsCtx = field "pdfUrl" ( pure
                                           . toUrl
-                                          . replaceAll ".tex" (const ".pdf")
+                                          . (++ "pdf")
+                                          . reverse
+                                          . dropWhile (/= '.')
+                                          . reverse
                                           . toFilePath
                                           . itemIdentifier )
                         <> defaultContext
@@ -157,7 +165,7 @@ sortByNumbering = pure . sortOn f
         f = read
           . takeWhile isDigit
           . reverse
-          .  takeWhile (/= '/')
+          . takeWhile (/= '/')
           . reverse
           . toFilePath
           . itemIdentifier

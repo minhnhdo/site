@@ -48,7 +48,7 @@ $$
 $$
 To show that the definition is well-defined, we must show that if $(a, b) \sim (a', b')$ and $(c, d) \sim (c', d')$ then $(ad + bc, bd) \sim (a'd' + b'c', b'd')$.
 
-Proof. Assume $(a, b) \sim (a', b')$ and $(c, d) \sim (c', d')$. So, $ab' = ba'$ and $cd' = dc'$. Since $ab' = ba'$, $ab'dd' = ba'dd'$, which is the same as $adb'd' = bda'd'$. Since $cd' = dc'$, $cd'bb' = dc'bb'$, which is the same as $bcb'd' = bdb'c'$. Hence, $adb'd' + bcb'd' = bda'd' + bdb'c'$, which means $(ad + bc)b'd' = bd(a'd' b'c')$. So, $(ad + bc, bd) \sim (a'd' + b'c', b'd')$. Thus, if $(a, b) \sim (a', b')$ and $(c, d) \sim (c', d')$ then $(ad + bc, bd) \sim (a'd' + b'c', b'd')$. QED.
+Proof. Assume $(a, b) \sim (a', b')$ and $(c, d) \sim (c', d')$. So, $ab' = ba'$ and $cd' = dc'$. Since $ab' = ba'$, $ab'dd' = ba'dd'$, which is the same as $adb'd' = bda'd'$. Since $cd' = dc'$, $cd'bb' = dc'bb'$, which is the same as $bcb'd' = bdb'c'$. Hence, $adb'd' + bcb'd' = bda'd' + bdb'c'$, which means $(ad + bc)b'd' = bd(a'd' + b'c')$. So, $(ad + bc, bd) \sim (a'd' + b'c', b'd')$. Thus, if $(a, b) \sim (a', b')$ and $(c, d) \sim (c', d')$ then $(ad + bc, bd) \sim (a'd' + b'c', b'd')$. QED.
 
 #### Multiplication
 

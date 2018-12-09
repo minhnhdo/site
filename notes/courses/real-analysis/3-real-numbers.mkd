@@ -7,9 +7,11 @@ subtitle: Real Numbers
 
 _Theorem:_ $\mathbb{R}$ is an ordered field, with the _least upper bound property_, and $\mathbb{R}$ contains $\mathbb{Q}$ as a _subfield_.
 
-### Construction of $\mathbb{R}$
+### The Least Upper Bound Property
 
 A set $S$ has the _least upper bound property_ (or satisfies the _completeness axiom_) if every nonempty subset of $S$ has an upper bound, also has least upper bound in $S$.
+
+### Construction of $\mathbb{R}$
 
 Dedekind: A _cut_ $\alpha$ is a subset of $\mathbb{Q}$ satisfying
 

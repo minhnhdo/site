@@ -13,7 +13,7 @@ $x \in S$ means $x$ is in $S$. $x \notin S$ means $x$ is not in $S$. $\emptyset$
 
 $A \subset B$ means $A$ is a _subset_ of $B$, or $B$ _contains_ $A$, which means if $x \in A$ then $x \in B$ (or $x \in A \implies x \in B$).
 
-If $A \subset B$ and $A \not\subset B$, then set $A$ is a _proper subset_ of $B$.
+If $A \subset B$ and $B \not\subset A$, then set $A$ is a _proper subset_ of $B$.
 
 If $A \subset B$ and $B \subset A$, then $A = B$, else $A \neq B$.
 

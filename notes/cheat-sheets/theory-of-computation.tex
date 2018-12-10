@@ -357,6 +357,8 @@ A language $L$ is \emph{$NP$-hard} if $A \leq_P L$ for all $A \in NP$. A languag
 	If (1) $B$ is $NP$-complete, (2) $C \in NP$, and (3) $B \leq_P C$, then $C$ is $NP$-complete.
 \end{theorem}
 
+$CLIQUE$ is a language whose strings are of the form $\langle G, k \rangle$, where $G = (V, E)$ is a graph and $k \in \mathbb{N}$, for which there exists $U \subseteq V$ with $|U| \geq k$ such that $\{u, v\} \in E$ for all distinct vertices $u, v \in U$.
+
 \begin{theorem}
 	$CLIQUE$ is $NP$-complete
 \end{theorem}
@@ -374,6 +376,24 @@ Reductions from $3SAT$ often involves \emph{gadgets}:
 	\item \emph{Clause gadgets:} for the assignemnt to pick a true literal in each clause (a clique must pick a vertex from each group)
 	\item \emph{Variable gadget:} force assignemnt to set each variable either to true or false but not both (a clique cannot pick both $x_i$ and $\overline{x_i}$).
 \end{itemize}
+
+$INDSET$ is a language whose strings are of the form $\langle H, k \rangle$, where $H = (V, E)$ is a graph and $k \in \mathbb{N}$, for which there exists $U \subseteq V$ with $|U| = k$ such that $\forall u, v \in U, \{u, v\} \notin E$.
+
+$VERTEX-COVER$ is a language whose strings are of the form $\langle H, t \rangle$, where $H = (V, E)$ is a graph and $t \in \mathbb{N}$, for which there exists a set $C \subseteq V$ with $|C| \leq t$ such that $\forall \{u, v\} \in E$, either $u$, $v$ or both is in $C$.
+
+Let $G = (V, E)$ be a graph. Then $\overline{G} = (V, \overline{E})$ where $\overline{E} = \{\{u, v\} : \{u, v\} \notin E\}$.
+
+\begin{lemma}
+	$U$ is a clique in $G$ iff $\overline{U} = V \setminus U$ is a vertex cover in $\overline{G}$. This implies $G$ has a clique of size $\geq k$ iff $\overline{G}$ has a vertex cover of size $\leq n - k$, where $|V| = n$.
+\end{lemma}
+
+\begin{lemma}
+	$CLIQUE \leq_P VERTEX-COVER$
+\end{lemma}
+
+\begin{lemma}
+	$CLIQUE \leq_P INDSET$
+\end{lemma}
 
 \begin{theorem}
 	$SAT$ is $NP$-complete via $a$ where

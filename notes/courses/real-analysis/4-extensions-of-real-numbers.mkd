@@ -1,0 +1,134 @@
+---
+title: Real Analysis
+subtitle: Extensions of Real Numbers
+---
+
+## Extended Real Numbers $\overline{\mathbb{R}}$
+
+$$\overline{\mathbb{R}} := \mathbb{R} \cup \{-\infty, +\infty\}.$$
+
+Order:
+$$\forall x \in \mathbb{R}, -\infty < x < +\infty.$$
+
+Arithmetic:
+$$
+x + (+\infty) := +\infty. \\
+x + (-\infty) := -\infty. \\
+\text{If } x > 0, x \cdot (+\infty) := +\infty. \\
+\text{If } x < 0, x \cdot (+\infty) := -\infty. \\
+\dots
+$$
+
+Every subset of $\overline{\mathbb{R}}$ has a supremum (possibly $+\infty$).
+
+## Euclidean Space $\mathbb{R}^k$
+
+$$\mathbb{R}^k := \{(x_1, x_2, \dots, x_k) : x_i \in \mathbb{R}\}.$$
+
+Arithmetic:
+$$
+\underbrace{(x_1, x_2, \dots, x_k)}_{\vec{x}} + \underbrace{(y_1, y_2, \dots, y_k)}_{\vec{y}} := (x_1 + y_1, x_1 + y_2, \dots, x_k + y_k). \\
+\alpha (x_1, x_2, \dots, x_k) := (\alpha x_1, \alpha x_2, \dots, \alpha x_k)\text{, where } \alpha \in \mathbb{R}\text{, called a scalar}.
+$$
+
+Inner product, or dot product:
+$$\vec{x} \cdot \vec{y} := \sum_{i = 1}^{k} x_iy_i.$$
+
+Norm, or length:
+$$|\vec{x}| := \sqrt{\vec{x} \cdot \vec{x}}.$$
+
+## Complex Number Field $\mathbb{C}$
+
+Complex numbers $\mathbb{C} = \mathbb{R}^2$ has a _field structure_.
+
+$$
+(a, b) + (c, d) := (a + c, b + d). \\
+(a, b) \cdot (c, d) := (ac - bd, ad + bc).
+$$
+
+The additive identity is $0^\star := (0, 0)$. The multiplicative identity is $1^\star := (1, 0)$.
+
+$\mathbb{C}$ extends $\mathbb{R}$. Consider subfield $\{(a, 0) : a \in \mathbb{R}\}$ which behaves just like $\mathbb{R}$, or is _isomorphic_ to $\mathbb{R}$.
+
+Note: $(0, 1) + (0, 1) = (-1, 0)$. So, let $i = (0, 1)$ then $i^2 = -1$, a real number.
+
+So, write $a + bi$ for $(a, b)$.
+
+Let $z = a + bi$. The _real part_ of $z$ is $\text{Re}(z) = a$. The imaginary part of $z$ is $\text{Im}(z) = b$.
+
+The _conjugate_ of $z$ is $\overline{z} = a - bi$.
+$$
+\overline{z + w} = \overline{z} + \overline{w}. \\
+\overline{z \cdot w} = \overline{z} \cdot \overline{w}. \\
+z + \overline{z} = 2\text{Re}(z). \\
+z - \overline{z} = 2\text{Im}(z). \\
+z \cdot \overline{z} = \text{Re}(z)^2 + \text{Im}(z)^2. \\
+$$
+
+Define length, or absolute value, of $z$ to be $|z| = \sqrt{z \cdot \overline{z}}$, which is the same as the length in $\mathbb{R}^2$.
+
+In $\mathbb{C}^k = \{(z_1, z_2, \dots, z_k) : z \in \mathbb{C}\}$, the inner product is $\langle \vec{x}, \vec{y} \rangle := \sum_{i = 1}^{k} x_i\overline{y_i}$.
+
+Notice that $\overline{\left \langle \vec{a}, \vec{b} \right \rangle} = \left \langle \vec{b}, \vec{a} \right \rangle$.
+
+_Proof._
+\begin{align}
+\overline{\left \langle \vec{a}, \vec{b} \right \rangle} & = \overline{\sum_{i} a_i\overline{b_i}} & \text{(by definition of } \left \langle \vec{a}, \vec{b} \right \rangle \text{)} \\
+& = \sum_{i} \overline{a_i\overline{b_i}} & \text{(due to } \overline{z + w} = \overline{z} + \overline{w} \text{)} \\
+& = \sum_{i} \overline{a_i}b_i & \text{(due to } \overline{z \cdot w} = \overline{z} \cdot \overline{w} \text{)} \\
+& = \sum_{i} b_i\overline{a_i} & \text{(due to commutativity of multiplication)} \\
+& = \left \langle \vec{b}, \vec{a} \right \rangle & \text{(by definition of } \left \langle \vec{b}, \vec{a} \right \rangle \text{)} \\
+\end{align}
+QED.
+
+### Properties of $\mathbb{C}$
+$$
+|z| \geq 0. \\
+|\overline{z}| = |z|. \\
+|zw| = |z||w|. \\
+\text{Re}(z) \leq |z|. \\
+|z + w| \leq |z| + |w|. \\
+$$
+
+_Proof for $|z + w| \leq |z| + |w|$._
+\begin{align}
+|z + w|^2 & = (z + w)(\overline{z} + \overline{w}) \\
+& = z \cdot \overline{z} + z \cdot \overline{w} + w \cdot \overline{z} + w \cdot \overline{w} \\
+& = |z|^2 + 2\text{Re}(z \overline{w}) + |w|^2 \\
+& \leq |z|^2 + 2|z||w| + |w|^2 = (|z| + |w|)^2.
+\end{align}
+
+This yields the desired inequality. QED.
+
+## Cauchy - Schwarz Inequality
+
+Version for complex numbers: If $a_1, \dots, a_n, b_1, \dots, b_n \in \mathbb{C}$, then
+$$\left|\sum_{i = 1}^{n} a_i\overline{b_i} \right|^2 \leq \sum_{i = 1}^{n} |a_i|^2 \cdot \sum_{i = 1}^{n} |b_i|^2.$$
+
+Version for real numbers: If $a_1, \dots, a_n, b_1, \dots, b_n \in \mathbb{R}$, then
+$$\left|\sum_{i = 1}^{n} a_ib_i \right|^2 \leq \sum_{i = 1}^{n} a_i^2 \cdot \sum_{i = 1}^{n} b_i^2.$$
+
+Version for real vectors: Given $\vec{x}, \vec{y} \in \mathbb{R}^k$. Then $|\vec{x} \cdot \vec{y}| \leq |\vec{x}||\vec{y}|$.
+
+Version for complex vectors: Given $\vec{x}, \vec{y} \in \mathbb{C}^k$. Then $\left| \langle \vec{x}, \vec{y} \rangle \right|^2 \leq \langle \vec{x}, \vec{x} \rangle \langle \vec{y}, \vec{y} \rangle$.
+
+_Proof._ Let $\vec{a}, \vec{b} \in \mathbb{C}^n$, and $y = \frac{\left \langle \vec{a}, \vec{b} \right \rangle}{\left \langle \vec{b}, \vec{b} \right \rangle}$.
+
+Consider $\overline{y}$.
+$$
+\overline{y} = \overline{\left(\frac{\left \langle \vec{a}, \vec{b} \right \rangle}{\left \langle \vec{b}, \vec{b} \right \rangle} \right)} = \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle}}{\overline{\left \langle \vec{b}, \vec{b} \right \rangle}} = \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle}}{\overline{\sum_{i = 1}^{n} b_i\overline{b_i}}} = \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle}}{\sum_{i = 1}^{n} \overline{b_i\overline{b_i}}} = \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle}}{\sum_{i = 1}^{n} b_i\overline{b_i}} = \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle}}{\left \langle \vec{b}, \vec{b} \right \rangle}.
+$$
+
+Consider the following inequality.
+\begin{align}
+0 \leq \left|\vec{a} - y\vec{b}\right|^2 & = \left \langle \vec{a} - y\vec{b}, \vec{a} - y\vec{b} \right \rangle \\
+& = \sum_{i = 1}^{n} (a_i - yb_i)(\overline{a_i} - \overline{y}\overline{b_i}) \\
+& = \left \langle \vec{a}, \vec{a} \right \rangle - \overline{y}\left \langle \vec{a}, \vec{b} \right \rangle - y\left \langle \vec{b}, \vec{a} \right \rangle + |y|^2 \left \langle \vec{b}, \vec{b} \right \rangle \\
+& = \left \langle \vec{a}, \vec{a} \right \rangle - \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle} \left \langle \vec{a}, \vec{b} \right \rangle}{\left \langle \vec{b}, \vec{b} \right \rangle} - \frac{\left \langle \vec{a}, \vec{b} \right \rangle \left \langle \vec{b}, \vec{a} \right \rangle}{\left \langle \vec{b}, \vec{b} \right \rangle} + \left|\frac{\left \langle \vec{a}, \vec{b} \right \rangle}{\left \langle \vec{b}, \vec{b} \right \rangle}\right|^2 \left \langle \vec{b}, \vec{b} \right \rangle \\
+& = \left \langle \vec{a}, \vec{a} \right \rangle - \frac{\overline{\left \langle \vec{a}, \vec{b} \right \rangle} \left \langle \vec{a}, \vec{b} \right \rangle}{\left \langle \vec{b}, \vec{b} \right \rangle} - \frac{\left \langle \vec{a}, \vec{b} \right \rangle \overline{\left \langle \vec{a}, \vec{b} \right \rangle}}{\left \langle \vec{b}, \vec{b} \right \rangle} + \frac{\left|\left \langle \vec{a}, \vec{b} \right \rangle \right|^2 \left \langle \vec{b}, \vec{b} \right \rangle}{\left| \left \langle \vec{b}, \vec{b} \right \rangle\right|^2} \\
+& = \left \langle \vec{a}, \vec{a} \right \rangle - \frac{\left|\left \langle \vec{a}, \vec{b} \right \rangle \right|^2}{\left \langle \vec{b}, \vec{b} \right \rangle} - \frac{\left|\left \langle \vec{a}, \vec{b} \right \rangle \right|^2}{\left \langle \vec{b}, \vec{b} \right \rangle} + \frac{\left|\left \langle \vec{a}, \vec{b} \right \rangle \right|^2 \left \langle \vec{b}, \vec{b} \right \rangle}{\left \langle \vec{b}, \vec{b} \right \rangle \left \langle \vec{b}, \vec{b} \right \rangle} \\
+& = \left \langle \vec{a}, \vec{a} \right \rangle - \frac{2\left|\left \langle \vec{a}, \vec{b} \right \rangle \right|^2}{\left \langle \vec{b}, \vec{b} \right \rangle} + \frac{\left|\left \langle \vec{a}, \vec{b} \right \rangle \right|^2}{\left \langle \vec{b}, \vec{b} \right \rangle} \\
+& = \left \langle \vec{a}, \vec{a} \right \rangle - \frac{\left| \left \langle \vec{a}, \vec{b} \right \rangle \right|^2}{\left \langle \vec{b}, \vec{b} \right \rangle}.
+\end{align}
+
+This yields the desired inequality after multiplying by $\left \langle \vec{b}, \vec{b} \right \rangle$. QED.

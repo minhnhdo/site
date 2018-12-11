@@ -37,3 +37,5 @@ f. To show $\sup A = \sup B$, one strategy is to show for all $a \in A$, there e
 ### The Greatest Lower Bound
 
 The _greatest lower bound_, or _infinum_, of a set $A$ is denoted $\inf A$.
+
+The infinum exists if a set is _bounded below_.

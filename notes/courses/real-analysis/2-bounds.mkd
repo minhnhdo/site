@@ -34,6 +34,6 @@ d. If $\gamma < \sup A$ then there exists $a \in A$ such that $a > \gamma$ and $
 e. If $A \subset B$ then $\sup A \leq \sup B$.
 f. To show $\sup A = \sup B$, one strategy is to show for all $a \in A$, there exists $b \in B$ such that $a \leq b$, so $\sup A \leq \sup B$; similarly, show $\sup B \leq \sup A$.
 
-#### The Greatest Lower Bound
+### The Greatest Lower Bound
 
 The _greatest lower bound_, or _infinum_, of a set $A$ is denoted $\inf A$.

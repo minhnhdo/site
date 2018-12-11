@@ -40,11 +40,24 @@ Let $\alpha + \beta := \{r + s : r \in \alpha, s \in \beta\}$.
 
 _Proof of well-definedness._ Let $\alpha$ and $\beta$ be cuts. $\alpha + \beta$ is a cut because
 
-- it is nontrivial: since $\alpha$ is a cut, there exists $r \in \alpha$. Similarly, there exists $s \in \beta$. So, there exists $r + s$.
+- it is nontrivial: since $\alpha$ is a cut, there exists $r \in \alpha$. Similarly, there exists $s \in \beta$. So, there exists $r + s$. Hence, $\alpha + \beta \neq \emptyset$. Since $\alpha$ is a cut, there exists $p \in \mathbb{Q} \setminus \alpha$ such that $p > r$ for all $r \in \alpha$. Similarly, there exists $q \in \mathbb{Q} \setminus \beta$ such that $q > s$ for all $s \in \beta$. Thus, $p + q > r + s$ for all $r \in \alpha$ and $s \in \beta$. Hence, $\alpha + \beta \neq \mathbb{Q}$.
 - it is closed downwards: let $p \in \alpha + \beta$, and $q < p$. Since $p \in \alpha + \beta$, there exist $r \in \alpha$ and $s \in \beta$ such that $p = r + s$. Since $q < p = r + s$, $q - s < r$, so $q - s \in \alpha$. Then $q = (q - s) + s$, as desired.
-- it has no largest member: let $p, q \in \alpha + \beta$, and $q \neq p$. Either $p < q$ or $q < p$, due to order on $\mathbb{Q}$, as desired. QED.
+- it has no largest member: Fix arbitrary $p \in \alpha$ and $q \in \beta$. Since $\alpha$ is a cut, there exists $r \in \alpha$ such that $p < r$. Similarly, there exists $s \in \beta$ such that $q < s$. Hence, $p + q < r + s \in \alpha + \beta$, as desired. QED.
 
 Additive identity $0^\star := \mathbb{Q}_{-}$.
+
+_Proof of well-definedness._
+
+$0^\star$ is a cut because
+
+- it is nontrivial: $0^\star \neq \emptyset$ since there exist negative rationals. $0^\star \neq \mathbb{Q}$ since there exist positive rationals.
+- it is closed downward: let $p \in 0^\star$ and $p \in \mathbb{Q}$ with $q < p$. Since $p \in 0^\star$, it is less than $0$. Hence, $q < 0$ and thus $q \in 0^\star$.
+- it has no largest element: Let $p \in 0^\star$. Consider $\frac{p}{2}$. We have $p < \frac{p}{2} < 0$, as desired.
+
+$\alpha + 0^\star = \alpha$ because
+
+- $\alpha + 0^\star \subset \alpha$: let $p \in \alpha + 0^\star$. Hence, there exist $r \in \alpha$ and $s \in \beta$ such that $p = r + s$. We have $p = r + s < r + 0 < r \in \alpha$, as desired.
+- $\alpha \subset \alpha + 0^\star$: let $p \in \alpha$. Since $\alpha$ is a cut, there exists $q \in \alpha$ such that $q > p$. Let $r = p - q$. $r \in 0^\star$ since $r < 0$. We have $p = q + r$, as desired. QED.
 
 Additive inverse for $\alpha$ is $\beta := \{p : \exists r > 0 \text { such that } -p - r \notin \alpha\}$.
 

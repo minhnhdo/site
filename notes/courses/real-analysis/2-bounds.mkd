@@ -39,3 +39,16 @@ f. To show $\sup A = \sup B$, one strategy is to show for all $a \in A$, there e
 The _greatest lower bound_, or _infinum_, of a set $A$ is denoted $\inf A$.
 
 The infinum exists if a set is _bounded below_.
+
+Show that $\inf A = -\sup(-A)$.
+
+_Proof._ By definition, $-A = \{-a : a \in A\}$. Let $\alpha = \inf A$. By definition, it has the following properties.
+
+- For all $a \in A$, $\alpha \leq a$.
+- For all lower bound $\gamma$ for $A$, $\gamma \leq \alpha$.
+
+Since for all $a \in A$, $\alpha \leq a$, we have $-a \leq -\alpha$. Thus, $-\alpha$ is also an upper bound for $-A$. Let $\beta = \sup(-A)$. So, $\beta \leq -\alpha$. Hence, $-\beta \geq \alpha$.
+
+For all $a \in A$, $-a \leq \beta$ since $\beta$ is the least upper bound for $-A$. Hence, for all $a \in A$, $a \geq -\beta$. So, $-\beta$ is a lower bound for $A$. Thus, $-\beta \leq \alpha$.
+
+Therefore, $-\beta = \alpha$, or $\inf A = -\sup(-A)$. QED.

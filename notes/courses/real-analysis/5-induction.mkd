@@ -1,0 +1,63 @@
+---
+title: Real Analysis
+subtitle: Induction
+---
+
+Let $\mathbb{N} = \{1, 2, 3, \dots\}$, the natural numbers.
+
+## The Well-Ordering Property
+
+The _well-ordering property_ of $\mathbb{N}$: every non-empty subset of $\mathbb{N}$ has a least element. It can be taken as an axiom of $\mathbb{N}$.
+
+## Principle of Induction
+
+Let $S \subset \mathbb{N}$ such that
+
+1. $1 \in S$, and
+2. if $k \in S$ then $k + 1 \in S$.
+
+Then $S = \mathbb{N}$.
+
+The well-ordering property is equivalent to the principle of induction.
+
+_Proof that the well-ordering property implies the principle of induction (by contradiction)._ Suppose $S$ exists with the given properties but $S \neq \mathbb{N}$.
+
+Let $A := \mathbb{N} \setminus S$, so it is non-empty. Then $A$ has a least element by the well-ordering property, call it $n$. Notice $n > 1$ because $1 \in S$ which implies $1 \notin A$.
+
+Consider $n - 1$. It is not in $A$ because $n$ is the least element. So $n - 1 \in S$. By property (2), $n - 1 + 1 \in S$, which implies $n \in S$. This is a contradiction because $n \in A$.
+
+Therefore, the well-ordering property implies the principle of induction. QED.
+
+_Proof that the principle of induction implies the well-ordering property (by induction on the number of elements in the subset)._ Let $S$ be a subset of $\mathbb{N}$ and $n$ be the number of elements in $S$.
+
+For the base case where $n = 1$, the least element of any subset $S$ is the only element it has, so the base case holds.
+
+For the inductive step, assume for all subsets $S$ of $\mathbb{N}$ with size $n$, each has a least element. Consider a subset $S$ of $\mathbb{N}$ with size $n + 1$ and a subset $S'$ of $S$ with size $n$. By the inductive hypothesis, $S'$ has a least element; call it $a$. Let $b$ is the only element in $S$ that is not in $S'$. Since $\mathbb{N}$ is ordered, either $a < b$, $a = b$, or $a > b$, by law of trichotomy. When $a < b$, $a$ is a least element of $S$. When $a = b$, $a$ is also a least element of $S$. When $a > b$, $b$ is less than all elements of $S'$, so $b$ is a least element of $S$.
+
+Therefore, the principle of induction implies the well-ordering property. QED.
+
+## Proof by Induction
+
+Let $P(n)$ be statements indexed by the natural numbers $\mathbb{N}$. To show that $P(n)$ is true for all $n$, we must show
+
+1. (base case) $P(1)$ is true, and
+2. (inductive step) if $P(k)$ is true then $P(k + 1)$ is true.
+
+Then, by the principle of induction, $P(n)$ is true for all $n$.
+
+The statement $P(k)$ is true is called the _inductive hypothesis_.
+
+## Strong Induction
+
+Let $P(n)$ be statements indexed by the natural numbers $\mathbb{N}$. To show that $P(n)$ is true for all $n$, we must show
+
+1. (base case) $P(1)$ is true, and
+2. (inductive step) if $P(1)$ through $P(k)$ are true then $P(k + 1)$ is true.
+
+Then, by the principle of strong induction, $P(n)$ is true for all $n$.
+
+For example, every $2^n \times 2^n$ chessboard with one square removed can be tiled by L-shaped tiles.
+
+_Proof (by induction on $n$)._
+
+For base case, a $2 \times 2$ board 

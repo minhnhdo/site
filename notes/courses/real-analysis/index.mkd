@@ -1,3 +1,5 @@
 ---
 title: Real Analysis
 ---
+
+These are my notes for the Real Analysis course taught by Professor Francis Su (see [site](https://analysisyawp.blogspot.com/), and [playlist](https://www.youtube.com/playlist?list=PL0E754696F72137EC)).

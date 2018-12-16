@@ -1,0 +1,75 @@
+---
+title: Real Analysis
+subtitle: Countability
+---
+
+## Functions
+
+Recall a _function_ $f : A \rightarrow B$ maps $x \in A$ to $f(x) \in B$. $A$ is the _domain_ of $f$. $B$ is the _codomain_ of $f$.
+
+If $C \subset A$ and $D \subset B$, define $f(C) = \{f(x) : x \in C\}$ as the _image_ of $C$, and $f^{-1}(D) = \{x : f(x) \in D\}$ as the _inverse image_ of $D$.
+
+When $f(A) = B$, i.e. the _range_ of $A$ is the same as its _codomain_, $f$ is _onto_, or a _surjection_, denoted $f : A \twoheadrightarrow B$.
+
+When $f(x) = f(y)$ implies $x = y$, $f$ is _one-to-one_, or an _injection_, denoted $f : A \hookrightarrow B$, or $f : A \rightarrowtail B$.
+
+When $f$ is one-to-one and onto, $f$ is a _bijection_ ($f$ is denoted by an arrow with a hook on its tail and two heads pointing to the right), and $A$ and $B$ are in _one-to-one correspondence_, denoted $A \sim B$.
+
+## Countability
+
+Let $J_n := \{1, 2, \dots, n\}$, and $J_0 := \emptyset$.
+
+A set $A$ is _finite_ if $A \sim J_n$. Otherwise, $A$ is _infinite_. $A$ is _countable_ if $A \sim \mathbb{N}$.
+
+For example,
+
+(@) $\mathbb{N}$ is countable: use $f : \mathbb{N} \rightarrow \mathbb{N}$ where $f(x) = x$.
+(@) A sequence $x_1, x_2, x_3, \dots$ of distinct terms is countable: use $f(n) = x_n$.
+
+A set that can be listed in a sequence is countable.
+
+For example,
+
+(@) $\{2, 3, 4, \dots \}$ is countable: use $f(n) = n + 1$.
+(@) $\{1, 2, 3, \dots, k - 1, k + 1, k + 2, \dots \}$ is countable: use
+    \begin{align*}
+    f(n) =
+    \begin{cases}
+    n & \text{if } n < k \\
+    n + 1 & \text{otherwise.}
+    \end{cases}
+    \end{align*}
+
+__Theorem.__ $\mathbb{N}$ is infinite.
+
+_Proof sketch (by induction on $n$)._ Show that $\mathbb{N} \nsim J_n$.
+
+Base case ($\mathbb{N} \xleftarrow{g} \{1\}$): Consider $\mathbb{N} \setminus J_1 \neq \emptyset$. So $g$ is not onto.
+
+Inductive step: Show if $J_n \nsim \mathbb{N}$ then $J_{n+1} \nsim \mathbb{N}$. If there were a bijection $h$ such that $\mathbb{N} \xleftarrow{h} J_{n+1} = \{1, \dots, n, n+1\}$, then there would be a bijection $\widehat{h}$ such that $\mathbb{N} \setminus \{\widehat{h}(n+1)\} \xleftarrow{\widehat{h}} J_n = \{1, \dots, n\}$. By a previous example, there is a bijection $f$ such that $\mathbb{N} \xleftarrow{f} \mathbb{N} \setminus \{\widehat{h}(n+1)\}$. Thus, there exists a bijection $\mathbb{N} \leftarrow J_n = \{1, \dots, n\}$. QED.
+
+For example,
+
+(@) $\mathbb{N} \sim 2\mathbb{N} = \{2, 4, 6, 8, \dots\}$. $\mathbb{N}$ and $2\mathbb{N}$ have the _same cardinality_.
+(@) $\mathbb{Z} = \{ \dots, -3, -2, -1, 0, 1, 2, 3, \dots \}$ is countable: use
+    \begin{align*}
+    f(n) =
+    \begin{cases}
+    -2n & \text{if } n < 0 \\
+    2n + 1 & \text{otherwise.}
+    \end{cases}
+    \end{align*}
+
+__Theorem.__ Every infinite subset $E$ of a countable set $A$ is countable.
+
+__Theorem.__ If $A$ is countable then $A \times A$ is countable.
+
+__Theorem.__ $\mathbb{Q}$ is countable.
+
+__Theorem.__ If $A$ is countable then $A^k$ is countable.
+
+__Theorem.__ $\mathbb{R}$ is not countable.
+
+The proof for $\mathbb{R}$ not being countable does not imply $\mathbb{Q}$ is not countable because the resulting constructed number may not be in $\mathbb{Q}$.
+
+__Theorem.__ For any set $A$, $A \nsim 2^A$, where $2^A$ is the power set of $A$.

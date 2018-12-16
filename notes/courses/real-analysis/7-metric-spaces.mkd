@@ -1,0 +1,34 @@
+---
+title: Real Analysis
+subtitle: Metric Spaces
+---
+
+## Metric Spaces
+
+A set $X$ is a _metric space_ if there exists a metric $d : X \times X \rightarrow \mathbb{R}$ such that for all $p, q \in X$
+
+1. (non-negativity) $d(p, q) \geq 0$ ($= 0$ iff $p = q$),
+2. (symmetry) $d(p, q) = d(q, p)$, and
+3. (triangle inequality) $d(p, q) \leq d(p, r) + d(r, q)$ for all $r \in X$.
+
+For example,
+
+(@) $\mathbb{R}^n$ with $d(\vec{x}, \vec{y}) = \sqrt{(x_1 - y_1)^2 + \dots + (x_n - y_n)^2}$, also known as the _Euclidean metric_ on $\mathbb{R}^n$, which is the implicit metric on $\mathbb{R}^n$ if left unspecified.
+(@) $\mathbb{R}$ with $d(x, y) = |x - y|$, a specialization of the above example where $n = 1$.
+(@) $\mathbb{R}^n$ with $d(\vec{x}, \vec{y}) = \sum_{i = 1}^n |x_i - y_i|$, also known as the staircase metric.
+(@) For a space of trees, $d_T(x, y) =$ length of the shortest path between $x$ and $y$.
+(@) For a space of genome sequences, $d_G(x, y) =$ number of letters that are different.
+(@) For a space of continuous functions on $[a, b]$, denoted $\mathcal{C}([a, b])$, $d_I(f, g) = \int_a^b |f - g| dx$.
+(@) For a space of continuous bounded functions on $\mathbb{R}$, denoted $\mathcal{C}_b(\mathbb{R})$, $d_{\sup}(f, g) = \sup_{x \in R} |f(x) - g(x)|$, also known as _sup norm_. The supremum exists because the functions are bounded in their values.
+
+### Open Ball
+
+$N_r(x) = \{y : d(x, y) < r\}$. $N_r$ is called the _neighborhood of radius $r$_.
+
+### Closed Ball
+
+$\overline{N_r(x)} = \{y : d(x, y) \leq r\}$.
+
+### Limit Points
+
+Say $p \in X$ is a _limit point_ of $E \subset X$ if every neighborhood of $p$ contains a point $q \neq p$ such that $q \in E$.

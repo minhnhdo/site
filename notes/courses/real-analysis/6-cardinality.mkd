@@ -1,6 +1,6 @@
 ---
 title: Real Analysis
-subtitle: Countability
+subtitle: Cardinality
 ---
 
 ## Functions
@@ -15,7 +15,7 @@ When $f(x) = f(y)$ implies $x = y$, $f$ is _one-to-one_, or an _injection_, deno
 
 When $f$ is one-to-one and onto, $f$ is a _bijection_ ($f$ is denoted by an arrow with a hook on its tail and two heads pointing to the right), and $A$ and $B$ are in _one-to-one correspondence_, denoted $A \sim B$.
 
-## Countability
+## Cardinality
 
 Let $J_n := \{1, 2, \dots, n\}$, and $J_0 := \emptyset$.
 
@@ -73,3 +73,46 @@ __Theorem.__ $\mathbb{R}$ is not countable.
 The proof for $\mathbb{R}$ not being countable does not imply $\mathbb{Q}$ is not countable because the resulting constructed number may not be in $\mathbb{Q}$.
 
 __Theorem.__ For any set $A$, $A \nsim 2^A$, where $2^A$ is the power set of $A$.
+
+__Theorem.__ The countable union of countable sets is countable.
+
+_Proof._ Let each $A_1, A_2, A_3, \dots$ be countable. Then,
+\begin{align}
+A_1 & = \{a_{11}, a_{12}, a_{13}, a_{14}, \dots\}, \\
+A_2 & = \{a_{21}, a_{22}, a_{23}, a_{24}, \dots\}, \\
+A_3 & = \{a_{31}, a_{32}, a_{33}, a_{34}, \dots\}, \\
+A_4 & = \{a_{41}, a_{42}, a_{43}, a_{44}, \dots\}, \\
+\vdots
+\end{align}
+
+Zigzagging through the above listings gives a listing, implying $\bigcup_{i=1}^{\infty} A_i$ is countable. QED.
+
+Notation: Use $\bigcup_{\alpha \in J} A_\alpha$, where $J$ is an index set, for possibly uncountable collection.
+
+For example,
+
+(@) The set of computer programs is at most countable.
+
+    Recall $\mathbb{R}$ is not countable (say $\mathbb{R}$ is uncountable).
+
+    So there are real numbers that are not computable (it cannot be specified up to some arbitrary precision)!
+
+__Cantor's Theorem (diagonalization argument).__ For any set $A$, we have $A \nsim 2^A$.
+
+_Proof (by contradiction)._ Suppose there exists a bijection $f : A \rightarrow 2^A$. Then $a \mapsto f(a) \subset A$. Let $B = \{a : a \notin f(a)\}.$
+
+If $B = f(x)$ for some $x \in A$, consider $x$. If $x \in B$ then $x \notin f(x) = B$, a contradiction. Hence, $x \notin B$, which implies $x \notin f(x)$, so $x \in B$, a contradiction.
+
+Thus, $B \neq f(x)$ for any $x \in A$ (or $B$ is not an image of $x$ for any $x \in A$). QED.
+
+For example,
+
+(@) $2^A \sim \{\text{function } f : A \rightarrow \{0, 1\}\}$, by membership relation.
+(@) $2^{\mathbb{R}} \sim$ all functions from $\mathbb{R}$ to $\{0, 1\}$.
+
+    There are infinitely many cardinalities. Let $\omega$ be an ordinal number.
+    $$
+    0, 1, 2, \dots, \aleph_0, \aleph_1, \aleph_2, \dots, \aleph_\omega, \dots
+    $$
+
+    The continuum hypothesis ($\aleph_1 = c$, where $c$ is the cardinality of $\mathbb{R}$) is provably undecidable (independent of ZFC).

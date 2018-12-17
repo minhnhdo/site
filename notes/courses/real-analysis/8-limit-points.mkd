@@ -64,3 +64,21 @@ Sets which are both open and closed is called _clopen_.
 ## Closing a Non-Closed Set
 
 The _closure_ of $E$, denoted $\overline{E}$, is the union of $E$ and the set of its limit points.
+
+__Theorem.__ $\overline{A}$ is a closed set.
+
+_Proof._ Consider a limit point $p$ of $\overline{A}$. Consider a neighborhood $N$ of $p$. If $p \in A$ then $p$ is also a limit point of $A$, as desired. Assume $p \notin A$. Since $p$ is a limit point of $\overline{A}$, $N$ contains a point $q$ of $\overline{A}$. If $q \in A$ then $p$ is also a limit point of $A$, as desired. Assume $q \notin A$. Then $q$ is a limit point of $A$. Consider a neighborhood $N'$ of $q$ such that $N' \subset A$ and $N' \subset N$. $N'$ exists because neighborhoods are open. So, there is a point $q' \in N'$, which is al so in $N$ and in $A$, as desired. QED.
+
+__Theorem.__ A set $A$ is closed if and only if $A = \overline{A}$.
+
+_Proof._ Let $A'$ be a set containing all limit points of $A$.
+
+Show that $A$ is closed only if $A = \overline{A}$: Since $A$ is closed, we have $A' \subset A$. So, $A \cup A' \subset A$. Hence, $\overline{A} \subset A$. Since, clearly, $E \subset \overline{E}$, $E = E'$.
+
+Show that $A$ is closed if $A = \overline{A}$: Suppose $A = \overline{A}$, which implies $A$ contains all its limit points. Hence, $A$ is closed. QED.
+
+__Theorem.__ If $E \subset F$, where $F$ is closed, then $\overline{E} \subset F$.
+
+_Proof._ Since $F$ is a closed set, $F$ contains all its limit point. In particular, it contains all $E$'s limit points. Therefore, $F$ contains $\overline{E}$. QED.
+
+$\overline{E}$ is the smallest closed set containing $E$.

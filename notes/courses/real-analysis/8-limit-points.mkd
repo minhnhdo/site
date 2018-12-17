@@ -1,0 +1,66 @@
+---
+title: Real Analysis
+subtitle: Limit points
+---
+
+## Limit Points
+
+Say $p \in X$ is a _limit point_ of $E \subset X$ if every neighborhood of $p$ (i.e. $N_r(p)$ for all $r$) contains a point $q \neq p$ such that $q \in E$.
+
+So, a point $p$ is not a limit point of $E$ if there exists a neighborhood $N$ such that $N$ does not contain any other points of $E$.
+
+For example,
+
+(@) In $\mathbb{R}$, $G = \{\frac{1}{n} : n \in \mathbb{Z}\}$. $0$ is a limit point of $G$. In $\mathbb{R}$, a neighborhood of a point $p$ is an open interval $(p - \epsilon, p + \epsilon)$.
+
+## Isolated Points
+
+A point $p \in X$ is an _isolated point_ of $E \subset X$ if $p \in E$ and $p$ is not a limit point of $E$.
+
+For exmple,
+
+(@) All points of $G = \{\frac{1}{n} : n \in \mathbb{Z}\}$ are isolated.
+
+## Interior Points
+
+A point $p \in X$ is an _interior point_ of $E \subset X$ if $p \in E$ and there exists a neighborhood $N$ of $p$ such that $N \subset E$.
+
+For example,
+
+(@) $G = \{\frac{1}{n} : n \in \mathbb{Z}\}$ has no interior points.
+(@) In $\mathbb{R}$, $\emptyset$ has no limit points, no interior points, and no isolated points, for $\mathbb{R}$ has no isolated points but all points in $\mathbb{R}$ are interior and are limit points, and $\mathbb{Q}$ has no isolated points but all points in $\mathbb{Q}$ are interior and are limit points.
+(@) In ($\mathbb{R}$, $\text{discrete}$), $\emptyset$ has no limit points, no interior points, and no isolated points, $\mathbb{R}$ has no limit points but all points in $\mathbb{R}$ are interior and isolated, and $\mathbb{Q}$ has no limit points but all points in $\mathbb{Q}$ are interior and isolated.
+
+__Theorem.__ If $p$ is a limit point of $E$, then every neighborhood of $p$ contains infinitely many points of $E$.
+
+_Proof (by contradiction)._ Assume there exists a neighborhood $N$ of $p$ with only finitely many points in $E$, call them $e_1, e_2, \dots, e_n$.
+
+Let $r = \min_{i = 1}^{n} \{d(p, e_i)\}$ ($r$ exists because $e_i$ is finite). But $N_r(p)$ has no points other than $p$, a contradiction! QED.
+
+## Open Sets
+
+A set $E$ is _open_ if every point of $E$ is an interior point of $E$.
+
+For example,
+
+(@) In $\mathbb{R}$, any open interval $(a, b)$ is open.
+(@) In $\mathbb{R}$, $\emptyset$ is open.
+(@) In $\mathbb{R}$, $\mathbb{R}$ is open.
+
+## Closed Sets
+
+A set $E$ is _closed_ if $E$ contains all its limit points.
+
+For example,
+
+(@) In $\mathbb{R}$, a single point $p$ is closed.
+(@) In $\mathbb{R}$, $\emptyset$ is closed.
+(@) In $\mathbb{R}$, $\mathbb{R}$ is closed.
+(@) In $\mathbb{R}$, any closed interval $[a, b]$ is closed.
+(@) In $\mathbb{R}$, any half-open interval $[a, b)$ or $(a, b]$ is neither open nor closed.
+
+Sets which are both open and closed is called _clopen_.
+
+## Closing a Non-Closed Set
+
+The _closure_ of $E$, denoted $\overline{E}$, is the union of $E$ and the set of its limit points.

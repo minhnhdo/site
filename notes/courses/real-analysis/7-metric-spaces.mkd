@@ -20,15 +20,19 @@ For example,
 (@) For a space of genome sequences, $d_G(x, y) =$ number of letters that are different.
 (@) For a space of continuous functions on $[a, b]$, denoted $\mathcal{C}([a, b])$, $d_I(f, g) = \int_a^b |f - g| dx$.
 (@) For a space of continuous bounded functions on $\mathbb{R}$, denoted $\mathcal{C}_b(\mathbb{R})$, $d_{\sup}(f, g) = \sup_{x \in R} |f(x) - g(x)|$, also known as _sup norm_. The supremum exists because the functions are bounded in their values.
+(@) For any set $X$, a _discrete metric_ is defined as
+    \begin{align}
+    d_{discrete} =
+    \begin{cases}
+    0 & \text{ if } p = q\\
+    1 & \text{ otherwise}
+    \end{cases}
+    \end{align}
 
-### Open Ball
+### Open Balls
 
-$N_r(x) = \{y : d(x, y) < r\}$. $N_r$ is called the _neighborhood of radius $r$_.
+A _neighborhood_, or _open ball_, of radius $r$ is $N_r(x) = \{y : d(x, y) < r\}$. It tells us which points are nearby each other.
 
-### Closed Ball
+### Closed Balls
 
-$\overline{N_r(x)} = \{y : d(x, y) \leq r\}$.
-
-### Limit Points
-
-Say $p \in X$ is a _limit point_ of $E \subset X$ if every neighborhood of $p$ contains a point $q \neq p$ such that $q \in E$.
+A _closed ball_ of radius $r$ is $\overline{N_r(x)} = \{y : d(x, y) \leq r\}$.

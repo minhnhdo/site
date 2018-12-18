@@ -128,3 +128,12 @@ __Theorem.__ Any arbitrary intersection of closed sets is closed.
 __Theorem.__ Any finite intersection of open sets is open.
 
 __Theorem.__ Any finite union of closed sets is closed.
+
+## Dense Sets
+
+A set $E$ is dense in a metric space $X$ if every point of $X$ is a limit point in $E$ or in $E$. Or, equivalently, $\overline{E} = X$. Also, equivalently, every open set of $X$ contains a point in $E$.
+
+For example,
+
+(@) $\mathbb{Q}$ is dense in $\mathbb{R}$.
+(@) Can periodic functions be approximated by sums of sines and cosines (Fourier analysis)? Or, equivalently, are linear combinations of sines and cosines dense in a set of all periodic functions? More generally, is a certain subset of functions dense in a whole space of functions?

@@ -88,3 +88,42 @@ __Theorem.__ If $E \subset F$, where $F$ is closed, then $\overline{E} \subset F
 _Proof._ Since $F$ is a closed set, $F$ contains all its limit point. In particular, it contains all $E$'s limit points. Therefore, $F$ contains $\overline{E}$. QED.
 
 $\overline{E}$ is the smallest closed set containing $E$.
+
+## Relationship between Open and Closed Sets
+
+For a set $E$, the complement of $E$, denoted $E^c$, is $X \setminus E = \{x : x \notin E\}$.
+
+__Theorem.__ $E$ is open if and only if $E^c$ is closed.
+
+_Proof._
+\begin{align}
+E \text{ is open} & \Leftrightarrow \text{all points } p \in E \text{ has a neighborhood } N \subset E \\
+& \Leftrightarrow \forall p \in E, \exists N_r(p) \subset E \\
+& \Leftrightarrow \forall p \in E, \exists N_r(p) \cap E^c = \emptyset \\
+& \Leftrightarrow \forall p \in E, p \text{ is not a limit point of } E^c \\
+& \Leftrightarrow E^c \text{ contains all its limit points}
+\end{align}
+QED.
+
+For example,
+
+(@) Let $K_i = \left[-1 + \frac{1}{n}, 1 - \frac{1}{n}\right]$ (each $K_i$ is closed). We have $\bigcup_{n = 1}^\infty K_i = (-1, 1)$, which is open and not closed.
+(@) Let $K_i = \left(-\frac{1}{n}, \frac{1}{n}\right)$ (each $K_i$ is open). We have $\bigcap_{n = 1}^\infty K_i = \{0\}$, which is closed and not open.
+
+__Lemma.__ Let $\{E_\alpha\}_{\alpha \in I}$ be a collection of sets. Then $(\bigcup_{\alpha \in I} E_\alpha)^c = \bigcap_{\alpha \in I} E_\alpha^c$.
+
+_Proof._
+\begin{align}
+x \in LHS & \Leftrightarrow x \notin \text{any } E_\alpha \\
+& \Leftrightarrow x \in E_\alpha^c \text{ for all } \alpha \\
+& \Leftrightarrow x \in \bigcap_{\alpha \in I} E_\alpha^c
+\end{align}
+QED.
+
+__Theorem.__ Any arbitrary union of open sets is open.
+
+__Theorem.__ Any arbitrary intersection of closed sets is closed.
+
+__Theorem.__ Any finite intersection of open sets is open.
+
+__Theorem.__ Any finite union of closed sets is closed.

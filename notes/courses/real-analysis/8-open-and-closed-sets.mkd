@@ -67,11 +67,13 @@ Sets which are both open and closed is called _clopen_.
 
 ## Closing a Non-Closed Set
 
-The _closure_ of $E$, denoted $\overline{E}$, is the union of $E$ and the set of its limit points.
+The _closure_ of $E$, denoted $\overline{E}$, is the union of $E$ and the set of its limit points, denoted $E'$. In other words, $\overline{E} = E \cup E'$.
 
 __Theorem.__ $\overline{A}$ is a closed set.
 
-_Proof._ Consider a limit point $p$ of $\overline{A}$. Consider a neighborhood $N$ of $p$. If $p \in A$ then $p$ is also a limit point of $A$, as desired. Assume $p \notin A$. Since $p$ is a limit point of $\overline{A}$, $N$ contains a point $q$ of $\overline{A}$. If $q \in A$ then $p$ is also a limit point of $A$, as desired. Assume $q \notin A$. Then $q$ is a limit point of $A$. Consider a neighborhood $N'$ of $q$ such that $N' \subset A$ and $N' \subset N$. $N'$ exists because neighborhoods are open. So, there is a point $q' \in N'$, which is al so in $N$ and in $A$, as desired. QED.
+_Proof._ To prove $\overline{A}$ is closed, we need to prove all limit points $p$ of $\overline{A}$ is in $\overline{A}$. In order to prove that, we show that for all limit points $p$ of $\overline{A}$, $p$ is a limit point of $A$, i.e. $p \in A' \subset \overline{A}$.
+
+For all $r > 0$, consider the neighborhood $N$ around $p$ with radius $r$, i.e. consider $N_r(p)$. We need to show that there exists a point $q \in N \cap A$. Since $p$ is a limit point of $\overline{A}$, there exists a point $t \in N \cap \overline{A}$. Thus, $t$ is in $A$ or $t$ is a limit point of $A$. When $t \in A$, we have $q = t \in A$. When $t$ is a limit point of $A$, consider a neighborhood $M$ around $t$ such that $M \subset N$ ($M$ must exist because $N$ is an open set and $t$ is in $N$, which makes $t$ an interior point of $N$). Since $t$ is a limit point of $A$, there exists $q \in M \cap A$, which implies that $q \in N \cap A$, as desired. QED.
 
 __Theorem.__ A set $A$ is closed if and only if $A = \overline{A}$.
 

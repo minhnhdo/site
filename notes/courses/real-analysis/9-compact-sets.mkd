@@ -1,0 +1,14 @@
+---
+title: Real Analysis
+subtitle: Compact Sets
+---
+
+## Set Covers
+
+An _open cover_, or cover, of a set $E$ in metric space $X$ is a collection of open sets, denoted $\{G_\alpha\}$, whose union covers, or contains, $E$.
+
+A _subcover_ of $\{G_\alpha\}$ is a subcollection $\{G_{\alpha_\gamma}\}$ that still covers $E$.
+
+For example,
+
+(@) In $\mathbb{R}$, we have $\left[\frac{1}{2}, 1\right)$ has cover $\{V_n\}_{n = 3}^{\infty}$ where $V_n = \left(\frac{1}{n}, 1 - \frac{1}{n}\right)$.

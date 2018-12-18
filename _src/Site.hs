@@ -16,7 +16,7 @@ import           SiteCss (siteCss)
 --------------------------------------------------------------------------------
 
 main :: IO ()
-main = hakyll $ do
+main = hakyllWith defaultConfiguration { previewHost = "192.168.2.213" } $ do
   match "resume.pdf" $ do
     route idRoute
     compile copyFileCompiler

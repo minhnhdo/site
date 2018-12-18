@@ -33,10 +33,6 @@ For example,
 
 A _neighborhood_, or _open ball_, of radius $r$ is $N_r(x) = \{y : d(x, y) < r\}$. It tells us which points are nearby each other.
 
-__Lemma.__ Neighborhoods are open.
-
-_Proof._ Consider a neighborhood $N$ around a point $p$ with radius $r$. Consider a point $q \in N$. So $d(p, q) < r$. Let $a = d(p, q)$. Let $r' = r - a > 0$. Consider $N_{r'}(q)$. For all points $x \in N'$, we have $d(q, x) < r'$. Then $d(x, p) \leq d(x, q) + d(q, p) < r' + a = r.$ Thus, $x \in N$. Therefore, $N_{r'} \subset N_r$. QED.
-
 ### Closed Balls
 
 A _closed ball_ of radius $r$ is $\overline{N_r(x)} = \{y : d(x, y) \leq r\}$.

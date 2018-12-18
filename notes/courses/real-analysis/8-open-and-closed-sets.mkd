@@ -1,6 +1,6 @@
 ---
 title: Real Analysis
-subtitle: Limit points
+subtitle: Open and Closed Sets
 ---
 
 ## Limit Points
@@ -46,6 +46,10 @@ For example,
 (@) In $\mathbb{R}$, any open interval $(a, b)$ is open.
 (@) In $\mathbb{R}$, $\emptyset$ is open.
 (@) In $\mathbb{R}$, $\mathbb{R}$ is open.
+
+__Lemma.__ Neighborhoods are open.
+
+_Proof._ Consider a neighborhood $N$ around a point $p$ with radius $r$. Consider a point $q \in N$. So $d(p, q) < r$. Let $a = d(p, q)$. Let $r' = r - a > 0$. Consider $N_{r'}(q)$. For all points $x \in N'$, we have $d(q, x) < r'$. Then $d(x, p) \leq d(x, q) + d(q, p) < r' + a = r.$ Thus, $x \in N$. Therefore, $N_{r'} \subset N_r$. QED.
 
 ## Closed Sets
 

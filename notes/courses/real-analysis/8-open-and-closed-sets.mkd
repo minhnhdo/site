@@ -28,8 +28,8 @@ A point $p \in X$ is an _interior point_ of $E \subset X$ if $p \in E$ and there
 For example,
 
 (@) $G = \{\frac{1}{n} : n \in \mathbb{Z}\}$ has no interior points.
-(@) In $\mathbb{R}$, $\emptyset$ has no limit points, no interior points, and no isolated points, for $\mathbb{R}$ has no isolated points but all points in $\mathbb{R}$ are interior and are limit points, and $\mathbb{Q}$ has no isolated points but all points in $\mathbb{Q}$ are interior and are limit points.
-(@) In ($\mathbb{R}$, $\text{discrete}$), $\emptyset$ has no limit points, no interior points, and no isolated points, $\mathbb{R}$ has no limit points but all points in $\mathbb{R}$ are interior and isolated, and $\mathbb{Q}$ has no limit points but all points in $\mathbb{Q}$ are interior and isolated.
+(@) In $\mathbb{R}$, $\emptyset$ has no limit points, no interior points, and no isolated points, for $\mathbb{R}$ has no isolated points but all points in $\mathbb{R}$ are interior and are limit points, and $\mathbb{Q}$ has no isolated points and no interior points but all points in $\mathbb{Q}$ are limit points.
+(@) In ($\mathbb{R}$, $\text{discrete}$), $\emptyset$ has no limit points, no interior points, and no isolated points, $\mathbb{R}$ has no limit points but all points in $\mathbb{R}$ are interior and isolated, and $\mathbb{Q}$ has no limit points and no interior points but all points in $\mathbb{Q}$ are isolated.
 
 __Theorem.__ If $p$ is a limit point of $E$, then every neighborhood of $p$ contains infinitely many points of $E$.
 

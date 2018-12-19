@@ -123,11 +123,19 @@ QED.
 
 __Theorem.__ Any arbitrary union of open sets is open.
 
+_Proof._ Let $\{E_\alpha\}_{\alpha \in I}$ be a collection of open sets. Let $E = \bigcup_{\alpha \in I} E_\alpha$. Consider any point $x \in E$. Then, $x \in E_\beta$ for some $\beta \in I$. Since $E_\beta$ is open, there exists a neighborhood $N$ around $x$ such that $N \subset E_\beta$. Hence, $N \subset E$. Therefore, $x$ is an interior point of $E$, as desired. QED.
+
 __Theorem.__ Any arbitrary intersection of closed sets is closed.
+
+_Proof._ Let $\{E_\alpha\}_{\alpha \in I}$ be a collection of closed sets. Consider any such set $E_\alpha$. Since $E_\alpha$ is closed, $E_\alpha^c$ is open. From the previous theorem, we have $\bigcup_{\alpha \in I} E_\alpha^c$ is open. Hence, $\left(\bigcup_{\alpha \in I} E_\alpha^c\right)^c$ is closed. Therefore, $\bigcap_{\alpha \in I} E_\alpha$ is closed. QED.
 
 __Theorem.__ Any finite intersection of open sets is open.
 
+_Proof._ Let $E_1, E_2, \dots, E_n$ be open sets. Let $E = \bigcap_{i = 1}^n E_i$. Consider any point $x \in E$. So, $x \in E_i$, for all $1 \leq i \leq n$. For each $E_i$, there exists a neighborhood $N_{r_i}(x)$ such that $N_{r_i} \subset E_i$, since $E_i$ is an open set. Let $r = \min\{r_1, r_2, \dots, r_n\}$. Then $N_r(x)$ is contained in $E$, as desired. QED.
+
 __Theorem.__ Any finite union of closed sets is closed.
+
+_Proof._ Let $E_1^c, E_2^c, \dots, E_n^c$ be closed sets. Then, $E_1^c, E_2^c, \dots, E_n^c$ are open sets. Hence, $\bigcap_{n = 1}^n E_i^c$ is open. So, $\left(\bigcap_{n = 1}^n E_i^c\right)^c$ is closed. Thus, $\bigcup_{n = 1}^n E_i$ is closed. QED.
 
 ## Dense Sets
 

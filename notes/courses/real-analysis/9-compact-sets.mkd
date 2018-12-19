@@ -11,4 +11,57 @@ A _subcover_ of $\{G_\alpha\}$ is a subcollection $\{G_{\alpha_\gamma}\}$ that s
 
 For example,
 
-(@) In $\mathbb{R}$, we have $\left[\frac{1}{2}, 1\right)$ has cover $\{V_n\}_{n = 3}^{\infty}$ where $V_n = \left(\frac{1}{n}, 1 - \frac{1}{n}\right)$.
+(@) In $\mathbb{R}$, we have $\left[\frac{1}{2}, 1\right)$ has cover $\{V_n\}_{n = 3}^{\infty}$ where $V_n = \left(\frac{1}{n}, 1 - \frac{1}{n}\right)$. It also has cover $\{(0, 2)\}$. It also has cover $\{W_x\}_{x \in \left(\frac{1}{2}, 1\right)}$, where $W_x = N_\frac{1}{10}(x)$. $\{V_n\}_{n = 3}^{\infty}$ has subcovers $\{V_n\}_{n = 22}^{\infty}$ and $\{V_n\}_{n = 1000000}^{\infty}$. $\{(0, 2)\}$ has only one subcover $\{(0, 2)\}$. $\{W_x\}_{x \in \left(\frac{1}{2}, 1\right)}$ has a subcover $\left\{W_\frac{5}{10}, W_\frac{6}{10}, W_\frac{7}{10}, W_\frac{8}{10}, W_\frac{8}{10}, W_\frac{9}{10}\right\}$.
+(@) $[0, 1] \in \mathbb{R}$ has a cover by $\{V_n\} \cup \{W_0, W_1\}$. A finite subcover is $\{W_0, W_1, V_{11}\}$.
+
+## Compact Sets
+
+A set $K$ is _compact_ (in $X$) if every open cover of $K$ contains a finite subcover.
+
+So, $K$ is not compact means there exists an open cover of $K$ with no finite subcover.
+
+For example,
+
+(@) $\left[\frac{1}{2}, 1\right)$ is not compact (see $\{V_n\}$).
+(@) $\mathbb{Z}$ in $\mathbb{R}$ is not compact. One witness cover is $\{U_i\}_{i \in \mathbb{Z}}$, where $U_i = \left(i - \frac{1}{10}, i + \frac{1}{10}\right)$.
+
+__Theorem.__ Finite sets are compact.
+
+_Proof._ Consider some open cover $\{G_\alpha\}$ covering $x_1, x_2, \dots, x_n$. For all $x_i$, choose $G_{\alpha_i}$. Then $\{G_{\alpha_i}\}_{i = 1}^n$ covers the set. QED.
+
+A set $K$ is _bounded_ if there is some ball $N_r(x)$ for some $x \in X$ such that $K \subset N_r(x)$.
+
+__Theorem.__ Compact sets are bounded.
+
+_Proof._ Consider a compact set $K$. Let $B(x) = N_1(x)$, i.e. $B(x)$ are balls of radius $1$. Consider a collection $\{B(x)\}_{x \in K}$, which is an open cover of $K$. By compactness of $K$, there exists a finite subcover $\{B(x_i)\}_{i = 1}^n$. Let $R = max_{1 \leq i \leq n}\{d(x_1, x_i)\}$; this maximum exists because the set $\{x_1, \dots, x_n\}$ is finite. Then $N_{R + 2}(x_1)$ contains all of $K$. QED.
+
+## Relative Open Sets
+
+If $Y \subset X$, where $X$ is a metric space, $Y$ is said to _inherit_ a metric from $X$.
+
+A set $U$ is _open_ in $Y$ (or _open relative_ to $Y$) if every point of $U$ is an interior point of $U$. Here, the notion of interior is using the neighborhoods in $Y$.
+
+__Theorem.__ Suppose $E \subset Y \subset X$. Then $E$ is open in $Y$ if and only if $E = Y \cap G$ for some $G$ open in $X$.
+
+## Compactness is Intrinsic
+
+__Theorem.__ Suppose $K \subset Y \subset X$, where $X$ is a metric space. Then $K$ is compact in $Y$ if and only if $K$ is compact in $X$.
+
+ _Proof._
+
+ ($\Rightarrow$): Assume $K$ is compact in $Y$. Consider any open cover $\{U_\alpha\}$ of $K$ in $X$. Let $V_\alpha = U_\alpha \cap Y$. Then $\{V_\alpha\}$ covers $K$ in $Y$. Since $K$ is compact in $Y$, there exists a finite subcover $\{V_{\alpha_1}, \dots, V_{\alpha_n}\}$ in $Y$. Then $\{U_{\alpha_1}, \dots, U_{\alpha_n}\}$ is a finite subcover of $K$ in $X$, as desired.
+
+ ($\Leftarrow$): Assume $K$ is compact in $X$. Consider any open cover $\{V_\alpha\}$ of $K$ in $Y$. By above theorem, there exists open $U_\alpha$ such that $V_\alpha = U_\alpha \cap Y$. Then $\{U_\alpha\}$ covers $K$ in $X$. Since $K$ is compact in $X$, there exists a finite subcover $\{U_{\alpha_1}, \dots, U_{\alpha_n}\}$. Then $\{V_{\alpha_1}, \dots, V_{\alpha_n}\}$ is a finite subcover of $K$ in $Y$, as desired. QED.
+
+## Relationship between Compact Sets and Closed Sets
+
+__Theorem.__ Compact sets are closed.
+
+_Proof._ Let $K$ be compact. Consider $p \notin K$. We'll show $p$ has a neighborhood that does not intersect $K$ (or $p$ is not a limit point of $K$). For any $q \in K$, let $V_q = N_\frac{r}{2}(q)$ and $U_q = N_\frac{r}{2}(p)$, where $r = d(p, q)$. Notice $\{V_q\}$ is an open cover of $K$. By compactness of $K$, there exists a finite subcover $\{V_{q_1}, \dots, V_{q_n}\}$. Let $W = \bigcap_{i = 1}^n U_{q_i}$. So $W$ is an intersection of finitely many open sets. Hence, $W$ is open (it is a ball of radius $\min \left\{\frac{d(p, q_i)}{2}\right\}$). We have $W \cap V_{q_i} = \emptyset$ for all $q_i$ because $W \subset V_{q_i}$ and $V_{q_i} \cap U_{q_i} = \emptyset$. So $W$ is the desired neighborhood. QED.
+
+For example,
+
+(@) $(0, 1)$ in $\mathbb{R}$ is not compact because it's not closed.
+(@) $\mathbb{R}$ in $\mathbb{R}$ is not compact although it's closed because it's not bounded.
+
+__Theorem.__ A closed subset $B$ of a compact set $K$ is compact.

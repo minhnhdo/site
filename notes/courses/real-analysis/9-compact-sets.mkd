@@ -65,3 +65,21 @@ For example,
 (@) $\mathbb{R}$ in $\mathbb{R}$ is not compact although it's closed because it's not bounded.
 
 __Theorem.__ A closed subset $B$ of a compact set $K$ is compact.
+
+_Proof._ Consider any open cover $\{U_\alpha\}$ of $B$. Since $B$ is closed, $B^c$ is open. So $B^c \cup \{U_\alpha\}$ is an open cover of $K$. Since $K$ is compact, there exists a finite subcover $\{U_{\alpha_1}, \dots, U_{\alpha_n}, B^c\}$ of $K$. Since $B^c \cap B = \emptyset$, $\{U_{\alpha_1}, \dots, U_{\alpha_n}\}$ covers $B$ and it is a finite subcover of the original cover. QED.
+
+__Corollary.__ Suppose set $B$ is closed and set $K$ is compact. Then $B \cap K$ is compact.
+
+Consider intervals $I_n = [a_n, b_n]$. They are _nested_ means if $m > n$ then $a_n \leq a_m \leq b_m \leq b_n$.
+
+__Theorem.__ Nested closed intervals in $\mathbb{R}$ are not empty (in $\mathbb{R}^k$, nested closed $k$-cells are not empty).
+
+ _Proof._ Let $x = \sup\{a_i\}$. It exists because $a_i$'s are bounded by $b_1$. Since $x$ is a supremum, $x \geq a_i$ for all $i$. We have $x \leq b_i$ for all $i$ since $b_i$ is an upper bound of all $a_i$'s (due to nestedness). QED.
+
+ Aside: _Proof that $\mathbb{R}$ is uncountable._ Suppose $\mathbb{R}$ is countable, i.e. $\mathbb{R} = \{x_1, x_2, x_3, \dots\}$. Choose closed intervals $I_1$ that misses $x_1$, $I_2 \subset I_1$ that misses $x_1$ and $x_2$, $I_3 \subset I_2$ that misses $x_1$, $x_2$, and $x_3$, and so on. So, $I_n$ is a nested closed interval. By previous theorem, there exists a point in $\bigcap I_n$ that is not one of the $x_i$'s and is thus not on the original listing. QED.
+
+__Theorem.__ Any closed interval $[a, b]$ is compact (in $\mathbb{$}$). This is also true for $k$-cells in $\mathbb{R}^k$.
+
+_Proof (by contradiction)._ Suppose there is a closed interval $[a, b]$ that is not compact. Then there exists an open cover $\{U_\alpha\}$ for $[a, b]$ which has no finite subcover. Then $\{U_\alpha\}$ covers both $[a, c_1]$ and $[c_1, b]$, at least one of which has no finite subcover of $\{U_\alpha\}$. Without loss of generality, assume $I_1 = [a, c_1]$ has no finite subcover. Subdivide $I_1$ again using $c_2$ which is the half way point of $a$ and $c_1$. Note that at least one of $[a, c_2]$ and $[c_2, c_1]$ has no finite subcover. Continue and we'll obtain $I_1 \supset I_2 \supset I_3 \supset \dots$ of nested closed intervals, each halves at each step and has no finite subcover of $\{U_\alpha\}$. By the nested interval theorem, there exists $x \in I_n$ for all $n$. Then $x$ is in some $U_\widehat{\alpha}$ of the cover $\{U_\alpha\}$. Since $U_\widehat{\alpha}$ is open, there exists an $r > 0$ such that $N_r(x) \subset U_\widehat{\alpha}$. Since the intervals halve at each step, some $I_n$ is contained in $N_r(x)$. This means that $G_\widehat{\alpha}$ covers $I_n$, which contradicts the fact that it has no finite subcover. QED.
+
+## The Heine-Borel Theorem

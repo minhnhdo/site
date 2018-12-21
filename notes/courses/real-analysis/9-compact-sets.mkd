@@ -83,3 +83,36 @@ __Theorem.__ Any closed interval $[a, b]$ is compact (in $\mathbb{$}$). This is 
 _Proof (by contradiction)._ Suppose there is a closed interval $[a, b]$ that is not compact. Then there exists an open cover $\{U_\alpha\}$ for $[a, b]$ which has no finite subcover. Then $\{U_\alpha\}$ covers both $[a, c_1]$ and $[c_1, b]$, at least one of which has no finite subcover of $\{U_\alpha\}$. Without loss of generality, assume $I_1 = [a, c_1]$ has no finite subcover. Subdivide $I_1$ again using $c_2$ which is the half way point of $a$ and $c_1$. Note that at least one of $[a, c_2]$ and $[c_2, c_1]$ has no finite subcover. Continue and we'll obtain $I_1 \supset I_2 \supset I_3 \supset \dots$ of nested closed intervals, each halves at each step and has no finite subcover of $\{U_\alpha\}$. By the nested interval theorem, there exists $x \in I_n$ for all $n$. Then $x$ is in some $U_\widehat{\alpha}$ of the cover $\{U_\alpha\}$. Since $U_\widehat{\alpha}$ is open, there exists an $r > 0$ such that $N_r(x) \subset U_\widehat{\alpha}$. Since the intervals halve at each step, some $I_n$ is contained in $N_r(x)$. This means that $G_\widehat{\alpha}$ covers $I_n$, which contradicts the fact that it has no finite subcover. QED.
 
 ## The Heine-Borel Theorem
+
+__Theorem.__ In $\mathbb{R}$ (or in $\mathbb{R}^n$), $K$ is compact if and only if $K$ is both closed and bounded.
+
+_Proof._
+
+($\Rightarrow$): already done.
+
+($\Leftarrow$): (it is not true in arbitrary metric spaces) Since $K$ is bounded, $K \subset [-r, r]$ for some $r > 0$. Since $K$ is closed (by assumption) and $[-r, r]$ is compact (by the previous theorem), $K$ is also compact. QED.
+
+For $\mathbb{R}^n$, replace closed interval by $n$-cell.
+
+For example,
+
+(@) Discrete metric on infinite set $A$: $A$ is closed and bounded but is not compact.
+(@) Let $\mathcal{C}_b(\mathbb{R})$ is the set of all bounded continuous functions $f : \mathbb{R} \rightarrow \mathbb{R}$. Let $d(f, g) = \sup_{x \in \mathbb{R}}|f(x) - g(x)|$.
+
+## Properties about Compactness
+
+__Theorem.__ $K$ is compact if and only if every infinite subset $E$ of $K$ has a limit point in $K$.
+
+_Proof._
+
+($\Rightarrow$): If no point in $K$ is a limit point of $E$ then each point $q \in E$ has a neighborhood $V_q$ containing no other point of $E$ other than $q$. $\{V_q\}$ covers $E$ with no finite subcover, implying $K$ is not compact, which is a contradiction.
+
+($\Leftarrow$) proof for $\mathbb{R}^n$ but is true for all metric spaces: Need to show $K$ is closed and bounded. Suppose $K$ is not bounded. Choose $x_n$ such that $|x_n| > n$. These have no limit point, which is a contradiction. So $K$ is bounded. Suppose $K$ is not closed. There exists a point $p \notin K$ that is a limit point of $E$. Choose $x_n$ such that $d(x_n, z) < \frac{1}{n}$. $x_n$ has a limit point at $p$ and no other. QED.
+
+__Corollary (Bolzano-Weierstrass Theorem).__ Every bounded infinite subset of $\mathbb{R}^n$ has a limit point in $\mathbb{R}^n$.
+
+_Proof._ If subset $E$ is bounded then $E$ is in some compact $k$-cell. So $E$ has a limit point in the $k$-cell. QED.
+
+__Theorem (Finite intersection property, due to Cantor).__ Let $\{K_\alpha\}$ be compact subsets of some metric space $X$. If any finite subsollection has non-empty intersection then the intersection of all $K_\alpha$ is non-empty.
+
+_Proof (by contradiction)._ Let $U_\alpha = K_\alpha^c$, which is open. Choose an arbitrary $K$ from $\{K_\alpha\}$. If $\bigcap\limits_\alpha K_\alpha = \emptyset$, then $\{U_\alpha\}$ covers $K$. Since $K$ is compact, there exists a finite subcover $\{U_{\alpha_1}, \dots U_{\alpha_n}\}$ covering $K$. So, $K \cap K_{\alpha_1} \cap \dots \cap K_{\alpha_n} = \emptyset$, which constradicts the hypothesis. QED.

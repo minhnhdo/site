@@ -1,0 +1,20 @@
+---
+title: Real Analysis
+subtitle: Connected Sets
+---
+
+## Connected Sets
+
+Two sets $A$ and $B$ in a space $X$ are _separated_ if both $A \cap \overline{B}$ and $\overline{A} \cap B$ are empty.
+
+A set $E$ is _connected_ if $E$ is not the union of two separated sets. Or, equivalently, a set $E$ is _connected_ if $E$ is not the union of two non-trivial relatively open sets in $E$. Or, equivalently, a set $E$ is _connected_ if $E$ is not the union of two non-trivial relatively closed sets in $E$.
+
+Two separated sets are called a _separation_.
+
+For example,
+
+(@) In $\mathbb{R}^2$, $E = \{(x, y) : x, y \in \mathbb{Q}\}$. One separation for $E$ is $A = \{(x, y) : x, y \in \mathbb{Q}, x < \pi\}$ and $B = \{(x, y) : x, y \in \mathbb{Q}, x \geq \pi\}$.
+
+__Theorem.__ Any closed interval $[a, b]$ is connected.
+
+_Proof (by contradiction)._ If not, then there exists a separation $A$ and $B$ with $a \in A$. Let $s = \sup A$. Then, $s \in \overline{A}$. Hence, $s \notin B$. So, $s \in A$. Thus, $s \notin \overline{B}$. Then, there exists $(s - \epsilon, s + \epsilon)$ containing no point of $B$. Hence, $(s - \epsilon, s + \epsilon) \subset A$, which contradicts the fact that $s$ is the supremum of $A$. QED.

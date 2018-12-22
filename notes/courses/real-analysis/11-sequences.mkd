@@ -1,0 +1,16 @@
+---
+title: Real Analysis
+subtitle: Sequences
+---
+
+## Sequences
+
+A _sequence_ $\{p_n\}$ in a metric space $X$ is a function $f : \mathbb{N} \rightarrow X$ which maps $n$ to $p_n$, a point in $X$.
+
+A sequence $\{p_n\}$ _converges_ if there exists a point $p \in X$ such that for any $\epsilon > 0$, there exists an index $\mathcal{N} \in \mathbb{N}$ such that $n \geq \mathcal{N}$ implies $d(p_n, p) < \epsilon$. A convergent sequence is denoted as $p_n \rightarrow p$, read as $p_n$ converges to $p$, or $\lim\limits_{n \rightarrow \infty} p_n = p$, read as $p$ is the limit of a sequence $p_n$.
+
+For example,
+
+(@) In $\mathbb{R}$, the sequence $p_n = \frac{n + 1}{n}$ converges to $1$.
+
+    _Proof._ Consider any $\epsilon > 0$. Choose $\mathcal{N} = \left\lceil\frac{1}{\epsilon}\right\rceil + 1$. For any integer $n \geq \mathcal{N}$, $n > \frac{1}{\epsilon}$. Hence, $\frac{1}{n} < \epsilon$. So, $d(p_n, 1) = \left|\frac{n + 1}{n} - 1\right| = \left|\frac{1}{n}\right| < \epsilon$. QED.

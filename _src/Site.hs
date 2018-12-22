@@ -76,7 +76,7 @@ main = hakyll $ do
                 . dropWhile (/= '/')
                 . reverse
                 . toFilePath
-          courseTitleListingCtx = listField "parts" defaultContext parts
+          courseTitleListingCtx = listField "parts" defaultContext (sortByNumbering =<< parts)
                                <> defaultContext
       pandocCompilerWith defaultHakyllReaderOptions writerOptions
           >>= loadAndApplyTemplate "_templates/course-title.html" courseTitleListingCtx

@@ -78,7 +78,7 @@ __Theorem.__ Nested closed intervals in $\mathbb{R}$ are not empty (in $\mathbb{
 
  Aside: _Proof that $\mathbb{R}$ is uncountable._ Suppose $\mathbb{R}$ is countable, i.e. $\mathbb{R} = \{x_1, x_2, x_3, \dots\}$. Choose closed intervals $I_1$ that misses $x_1$, $I_2 \subset I_1$ that misses $x_1$ and $x_2$, $I_3 \subset I_2$ that misses $x_1$, $x_2$, and $x_3$, and so on. So, $I_n$ is a nested closed interval. By previous theorem, there exists a point in $\bigcap I_n$ that is not one of the $x_i$'s and is thus not on the original listing. QED.
 
-__Theorem.__ Any closed interval $[a, b]$ is compact (in $\mathbb{$}$). This is also true for $k$-cells in $\mathbb{R}^k$.
+__Theorem.__ Any closed interval $[a, b]$ is compact (in $\mathbb{R}$). This is also true for $k$-cells in $\mathbb{R}^k$.
 
 _Proof (by contradiction)._ Suppose there is a closed interval $[a, b]$ that is not compact. Then there exists an open cover $\{U_\alpha\}$ for $[a, b]$ which has no finite subcover. Then $\{U_\alpha\}$ covers both $[a, c_1]$ and $[c_1, b]$, at least one of which has no finite subcover of $\{U_\alpha\}$. Without loss of generality, assume $I_1 = [a, c_1]$ has no finite subcover. Subdivide $I_1$ again using $c_2$ which is the half way point of $a$ and $c_1$. Note that at least one of $[a, c_2]$ and $[c_2, c_1]$ has no finite subcover. Continue and we'll obtain $I_1 \supset I_2 \supset I_3 \supset \dots$ of nested closed intervals, each halves at each step and has no finite subcover of $\{U_\alpha\}$. By the nested interval theorem, there exists $x \in I_n$ for all $n$. Then $x$ is in some $U_\widehat{\alpha}$ of the cover $\{U_\alpha\}$. Since $U_\widehat{\alpha}$ is open, there exists an $r > 0$ such that $N_r(x) \subset U_\widehat{\alpha}$. Since the intervals halve at each step, some $I_n$ is contained in $N_r(x)$. This means that $G_\widehat{\alpha}$ covers $I_n$, which contradicts the fact that it has no finite subcover. QED.
 
@@ -113,21 +113,21 @@ __Corollary (Bolzano-Weierstrass Theorem).__ Every bounded infinite subset of $\
 
 _Proof._ If subset $E$ is bounded then $E$ is in some compact $k$-cell. So $E$ has a limit point in the $k$-cell. QED.
 
-__Theorem (Finite intersection property, due to Cantor).__ Let $\{K_\alpha\}$ be compact subsets of some metric space $X$. If any finite subsollection has non-empty intersection then the intersection of all $K_\alpha$ is non-empty.
+A collection of sets has the _finite intersection property_ if any finite subcollection has a non-empty intersection.
+
+__Theorem (due to Cantor).__ Let $\{K_\alpha\}$ be compact subsets of some metric space $X$. If $\{K_\alpha\}$ has the finite intersection property then the intersection of all $K_\alpha$ is non-empty.
 
 _Proof (by contradiction)._ Let $U_\alpha = K_\alpha^c$, which is open. Choose an arbitrary $K$ from $\{K_\alpha\}$. If $\bigcap\limits_\alpha K_\alpha = \emptyset$, then $\{U_\alpha\}$ covers $K$. Since $K$ is compact, there exists a finite subcover $\{U_{\alpha_1}, \dots U_{\alpha_n}\}$ covering $K$. So, $K \cap K_{\alpha_1} \cap \dots \cap K_{\alpha_n} = \emptyset$, which constradicts the hypothesis. QED.
 
 __Corollary.__ Let $\{K_n\}$ be a sequence of compact nested sets. Then $\bigcap_{n = 1}^\infty K_n$ is non-empty.
 
-__Theorem.__ Any space $X$ is compact $\Leftrightarrow$ Any collection of closed sets $\{D_\alpha\}$ satisfies the finite intersection property (if _every_ finite subcollection has non-empty intersection, then $\bigcap D_\alpha \neq \emptyset$).
+__Theorem.__ Any space $X$ is compact if and only if any collection of closed sets $\{D_\alpha\}$ that satisfies the finite intersection property has a non-empty intersection (or, if _every_ finite subcollection has non-empty intersection, then $\bigcap D_\alpha \neq \emptyset$).
 
 _Proof._
 
 ($\Rightarrow$): Consider $\{D_\alpha\}$. These are closed subset of a compact space $X$, so they are compact. Apply the previous theorem to get the conclusion.
 
-($\Leftarrow$): Consider any open cover $\{U_\alpha\}$ of $X$. Then each $U_\alpha^c$ is closed and thus $\{U_\alpha^c\}$ satisfies the finite intersection property. If $\bigcap\limits_\alpha U_\alpha^c \neq \emptyset$, consider a point $x \in \bigcap\limits_\alpha U_\alpha^c$. So $x \in U_\alpha^c$ for all $\alpha$. Hence, $x \notin U_\alpha$ for all $\alpha$. Thus, $\{U_\alpha\}$ is not a cover of $X$, which is a contradiction. Therefore, $\bigcap\limits_\alpha U_\alpha^c = \emptyset$ and there exists a finite subcollection $\{U_{\alpha_i}^c\}_{i = 1}^n$ such that $\bigcap\limits_{i = 1}^n U_{\alpha_i}^c = \emptyset$. Hence, every point $y$ is not in $\bigcap\limits_{i = 1}^n U_{\alpha_i}^c$, which implies every point $y$ is in $\bigcup\limits_{i = 1}^n U_{\alpha_i}$. Thus, that subcollection of open sets $\{U_{\alpha_i}\}_{i = 1}^n$ is a finite subcover for $X$, as desired. QED.
-
-_Proof for ($\Leftarrow$) by contrapositive._ Assume $X$ is not compact. Hence, there exists an open cover $\{U_\alpha\}$ with no finite subcover. Since $\{U_\alpha\}$ is a cover, every point $y \in X$ is in $\bigcup\limits_\alpha U_\alpha$, which implies every point $y \in X$ is not in $\bigcap\limits_\alpha U_\alpha$. Hence, $\bigcap\limits_\alpha U_\alpha = \emptyset$. Consider any subcollection $\{U_{\alpha_i}\}_{i = 1}^n$. Since $\{U_{\alpha_i}\}_{i = 1}^n$ is not a subcover of $X$, there exists $x \in X \setminus \bigcup\limits_{i = 1}^n U_{\alpha_i}$, which implies $x \in X \cap \bigcap\limits_{i = 1}^n U_{\alpha_i}$. So $\bigcap\limits_{i = 1}^n U_{\alpha_i} \neq \emptyset$, as desired. QED.
+($\Leftarrow$, by contrapositive): Assume $X$ is not compact. Hence, there exists an open cover $\{U_\alpha\}$ with no finite subcover. Since $\{U_\alpha\}$ is a cover, every point $y \in X$ is in $\bigcup\limits_\alpha U_\alpha$, which implies every point $y \in X$ is not in $\bigcap\limits_\alpha U_\alpha$. Hence, $\bigcap\limits_\alpha U_\alpha = \emptyset$. Consider any subcollection $\{U_{\alpha_i}\}_{i = 1}^n$. Since $\{U_{\alpha_i}\}_{i = 1}^n$ is not a subcover of $X$, there exists $x \in X \setminus \bigcup\limits_{i = 1}^n U_{\alpha_i}$, which implies $x \in X \cap \bigcap\limits_{i = 1}^n U_{\alpha_i}$. So $\bigcap\limits_{i = 1}^n U_{\alpha_i} \neq \emptyset$, as desired. QED.
 
 ## Perfect Sets
 

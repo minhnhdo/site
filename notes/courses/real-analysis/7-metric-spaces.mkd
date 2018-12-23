@@ -3,7 +3,7 @@ title: Real Analysis
 subtitle: Metric Spaces
 ---
 
-## Metric Spaces
+# Metric Spaces
 
 A set $X$ is a _metric space_ if there exists a metric $d : X \times X \rightarrow \mathbb{R}$ such that for all $p, q \in X$
 
@@ -29,10 +29,10 @@ For example,
     \end{cases}
     \end{align}
 
-### Open Balls
+# Open Balls
 
 A _neighborhood_, or _open ball_, of radius $r$ is $N_r(x) = \{y : d(x, y) < r\}$. It tells us which points are nearby each other.
 
-### Closed Balls
+# Closed Balls
 
 A _closed ball_ of radius $r$ is $\overline{N_r(x)} = \{y : d(x, y) \leq r\}$.

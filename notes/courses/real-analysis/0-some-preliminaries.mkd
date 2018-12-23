@@ -3,7 +3,7 @@ title: Real Analysis
 subtitle: Some Preliminaries
 ---
 
-## Sets
+# Sets
 
 A _set_ is a collection of objects. These objects are referred to as the _elements_ of the set. For example, $S = \{1, \delta, \circ, \{2, \gamma\}\}$. Note that $|S| = 4$.
 
@@ -17,7 +17,7 @@ If $A \subset B$ and $B \not\subset A$, then set $A$ is a _proper subset_ of $B$
 
 If $A \subset B$ and $B \subset A$, then $A = B$, else $A \neq B$.
 
-### Operations on Sets
+## Operations on Sets
 
 Union: $A \cup B = \{x : x \in A \text{ or } x \in B\}$.
 
@@ -29,13 +29,13 @@ Minus: $A \setminus B = \{x : x \in A \text{ and } x \notin B\}$.
 
 Product: $A \times B = \{(x, y) : x \in A \text{ and } y \in B\}$.
 
-## Relations
+# Relations
 
 A _(binary) relation_ $R$ is a subset of $A \times B$. If $(a, b) \in R$, then we can write $aRb$.
 
 For example, $A$, "is an ancestor of", is a relation on $P \times P$, where $P$ is a set of people. Another example is $\lt$, "less than", is a relation on $\mathbb{Z} \times \mathbb{Z}$.
 
-### Equivalent Relations
+## Equivalent Relations
 
 An _equivalent relation_ $R$ on $S$, often denoted as $\sim$, $\approx$, $\cong$, etc, is a relation on $S \times S$ such that it is
 
@@ -43,6 +43,6 @@ An _equivalent relation_ $R$ on $S$, often denoted as $\sim$, $\approx$, $\cong$
 2. symmetric, i.e. $aRb \implies bRa$, and
 3. transitive, i.e. if $aRb$ and $bRc$ then $aRc$.
 
-### Functions
+## Functions
 
 A _function_ $F$ from $A$ to $B$, denoted $F : A \rightarrow B$, is a relation such that if $aFb$ and $aFb'$ then $b = b'$. Informally, $F$ assigns each $a \in A$ to a single $b \in B$. $A$ is the _domain_ of $F$. $B$ is the _codomain_ of $F$. The _range_ of $F$ is a subset of $B$, given by $\{y \in B : y = F(x) \text{ for some } x \in A\}$. We also write $F(a) = b$.

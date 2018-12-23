@@ -3,10 +3,10 @@ title: Building Rust on Fedora
 tags: rust, fedora, build
 date: 2013-07-27
 ---
-## What is Rust? ##
+# What is Rust?
 [Rust](http://rust-lang.org) is a new programming language headed by [Mozilla](http://mozilla.org), the same people bringing you the [Firefox browser](http://firefox.com).
 
-## Getting Started ##
+# Getting Started
 According to [Rust's wiki](https://github.com/mozilla/rust/wiki/Note-getting-started-developing-Rust), you'll need the following to build the compiler.
 
 1. A recent Linux, OS X 10.6 or later, Win32 or FreeBSD system
@@ -27,7 +27,7 @@ Here is the command to get all of the above.
 sudo yum install -y python make git gcc-c++ curl valgrind pandoc texlive-latex ccache
 ```
 
-## Download and Build Rust ##
+# Download and Build Rust
 ```bash
 git clone git://github.com/mozilla/rust.git
 cd rust

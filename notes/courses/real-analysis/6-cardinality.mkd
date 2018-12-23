@@ -3,7 +3,7 @@ title: Real Analysis
 subtitle: Cardinality
 ---
 
-## Functions
+# Functions
 
 Recall a _function_ $f : A \rightarrow B$ maps $x \in A$ to $f(x) \in B$. $A$ is the _domain_ of $f$. $B$ is the _codomain_ of $f$.
 
@@ -15,7 +15,7 @@ When $f(x) = f(y)$ implies $x = y$, $f$ is _one-to-one_, or an _injection_, deno
 
 When $f$ is one-to-one and onto, $f$ is a _bijection_ ($f$ is denoted by an arrow with a hook on its tail and two heads pointing to the right), and $A$ and $B$ are in _one-to-one correspondence_, denoted $A \sim B$.
 
-## Cardinality
+# Cardinality
 
 Let $J_n := \{1, 2, \dots, n\}$, and $J_0 := \emptyset$.
 

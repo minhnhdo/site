@@ -3,7 +3,7 @@ title: Real Analysis
 subtitle: Sequences
 ---
 
-## Sequences
+# Sequences
 
 A _sequence_ $\{p_n\}$ in a metric space $X$ is a function $f : \mathbb{N} \rightarrow X$ which maps $n$ to $p_n$, a point in $X$.
 

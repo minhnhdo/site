@@ -3,7 +3,7 @@ title: Real Analysis
 subtitle: Open and Closed Sets
 ---
 
-## Limit Points
+# Limit Points
 
 Say $p \in X$ is a _limit point_ of $E \subset X$ if every neighborhood of $p$ (i.e. $N_r(p)$ for all $r$) contains a point $q \neq p$ such that $q \in E$.
 
@@ -13,7 +13,7 @@ For example,
 
 (@) In $\mathbb{R}$, $G = \{\frac{1}{n} : n \in \mathbb{Z}\}$. $0$ is a limit point of $G$. In $\mathbb{R}$, a neighborhood of a point $p$ is an open interval $(p - \epsilon, p + \epsilon)$.
 
-## Isolated Points
+# Isolated Points
 
 A point $p \in X$ is an _isolated point_ of $E \subset X$ if $p \in E$ and $p$ is not a limit point of $E$.
 
@@ -21,7 +21,7 @@ For exmple,
 
 (@) All points of $G = \{\frac{1}{n} : n \in \mathbb{Z}\}$ are isolated.
 
-## Interior Points
+# Interior Points
 
 A point $p \in X$ is an _interior point_ of $E \subset X$ if $p \in E$ and there exists a neighborhood $N$ of $p$ such that $N \subset E$.
 
@@ -37,7 +37,7 @@ _Proof (by contradiction)._ Assume there exists a neighborhood $N$ of $p$ with o
 
 Let $r = \min_{i = 1}^{n} \{d(p, e_i)\}$ ($r$ exists because $e_i$ is finite). But $N_r(p)$ has no points other than $p$, a contradiction! QED.
 
-## Open Sets
+# Open Sets
 
 A set $E$ is _open_ if every point of $E$ is an interior point of $E$.
 
@@ -51,7 +51,7 @@ __Lemma.__ Neighborhoods are open.
 
 _Proof._ Consider a neighborhood $N$ around a point $p$ with radius $r$. Consider a point $q \in N$. So $d(p, q) < r$. Let $a = d(p, q)$. Let $r' = r - a > 0$. Consider $N_{r'}(q)$. For all points $x \in N'$, we have $d(q, x) < r'$. Then $d(x, p) \leq d(x, q) + d(q, p) < r' + a = r.$ Thus, $x \in N$. Therefore, $N_{r'} \subset N_r$. QED.
 
-## Closed Sets
+# Closed Sets
 
 A set $E$ is _closed_ if $E$ contains all its limit points.
 
@@ -65,7 +65,7 @@ For example,
 
 Sets which are both open and closed is called _clopen_.
 
-## Closing a Non-Closed Set
+# Closing a Non-Closed Set
 
 The _closure_ of $E$, denoted $\overline{E}$, is the union of $E$ and the set of its limit points, denoted $E'$. In other words, $\overline{E} = E \cup E'$.
 
@@ -89,7 +89,7 @@ _Proof._ Since $F$ is a closed set, $F$ contains all its limit point. In particu
 
 $\overline{E}$ is the smallest closed set containing $E$.
 
-## Relationship between Open and Closed Sets
+# Relationship between Open and Closed Sets
 
 For a set $E$, the complement of $E$, denoted $E^c$, is $X \setminus E = \{x : x \notin E\}$.
 
@@ -137,7 +137,7 @@ __Theorem.__ Any finite union of closed sets is closed.
 
 _Proof._ Let $E_1^c, E_2^c, \dots, E_n^c$ be closed sets. Then, $E_1^c, E_2^c, \dots, E_n^c$ are open sets. Hence, $\bigcap_{n = 1}^n E_i^c$ is open. So, $\left(\bigcap_{n = 1}^n E_i^c\right)^c$ is closed. Thus, $\bigcup_{n = 1}^n E_i$ is closed. QED.
 
-## Dense Sets
+# Dense Sets
 
 A set $E$ is dense in a metric space $X$ if every point of $X$ is a limit point in $E$ or in $E$. Or, equivalently, $\overline{E} = X$. Also, equivalently, every open set of $X$ contains a point in $E$.
 

@@ -3,9 +3,9 @@ title: Real Analysis
 subtitle: Rational Numbers
 ---
 
-## The Set of Rational Numbers $\mathbb{Q}$
+# The Set of Rational Numbers $\mathbb{Q}$
 
-### Construction of $\mathbb{Q}$
+## Construction of $\mathbb{Q}$
 
 Assume $\mathbb{Z}$, the integers, their arithmetic and order.
 
@@ -27,9 +27,9 @@ Check that $\sim$ is an equivalent relation:
 \end{align}
 Thus, $(a, b) \sim (c, d)$ and $(c, d) \sim (e, f) \implies (a, b) \sim (e, f)$.
 
-### Properties of $\mathbb{Q}$
+## Properties of $\mathbb{Q}$
 
-#### Addition
+### Addition
 
 The chosen definition of addition should not depend on the representative chosen, i.e. it should be _well-defined_. The following definition is not well-defined.
 $$
@@ -50,7 +50,7 @@ To show that the definition is well-defined, we must show that if $(a, b) \sim (
 
 Proof. Assume $(a, b) \sim (a', b')$ and $(c, d) \sim (c', d')$. So, $ab' = ba'$ and $cd' = dc'$. Since $ab' = ba'$, $ab'dd' = ba'dd'$, which is the same as $adb'd' = bda'd'$. Since $cd' = dc'$, $cd'bb' = dc'bb'$, which is the same as $bcb'd' = bdb'c'$. Hence, $adb'd' + bcb'd' = bda'd' + bdb'c'$, which means $(ad + bc)b'd' = bd(a'd' + b'c')$. So, $(ad + bc, bd) \sim (a'd' + b'c', b'd')$. Thus, if $(a, b) \sim (a', b')$ and $(c, d) \sim (c', d')$ then $(ad + bc, bd) \sim (a'd' + b'c', b'd')$. QED.
 
-#### Multiplication
+### Multiplication
 
 Definition of multiplication on $\mathbb{Q}$:
 $$
@@ -59,13 +59,13 @@ $$
 
 Proof of well-definedness. Assume $(a, b) \sim (a', b')$ and $(c, d) \sim (c', d')$. So, $ab' = ba'$ and $cd' = dc'$. Hence, $ab'cd' = ba'dc'$, which is the same as $acb'd' = bda'c'$. So, $(ac, bd) \sim (a'c', b'd')$. Thus, if $(a, b) \sim (a', b')$ and $(c, d) \sim (c', d')$ then $(ac, bd) \sim (a'c', b'd')$. QED.
 
-#### $\mathbb{Q}$ is an Extension of $\mathbb{Z}$
+### $\mathbb{Q}$ is an Extension of $\mathbb{Z}$
 
 $\left\{\frac{n}{1} : n \in \mathbb{Z} \right\}$ behaves the same as $\mathbb{Z}$. The correspondence is $\frac{n}{1} \longleftrightarrow n$.
 
 Proof. Assume $m, n \in \mathbb{Z}$. Note that $\frac{n}{1} + \frac{m}{1} = \frac{n \cdot 1 + m \cdot 1}{1 \cdot 1} = \frac{n + m}{1}$ and $\frac{n}{1} \cdot \frac{m}{1} = \frac{n \cdot m}{1 \cdot 1} = \frac{nm}{1}$. QED.
 
-#### Order on $\mathbb{Q}$
+### Order on $\mathbb{Q}$
 
 An _order_ on a set $S$ is a relation, denoted $\lt$, satisfying
 
@@ -144,7 +144,7 @@ Therefore, if $\frac{a}{b} < \frac{c}{d}$, $(a, b) \sim (a', b')$, and $(c, d) \
 
 Write $x > y$ for $x < y$. Write $x \leq y$ for $x < y$ or $x = y$.
 
-#### $x^2 = 2$ has No Solution in $\mathbb{Q}$
+### $x^2 = 2$ has No Solution in $\mathbb{Q}$
 
 Proof (by constradiction). Assume that $x^2 = 2$ has a solution in $\mathbb{Q}$, i.e. let $x = \frac{p}{q}$, where $p, q \in \mathbb{Z}$, $q \neq 0$, and $p$ and $q$ are in _lowest terms_, i.e. they have no common factors.
 
@@ -156,7 +156,7 @@ Then $q^2$ is even, hence $q$ is even. This contradicts the fact that $p$ and $q
 
 Therefore, $x^2 = 2$ must have no solution in $\mathbb{Q}$. QED.
 
-#### $\mathbb{Q}$ is a Field
+### $\mathbb{Q}$ is a Field
 
 A _field_ is a set $F$ with two _operations_ $+$, and $\times$, satisfying the following _axioms_:
 

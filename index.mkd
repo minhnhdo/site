@@ -2,8 +2,6 @@
 title: Home
 ---
 
-## Welcome ##
-
 Hi, I'm Do Nhat Minh. I'm a Computer Science master student at [University of
 British Columbia](http://ubc.ca). I like to build software with esoteric
 languages, e.g. [Haskell](http://haskell.org), [Rust](http://rust-lang.org), and
@@ -13,7 +11,7 @@ This is my blog about my interests in programming and in other stuff.
 
 You can check out my résumé [here](/resume.pdf).
 
-## Recent posts ##
+# Recent posts
 
 $partial("_templates/post-list.html")$
 

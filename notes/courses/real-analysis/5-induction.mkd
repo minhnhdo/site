@@ -5,11 +5,11 @@ subtitle: Induction
 
 Let $\mathbb{N} = \{1, 2, 3, \dots\}$, the natural numbers.
 
-## The Well-Ordering Property
+# The Well-Ordering Property
 
 The _well-ordering property_ of $\mathbb{N}$: every non-empty subset of $\mathbb{N}$ has a least element. It can be taken as an axiom of $\mathbb{N}$.
 
-## Principle of Induction
+# Principle of Induction
 
 Let $S \subset \mathbb{N}$ such that
 
@@ -36,7 +36,7 @@ For the inductive step, assume for all subsets $S$ of $\mathbb{N}$ with size $n$
 
 Therefore, the principle of induction implies the well-ordering property. QED.
 
-## Proof by Induction
+# Proof by Induction
 
 Let $P(n)$ be statements indexed by the natural numbers $\mathbb{N}$. To show that $P(n)$ is true for all $n$, we must show
 
@@ -47,7 +47,7 @@ Then, by the principle of induction, $P(n)$ is true for all $n$.
 
 The statement $P(k)$ is true is called the _inductive hypothesis_.
 
-## Strong Induction
+# Strong Induction
 
 Let $P(n)$ be statements indexed by the natural numbers $\mathbb{N}$. To show that $P(n)$ is true for all $n$, we must show
 

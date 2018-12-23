@@ -3,7 +3,7 @@ title: Real Analysis
 subtitle: Connected Sets
 ---
 
-## Connected Sets
+# Connected Sets
 
 Two sets $A$ and $B$ in a space $X$ are _separated_ if both $A \cap \overline{B}$ and $\overline{A} \cap B$ are empty.
 

@@ -5,12 +5,12 @@ date: 2013-04-19
 ---
 _In this post, I document how I hacked [coleslaw](https://github.com/redline6561/coleslaw) to add [Github's pages](http://pages.github.com/) integration._
 
-## What is coleslaw? ##
+# What is coleslaw?
 coleslaw is a static blog generator written in Common Lisp, much like [Jekyll](http://jekyllrb.com/), albeit with less features.
 
 I've been using [Octopress](http://octopress.org/) to generate this site. Since I don't know [Ruby](http://ruby-lang.org/), and have to intention to learn it, I can't hack on Octopress's code nor on Jekyll's, which is a shame. As I am learning [Common Lisp](http://en.wikipedia.org/wiki/Common_Lisp/), and wanting to work on something in it, switching to coleslaw seems perfect for me.
 
-## Trying coleslaw out ##
+# Trying coleslaw out
 Here's how I set up and use coleslaw.
 
 * Install [git](http://git-scm.com/)
@@ -84,10 +84,10 @@ cd /path/to/deploy/.curr/
 php -S localhost:8080
 ```
 
-## Motivation ##
+# Motivation
 As I want to put my blog on Github's pages with my custom domain, I need the generator to put a file named `CNAME`, whose content is my custom domain name, in the root of the generated site. However, currently coleslaw only recognizes files with `post` extension, along with files in the `static` folder, and does not allow putting custom files in the root of the site. I need to hack up a way to generate that `CNAME` file under the root of the site.
 
-## Forking the code ##
+# Forking the code
 The usual workflow on Github is to fork the code, hack on it, commit and then send a pull request to the original author.
 
 After forking the code and cloning it to my machine, I need to setup Quicklisp's quickproject according to [this](http://xach.livejournal.com/278047.html) so that it sees my code.
@@ -102,7 +102,7 @@ Since I have generated the posts using coleslaw, Quicklisp must have pulled the 
 ;   https://groups.google.com/forum/?fromgroups=#!topic/quicklisp/CvB3mwsL7l4
 ```
 
-## Hack on it ##
+# Hack on it
 I add a property to class `blog` in order to capture user's intent to integrate with Github's pages.
 
 ```commonlisp
@@ -135,5 +135,5 @@ And then the code to actually generate the `CNAME` file
         )))))
 ```
 
-## (Not) Send a pull request to the original author ##
+# (Not) Send a pull request to the original author
 Since the way I pulled out the domain name from the `blog` object is very ad-hoc, I don't think this code is production quality yet. I should write a separate library to parse the url and then use that to robustly extract the domain name. Until then, I won't send a pull request to the original author.

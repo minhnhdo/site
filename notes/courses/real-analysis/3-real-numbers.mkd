@@ -3,11 +3,11 @@ title: Real Analysis
 subtitle: Real Numbers
 ---
 
-## The Set of Real Numbers $\mathbb{R}$
+# The Set of Real Numbers $\mathbb{R}$
 
 _Theorem:_ $\mathbb{R}$ is an ordered field, with the _least upper bound property_, and $\mathbb{R}$ contains $\mathbb{Q}$ as a _subfield_.
 
-### Construction of $\mathbb{R}$
+## Construction of $\mathbb{R}$
 
 Dedekind: A _cut_ $\alpha$ is a subset of $\mathbb{Q}$ satisfying
 
@@ -19,9 +19,9 @@ For example, the set $A = \{x : x^2 < 2\}$ is not a cut because it does not sati
 
 Let $\mathbb{R} := \{\alpha : \alpha \text{ is a cut}\}$ ($:=$ means defined to be).
 
-### Properties of $\mathbb{R}$
+## Properties of $\mathbb{R}$
 
-#### Order on $\mathbb{R}$
+### Order on $\mathbb{R}$
 
 $\alpha < \beta$ is defined as $\alpha \subsetneq \beta$, or $\alpha$ is a proper subset of $\beta$.
 
@@ -30,7 +30,7 @@ _Proof of well-definedness._ This definition is well-defined because it satisfie
 - trichotomy: for all cuts $\alpha$ and $\beta$, either $\alpha \subsetneq \beta$, $\alpha = \beta$, or $\beta \subsetneq \alpha$, and thus either $\alpha < \beta$, $\alpha = \beta$, or $\beta < \alpha$.
 - transitivity: let $\alpha, \beta, \gamma$ be cuts, $\alpha < \beta$, and $\beta < \gamma$. Since $\alpha < \beta$, $\alpha \subsetneq \beta$. Similarly, $\beta \subsetneq \gamma$. Thus, $\alpha \subsetneq \gamma$, due to transitivity of inclusion. Hence, $\alpha < \gamma$. QED.
 
-#### Operations on $\mathbb{R}$
+### Operations on $\mathbb{R}$
 
 Let $\alpha + \beta := \{r + s : r \in \alpha, s \in \beta\}$.
 
@@ -63,7 +63,7 @@ Multiplicative identity $1^\star := \{q \in \mathbb{Q} : q < 1\}$.
 
 Given a set of cuts $A$, let $\gamma = \bigcup \{x : x \in \alpha\}$. $\gamma$ is a cut and is $\sup A$.
 
-#### $\mathbb{R}$ is an Extension of $\mathbb{Q}$
+### $\mathbb{R}$ is an Extension of $\mathbb{Q}$
 
 $\mathbb{R}$ contains $\mathbb{Q}$ as a _subfield_. Associate $q \in \mathbb{Q}$ with the cut $q^\star = \{r \in \mathbb{Q} : r < q\}$.
 
@@ -73,7 +73,7 @@ Then $\mathbb{Q}' = \{q^\star : q \in \mathbb{Q}\}$ is a subfield of $\mathbb{R}
 
 Notice "$\sqrt{2}$"  sits in $\mathbb{R}$ as the cut $\gamma = \{q : q^2 < 2 \text{ or } q < 0\}$.
 
-#### $\mathbb{R}$ has the Least Upper Bound Property
+### $\mathbb{R}$ has the Least Upper Bound Property
 
 Let $A$ contain cuts with upper bound $\beta$, and $\gamma = \bigcup\{\alpha : \alpha \in A\}$, a subset of $\mathbb{Q}$.
 
@@ -95,7 +95,7 @@ Consequence: the length "$\sqrt{2}$" can be thought of as $\sup\{1, 1.4, 1.41, 1
 
 More generally, $a^{\frac{1}{n}} := \sup\{r \in \mathbb{Q} : r^n < a\}$, i.e. roots exist.
 
-#### Consequences
+### Consequences
 
 _Archimedean property:_ if $x, y \in \mathbb{R}$ and $x > 0$, then there exists $n \in \mathbb{N}$ such that $nx > y$.
 

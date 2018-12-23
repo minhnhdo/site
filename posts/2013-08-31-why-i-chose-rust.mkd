@@ -89,5 +89,5 @@ switch (exp->type) {
 
 In this case, you're screwed. This coding error will only be detected after some bug hunting at 4am during a crunch.
 
-### Conclusion
+# Conclusion
 I hope after reading this post, you will see the point of adding Pattern Matching and Algebraic Type to the feature list of Rust. They not only allow you to write more concise code but also prevent some errors encountered in languages without them. If you like what you see in Rust like I do, please check out its [home page](http://rust-lang.org) for more documentation and tutorials. And if you really like Rust, please consider contributing to it. You can start by looking through the [easy bugs](https://github.com/mozilla/rust/issues?labels=E-easy&page=1&state=open), some of which are documenting the code, to familiarize yourself with Rust and then work your way up to harder ones. Happy Hacking!

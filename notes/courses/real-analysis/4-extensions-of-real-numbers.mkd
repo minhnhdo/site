@@ -3,7 +3,7 @@ title: Real Analysis
 subtitle: Extensions of Real Numbers
 ---
 
-## Extended Real Numbers $\overline{\mathbb{R}}$
+# Extended Real Numbers $\overline{\mathbb{R}}$
 
 $$\overline{\mathbb{R}} := \mathbb{R} \cup \{-\infty, +\infty\}.$$
 
@@ -21,7 +21,7 @@ $$
 
 Every subset of $\overline{\mathbb{R}}$ has a supremum (possibly $+\infty$).
 
-## Euclidean Space $\mathbb{R}^k$
+# Euclidean Space $\mathbb{R}^k$
 
 $$\mathbb{R}^k := \{(x_1, x_2, \dots, x_k) : x_i \in \mathbb{R}\}.$$
 
@@ -37,7 +37,7 @@ $$\vec{x} \cdot \vec{y} := \sum_{i = 1}^{k} x_iy_i.$$
 Norm, or length:
 $$|\vec{x}| := \sqrt{\vec{x} \cdot \vec{x}}.$$
 
-## Complex Number Field $\mathbb{C}$
+# Complex Number Field $\mathbb{C}$
 
 Complex numbers $\mathbb{C} = \mathbb{R}^2$ has a _field structure_.
 
@@ -81,7 +81,7 @@ _Proof._
 \end{align}
 QED.
 
-### Properties of $\mathbb{C}$
+## Properties of $\mathbb{C}$
 $$
 |z| \geq 0. \\
 |\overline{z}| = |z|. \\
@@ -100,7 +100,7 @@ _Proof for $|z + w| \leq |z| + |w|$._
 
 This yields the desired inequality. QED.
 
-## Cauchy - Schwarz Inequality
+# Cauchy - Schwarz Inequality
 
 Version for complex numbers: If $a_1, \dots, a_n, b_1, \dots, b_n \in \mathbb{C}$, then
 $$\left|\sum_{i = 1}^{n} a_i\overline{b_i} \right|^2 \leq \sum_{i = 1}^{n} |a_i|^2 \cdot \sum_{i = 1}^{n} |b_i|^2.$$

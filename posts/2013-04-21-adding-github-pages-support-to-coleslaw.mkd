@@ -5,14 +5,14 @@ date: 2013-04-21
 ---
 _This post wraps up how I hacked [coleslaw](https://github.com/redline6561/coleslaw) to add [Github pages](http://pages.github.com/) integration._
 
-## What's missing ##
+# What's missing
 
 1. Github pages does not support symlinks. Therefore, instead of symlinking `index.html` to `1.html`, I should just copy `1.html` as `index.html`.
 2. I need a way to robustly parse the domain given in `~/.coleslawrc`.
 
-## Fixing it ##
+# Fixing it
 
-### Symlinks ###
+## Symlinks
 
 For the symlinking problem, I can just change the code from symlinking to copying it over. However, it is safer to change the behavior of the code only when the user explicitly asks for it.
 
@@ -46,7 +46,7 @@ Grepping through the code, I can see that `render-indices` produces the indices,
     (run-program "cp 1.html index.html"))
 ```
 
-### Domain ###
+## Domain
 Previously, my ad-hoc solution was to find the first forward-slash in the domain string and substring the domain string from after the second forward-slash. Here's the previous code.
 
 ```commonlisp
@@ -101,6 +101,6 @@ Of course, I need to add puri as a dependency to coleslaw.
                (:file "util"
 ```
 
-## Really Wrap Up ##
+# Really Wrap Up
 
 All that's left now is to send a pull request to the original author, which I have already done.

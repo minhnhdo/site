@@ -3,13 +3,13 @@ title: Real Analysis
 subtitle: Bounds
 ---
 
-## Bounds
+# Bounds
 
 Let set $E \subset S$ be ordered. If there exists $\beta \in S$ such that for all $x \in E$, we have $x \leq \beta$, then $\beta$ is an _upper bound_ for $E$, and $E$ is _bounded above_. Similarly, if there exists $\beta \in S$ such that for all $x \in E$, we have $x \geq \beta$, then $\beta$ is a _lower bound_ for $E$, and $E$ is _bounded below_.
 
 For example, $\frac{3}{2}$ is an upper bound for $A = \{x : x^2 < 2\}$. If not, then there exists $x > \frac{3}{2}$, which implies $x^2 > \frac{9}{4} > 2$. So, $x \notin A$, which is a contradiction. Thus, $\frac{3}{2}$ is an upper bound for $A$.
 
-### The Least Upper Bound
+## The Least Upper Bound
 
 If there is an $\alpha \in S$ such that (1) $\alpha$ is an _upper bound_, and (2) if $\gamma < \alpha \implies \gamma$ is not an upper bound for $E$, then $\alpha$ is the _least upper bound_ for $E$, or _supremum_ of $E$, denoted $\sup E$.
 
@@ -21,11 +21,11 @@ For example, let $S = \mathbb{Q}$.
 (@) $E = \{x : x^2 < 2\}$. $\sup E$ does not exist although $E$ is bounded. One such bound is $\frac{3}{2}$.
 . To show $\sup A = \sup B$, one strategy is to show for all $a \in A$, there exists $b \in B$ such that $a \leq b$, so $\sup A \leq \sup B$; similarly, show $\sup B \leq \sup A$.
 
-### The Least Upper Bound Property
+## The Least Upper Bound Property
 
 A set $S$ has the _least upper bound property_ (or satisfies the _completeness axiom_) if every nonempty subset of $S$ has an upper bound, also has least upper bound in $S$.
 
-### Properties of Suprema
+## Properties of Suprema
 
 a. $\gamma$ is an upper bound of some set $A$ if and only if $\sup A \leq \gamma$.
 b. For all $a \in A$, $a \leq \gamma$ if and only if $\sup A \leq \gamma$.
@@ -34,7 +34,7 @@ d. If $\gamma < \sup A$ then there exists $a \in A$ such that $a > \gamma$ and $
 e. If $A \subset B$ then $\sup A \leq \sup B$.
 f. To show $\sup A = \sup B$, one strategy is to show for all $a \in A$, there exists $b \in B$ such that $a \leq b$, so $\sup A \leq \sup B$; similarly, show $\sup B \leq \sup A$.
 
-### The Greatest Lower Bound
+## The Greatest Lower Bound
 
 The _greatest lower bound_, or _infinum_, of a set $A$ is denoted $\inf A$.
 

@@ -3,7 +3,7 @@ title: Real Analysis
 subtitle: Compact Sets
 ---
 
-## Set Covers
+# Set Covers
 
 An _open cover_, or cover, of a set $E$ in metric space $X$ is a collection of open sets, denoted $\{G_\alpha\}$, whose union covers, or contains, $E$.
 
@@ -14,7 +14,7 @@ For example,
 (@) In $\mathbb{R}$, we have $\left[\frac{1}{2}, 1\right)$ has cover $\{V_n\}_{n = 3}^{\infty}$ where $V_n = \left(\frac{1}{n}, 1 - \frac{1}{n}\right)$. It also has cover $\{(0, 2)\}$. It also has cover $\{W_x\}_{x \in \left(\frac{1}{2}, 1\right)}$, where $W_x = N_\frac{1}{10}(x)$. $\{V_n\}_{n = 3}^{\infty}$ has subcovers $\{V_n\}_{n = 22}^{\infty}$ and $\{V_n\}_{n = 1000000}^{\infty}$. $\{(0, 2)\}$ has only one subcover $\{(0, 2)\}$. $\{W_x\}_{x \in \left(\frac{1}{2}, 1\right)}$ has a subcover $\left\{W_\frac{5}{10}, W_\frac{6}{10}, W_\frac{7}{10}, W_\frac{8}{10}, W_\frac{8}{10}, W_\frac{9}{10}\right\}$.
 (@) $[0, 1] \in \mathbb{R}$ has a cover by $\{V_n\} \cup \{W_0, W_1\}$. A finite subcover is $\{W_0, W_1, V_{11}\}$.
 
-## Compact Sets
+# Compact Sets
 
 A set $K$ is _compact_ (in $X$) if every open cover of $K$ contains a finite subcover.
 
@@ -35,7 +35,7 @@ __Theorem.__ Compact sets are bounded.
 
 _Proof._ Consider a compact set $K$. Let $B(x) = N_1(x)$, i.e. $B(x)$ are balls of radius $1$. Consider a collection $\{B(x)\}_{x \in K}$, which is an open cover of $K$. By compactness of $K$, there exists a finite subcover $\{B(x_i)\}_{i = 1}^n$. Let $R = max_{1 \leq i \leq n}\{d(x_1, x_i)\}$; this maximum exists because the set $\{x_1, \dots, x_n\}$ is finite. Then $N_{R + 2}(x_1)$ contains all of $K$. QED.
 
-## Relative Open Sets
+# Relative Open Sets
 
 If $Y \subset X$, where $X$ is a metric space, $Y$ is said to _inherit_ a metric from $X$.
 
@@ -43,7 +43,7 @@ A set $U$ is _open_ in $Y$ (or _open relative_ to $Y$) if every point of $U$ is 
 
 __Theorem.__ Suppose $E \subset Y \subset X$. Then $E$ is open in $Y$ if and only if $E = Y \cap G$ for some $G$ open in $X$.
 
-## Compactness is Intrinsic
+# Compactness is Intrinsic
 
 __Theorem.__ Suppose $K \subset Y \subset X$, where $X$ is a metric space. Then $K$ is compact in $Y$ if and only if $K$ is compact in $X$.
 
@@ -53,7 +53,7 @@ __Theorem.__ Suppose $K \subset Y \subset X$, where $X$ is a metric space. Then 
 
  ($\Leftarrow$): Assume $K$ is compact in $X$. Consider any open cover $\{V_\alpha\}$ of $K$ in $Y$. By above theorem, there exists open $U_\alpha$ such that $V_\alpha = U_\alpha \cap Y$. Then $\{U_\alpha\}$ covers $K$ in $X$. Since $K$ is compact in $X$, there exists a finite subcover $\{U_{\alpha_1}, \dots, U_{\alpha_n}\}$. Then $\{V_{\alpha_1}, \dots, V_{\alpha_n}\}$ is a finite subcover of $K$ in $Y$, as desired. QED.
 
-## Relationship between Compact Sets and Closed Sets
+# Relationship between Compact Sets and Closed Sets
 
 __Theorem.__ Compact sets are closed.
 
@@ -82,7 +82,7 @@ __Theorem.__ Any closed interval $[a, b]$ is compact (in $\mathbb{R}$). This is 
 
 _Proof (by contradiction)._ Suppose there is a closed interval $[a, b]$ that is not compact. Then there exists an open cover $\{U_\alpha\}$ for $[a, b]$ which has no finite subcover. Then $\{U_\alpha\}$ covers both $[a, c_1]$ and $[c_1, b]$, at least one of which has no finite subcover of $\{U_\alpha\}$. Without loss of generality, assume $I_1 = [a, c_1]$ has no finite subcover. Subdivide $I_1$ again using $c_2$ which is the half way point of $a$ and $c_1$. Note that at least one of $[a, c_2]$ and $[c_2, c_1]$ has no finite subcover. Continue and we'll obtain $I_1 \supset I_2 \supset I_3 \supset \dots$ of nested closed intervals, each halves at each step and has no finite subcover of $\{U_\alpha\}$. By the nested interval theorem, there exists $x \in I_n$ for all $n$. Then $x$ is in some $U_\widehat{\alpha}$ of the cover $\{U_\alpha\}$. Since $U_\widehat{\alpha}$ is open, there exists an $r > 0$ such that $N_r(x) \subset U_\widehat{\alpha}$. Since the intervals halve at each step, some $I_n$ is contained in $N_r(x)$. This means that $G_\widehat{\alpha}$ covers $I_n$, which contradicts the fact that it has no finite subcover. QED.
 
-## The Heine-Borel Theorem
+# The Heine-Borel Theorem
 
 __Theorem.__ In $\mathbb{R}$ (or in $\mathbb{R}^n$), $K$ is compact if and only if $K$ is both closed and bounded.
 
@@ -99,7 +99,7 @@ For example,
 (@) Discrete metric on infinite set $A$: $A$ is closed and bounded but is not compact.
 (@) Let $\mathcal{C}_b(\mathbb{R})$ is the set of all bounded continuous functions $f : \mathbb{R} \rightarrow \mathbb{R}$. Let $d(f, g) = \sup_{x \in \mathbb{R}}|f(x) - g(x)|$.
 
-## Properties about Compactness
+# Properties about Compactness
 
 __Theorem.__ $K$ is compact if and only if every infinite subset $E$ of $K$ has a limit point in $K$.
 
@@ -129,7 +129,7 @@ _Proof._
 
 ($\Leftarrow$, by contrapositive): Assume $X$ is not compact. Hence, there exists an open cover $\{U_\alpha\}$ with no finite subcover. Since $\{U_\alpha\}$ is a cover, every point $y \in X$ is in $\bigcup\limits_\alpha U_\alpha$, which implies every point $y \in X$ is not in $\bigcap\limits_\alpha U_\alpha$. Hence, $\bigcap\limits_\alpha U_\alpha = \emptyset$. Consider any subcollection $\{U_{\alpha_i}\}_{i = 1}^n$. Since $\{U_{\alpha_i}\}_{i = 1}^n$ is not a subcover of $X$, there exists $x \in X \setminus \bigcup\limits_{i = 1}^n U_{\alpha_i}$, which implies $x \in X \cap \bigcap\limits_{i = 1}^n U_{\alpha_i}$. So $\bigcap\limits_{i = 1}^n U_{\alpha_i} \neq \emptyset$, as desired. QED.
 
-## Perfect Sets
+# Perfect Sets
 
 A set is _perfect_ if it is closed and every point is a limit point.
 
@@ -138,7 +138,7 @@ For example,
 (@) Any closed interval $[a, b]$ is perfect.
 (@) $\mathbb{R}$ is perfect.
 
-## Cantor Sets
+# Cantor Sets
 
 Start with $K_0 = [0, 1]$. Construct $K_1$ by removing the middle third of $K_0$, i.e. $K_1 = \left[0, \frac{1}{3}\right] \cup \left[\frac{2}{3}, 1\right]$. Construct $K_2$ by removing the middle thirds of the intervals in $K_1$, i.e. $K_2 = \left[0, \frac{1}{9}\right] \cup \left[\frac{2}{9}, \frac{3}{9}\right] \cup \left[\frac{6}{9}, \frac{7}{9}\right] \cup \left[\frac{8}{9}, 1\right]$. Continue with the construction.
 

@@ -24,7 +24,7 @@ siteCss =
       sBlue     = rgb 0x26 0x8b 0xd2
       sCyan     = rgb 0x2a 0xa1 0x98
       sGreen    = rgb 0x85 0x99 0x00
-      pageWidth = px 960
+      pageWidth = pct 80
       vMargin   = px 20
   in do
     html ? do
@@ -57,7 +57,7 @@ siteCss =
       float floatLeft
       a ? do
         color sBase2
-        fontSize (px 24)
+        fontSize (px 28)
         fontWeight bold
         textDecoration none
       span ? do
@@ -68,7 +68,7 @@ siteCss =
       textAlign end
       a ? do
         color sBase2
-        fontSize (px 22)
+        fontSize (px 20)
         fontWeight bold
         marginLeft (px 18)
         textDecoration none

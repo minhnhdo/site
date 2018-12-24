@@ -14,3 +14,81 @@ For example,
 (@) In $\mathbb{R}$, the sequence $p_n = \frac{n + 1}{n}$ converges to $1$.
 
     _Proof._ Consider any $\epsilon > 0$. Choose $\mathcal{N} = \left\lceil\frac{1}{\epsilon}\right\rceil + 1$. For any integer $n \geq \mathcal{N}$, $n > \frac{1}{\epsilon}$. Hence, $\frac{1}{n} < \epsilon$. So, $d(p_n, 1) = \left|\frac{n + 1}{n} - 1\right| = \left|\frac{1}{n}\right| < \epsilon$. QED.
+
+(@) If $p_n \rightarrow p$ and $p_n \rightarrow p'$ then $p = p'$.
+
+    _Proof (by contradiction)._ Assume $p_n \rightarrow p$ and $p_n \rightarrow q$. Let $\epsilon = d(p, q)$. Then, due to convergence, there exists $\mathcal{N}_p$ such that $n \geq \mathcal{N}_p$ implies $d(p_n, p) < \frac{\epsilon}{2}$. Also, there exists $\mathcal{N}_q$ such that $n \geq \mathcal{N}_q$ implies $d(p_n, q) < \frac{\epsilon}{2}$. Let $\mathcal{N} = \max \{\mathcal{N}_p, \mathcal{N}_q\}$. Then $n \geq \mathcal{N}$ implies $\epsilon = d(p, q) \leq d(p_n, p) + d(p_n, q) < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$, which is a contradiction. QED.
+
+(@) If $\{p_n\}$ is bounded (the range of $p_n$ is bounded) then $p_n$ converges.
+
+    False.
+
+(@) If $p_n$ converges then $p_n$ is bounded.
+
+    _Proof._ Use $\epsilon = 1$. Then there exists $\mathcal{N}$ such that $n \geq \mathcal{N}$ implies $d(p_n, p) < 1$. Let $R = \max\{1, d(p, p_1), \dots, d(p, p_{\mathcal{N} - 1})\}$. All $\{p_n\}$ are in the open ball $B_{R + 1}(p_n)$. QED.
+
+(@) If $p_n \rightarrow p$ then $p$ is a limit point of the range of $\{p_n\}$.
+
+    False.
+
+(@) If $p$ is a limit point of $E$ in $X$, there exists a sequence $\{p_n\}$ in $E$ such that $p_n \rightarrow p$.
+
+    _Proof._ Choose a sequence $\{p_n\}$, where each $p_n$ is in an open ball $B_\frac{1}{n}(p)$. Then $p_n \rightarrow p$. QED.
+
+(@) $p_n \rightarrow p$ if and only if every neighborhood of $p$ contains all but finitely many $p_n$.
+
+    TRUE.
+
+IMPORTANT IDEA: to show convergence, you must fine an $\mathcal{N}$ for every $\epsilon$.
+
+Consider sequences $\{s_n\}$, $\{t_n\}$ in $\mathbb{C}$ where $s_n \rightarrow s$ and $t_n \rightarrow t$.
+
+__Theorem.__ $\lim\limits_{n \rightarrow \infty} (c + s_n) = c + s$.
+
+_Proof._ Fix $\epsilon > 0$. Then, there exists $\mathcal{N}$ such that $n \geq \mathcal{N}$ implies $|s_n - s| < \epsilon$. Hence, for this $\mathcal{N}$, $n \geq \mathcal{N}$ implies $|(c + s_n) - (c - s)| = |s_n - s| < \epsilon$, as desired. QED.
+
+__Theorem.__ $\lim\limits_{n \rightarrow \infty} (s_n + t_n) = s + t$.
+
+_Proof._ Given $\epsilon > 0$, there exist $\mathcal{N}_s$ and $\mathcal{N}_t$ such that if $n \geq \mathcal{N}_s$ then $|s_n - s| < \frac{\epsilon}{2}$ and if $n \geq \mathcal{N}_t$ then $|t_n - t| < \frac{\epsilon}{2}$. Let $\mathcal{N} = \max\{\mathcal{N}_s, \mathcal{N}_t\}$. Then, for $n \geq \mathcal{N}$, $|(s_n + t_n) - (s + t)| \leq |s_n - s| + |t_n - t| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$, as desired. QED.
+
+__Theorem.__ $\lim\limits_{n \rightarrow \infty} (cs_n) = cs$.
+
+_Proof._ Fix $\epsilon > 0$. Then, there exists $\mathcal{N}$ such that $n \geq \mathcal{N}$ implies $|s_n - s| < \frac{\epsilon}{|c|}$. Hence, for this $\mathcal{N}$, $n \geq \mathcal{N}$ implies $|cs_n - cs| = |c||s_n - s| < \epsilon$, as desired. QED.
+
+__Theorem.__ $\lim\limits_{n \rightarrow \infty} (s_nt_n) = st$.
+
+_Proof._ Fix $\epsilon > 0$. Let $k = \max\{1, \epsilon, s, t\}$. Then, there exist $\mathcal{N}_s$ and $\mathcal{N}_t$ such that if $n \geq \mathcal{N}_s$ then $|s_n - s| < \frac{\epsilon}{3k}$ and if $n \geq \mathcal{N}_t$ then $|t_n - t| < \frac{\epsilon}{3k}$. Let $\mathcal{N} = \max\{\mathcal{N}_s, \mathcal{N}_t\}$. Then, for $n \geq \mathcal{N}$, $|s_nt_n - st| = |(s_n - s)(t_n - t) + s(t_n - t) + t(s_n - s)| < \frac{\epsilon^2}{9k^2} + \frac{\epsilon}{3} + \frac{\epsilon}{3} < \frac{\epsilon}{9k} + \frac{\epsilon}{3} + \frac{\epsilon}{3} < \epsilon$, as desired. QED.
+
+# Subsequences
+
+Suppose $\{p_n\}$ is a sequence. Let $n_1 < n_2 < n_3 < \dots$, where $n_i \in \mathbb{N}$, be an increasing sequence. Then, $\{p_{n_i}\}$ is a subsequence.
+
+If $p_n \rightarrow p$ then every subsequence converges to $p$.
+
+For example,
+
+(@) The sequence $\{1, \pi, \frac{1}{2}, \pi, \frac{1}{3}, \pi, \dots\}$ does not converge. But it has a subsequence $\{1, \frac{1}{2}, \frac{1}{3}, \dots\}$ that converges to $0$ and another subsequence $\{\pi, \pi, \pi, \dots\}$ that converges to $\pi$, which is called a _subsequential limit_.
+
+A metric space is _sequentially compact_ if every sequence has a convergent subsequence.
+
+__Theorem.__ If a metric space $X$ is compact then $X$ is sequentially compact. Or, equivalently, in a compact metric space, every sequence has a subsequence converging to a point of $X$.
+
+(In fact, compactness is equivalent to sequential compactness.)
+
+_Proof._ Let $R = \text{range}\{p_n\}$. If $R$ is finite, then some $p \in p_n$ is achieved infinitely many times. Use that subsequence. If $R$ is infinite, then by previous theorem, since $X$ is compact, $R$ has a limit point $p$. Use that point $p$ and its nested neighborhoods to construct a subsequence convergent on $p$. QED.
+
+__Corollary.__ Every bounded sequence in $\mathbb{R}^k$ contains a convergent subsequence.
+
+# Cauchy Sequence
+
+A sequence $\{p_n\}$ is a _Cauchy sequence_ if for every $\epsilon > 0$, there exists $\mathcal{N}$ such that $m, n \geq \mathcal{N}$ implies $d(p_m, p_n) < \epsilon$.
+
+__Theorem.__ If $\{p_n\}$ converges, then $\{p_n\}$ is a Cauchy sequence.
+
+_Proof._ Given $\epsilon > 0$, there exists $\mathcal{N}$ such that if $n \geq \mathcal{N}$ then $|p_n - p| < \frac{\epsilon}{2}$. Then, for this $\mathcal{N}$, $m, n \geq \mathcal{N}$ implies $d(p_m, p_n) \leq d(p_m, p) + d(p_n, p) < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$, as desired. QED.
+
+A metric space $X$ is _complete_ if every Cauchy sequence converges to a point of $X$.
+
+For example,
+
+(@) $\mathbb{Q}$ is not complete.

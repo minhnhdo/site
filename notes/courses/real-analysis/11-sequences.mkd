@@ -87,6 +87,8 @@ __Theorem.__ If $\{p_n\}$ converges, then $\{p_n\}$ is a Cauchy sequence.
 
 _Proof._ Given $\epsilon > 0$, there exists $\mathcal{N}$ such that if $n \geq \mathcal{N}$ then $|p_n - p| < \frac{\epsilon}{2}$. Then, for this $\mathcal{N}$, $m, n \geq \mathcal{N}$ implies $d(p_m, p_n) \leq d(p_m, p) + d(p_n, p) < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$, as desired. QED.
 
+# Complete Spaces
+
 A metric space $X$ is _complete_ if every Cauchy sequence converges to a point of $X$.
 
 For example,

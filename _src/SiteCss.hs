@@ -25,7 +25,6 @@ siteCss =
       sCyan     = rgb 0x2a 0xa1 0x98
       sGreen    = rgb 0x85 0x99 0x00
       pageWidth = pct 90
-      vMargin   = px 20
   in do
     html ? do
       color sBase02
@@ -41,13 +40,13 @@ siteCss =
     h1 # "#pagetitle" <> h1 # firstOfType ? do
       fontSize (px 30)
       marginTop (px 0)
-      marginBottom vMargin
+      marginBottom (px 20)
       lineHeight (pct 100)
     body ? do
+      width pageWidth
       fontSize (px 16)
       sym2 margin (px 0) auto
     header ? do
-      width pageWidth
       sym2 margin (px 10) auto
       sym2 padding (px 10) 0
       borderBottom solid (px 1) sBase00
@@ -63,14 +62,12 @@ siteCss =
           fontSize (px 18)
           marginRight (px 18)
     article ? do
-      width pageWidth
       sym2 margin (px 0) auto
       sym2 padding (px 30) 0
     footer ? do
       color sBase01
       fontSize (px 12)
       textAlign end
-      width pageWidth
       sym2 margin (px 5) auto
     h1 ? fontSize (px 24)
     h2 ? fontSize (px 20)

@@ -1,0 +1,40 @@
+---
+title: Real Analysis
+subtitle: Series
+---
+
+# Series
+
+Given a sequence $\{a_n\}$, define $\sum\limits_{i = p}^q a_i := a_p + a_{p + 1} + \dots + a_q$.
+
+Let $s_n = \sum\limits_{k = 1}^n a_k$, called the _$n$th partial sum_.
+
+Then $\{s_n\}$ is a sequence, denoted $\sum\limits_{n = 1}^\infty a_n$ or sometimes $\sum a_n$, called an _infinite series_, which may or may not converge. If it does converge, say to some number $s$, then write $\sum\limits_{n = 1}^\infty a_n = s$.
+
+Notice: $\sum\limits_{n = 1}^\infty a_n = \lim\limits_{n \rightarrow \infty} s_n = \lim\limits_{n \rightarrow \infty} \sum\limits_{k = 1}^n a_k$.
+
+# Convergent Series
+
+__Theorem.__ A series $\sum a_n$ _converges_ if and only if for every $\epsilon > 0$, there exists $\mathcal{N}$ such that $m, n > \mathcal{N}$ implies $\left|\sum\limits_{k = n}^m a_k\right| < \epsilon$.
+
+__Corollary.__ If $\sum a_n$ converges then $\lim\limits_{n \rightarrow \infty} a_n = 0$.
+
+__Theorem (non-negative series).__ If $a_n \geq 0$, then $\sum a_n$ converges if and only if the partial sums are bounded.
+
+_Proof._ If $a_n \geq 0$, the partial sums are monotonically increasing. But they are also bounded. So they must converge. QED.
+
+__Theorem (comparison test).__
+
+(a) If $|a_n| \leq c_n$ for $n$ large enough (say $n > \mathcal{N}_1$) and $\sum c_n$ converges then $\sum a_n$ converges.
+
+(b) If $a_n \geq d_n \geq 0$ for $n$ large enough (say $n > \mathcal{N}_1$) and $\sum d_n$ diverges then $\sum a_n$ diverges.
+
+_Proof of (a)._ Fix $\epsilon > 0$. Since $\sum c_n$ converges, there exists $\mathcal{N}_2$ such that $m, n > \mathcal{N}_2$ implies $\left|\sum\limits_{k = n}^m c_k\right| < \epsilon$. Let $\mathcal{N} = \max\{\mathcal{N}_1, \mathcal{N}_2\}$. For $m, n > \mathcal{N}$, $\left|\sum\limits_{k = n}^m a_k\right| \leq \sum\limits_{k = n}^m |a_k| \leq \sum\limits_{k = n}^m c_k < \epsilon$, as desired. QED.
+
+_Proof of (b)._ The contrapositive of (b) is if $\sum a_n$ converges, so does $\sum d_n$, which is shown in (a). QED.
+
+__Theorem (geometric series).__ If $|x| < 1$ then $\sum\limits_{n = 0}^\infty x^n = \frac{1}{1 - x}$. If $|x| \geq 1$ then $\sum\limits_{n = 0}^\infty x^n$ diverges.
+
+_Proof._ Consider $|x| < 1$. Let $s_n = 1 + x + \dots + x^n$. Then $s_n = \frac{1 - x^{n + 1}}{1 - x}$. So, $\lim\limits_{n \rightarrow \infty} s_n = \frac{1}{1 - x} \cdot \lim\limits_{n \rightarrow \infty} (1 - x^{n + 1}) = \frac{1}{1 - x}$.
+
+Consider $|x| \geq 1$. Terms don't go to $0$ so the $\sum x_n$ diverges. QED.

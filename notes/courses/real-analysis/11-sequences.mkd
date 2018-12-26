@@ -94,3 +94,54 @@ A metric space $X$ is _complete_ if every Cauchy sequence converges to a point o
 For example,
 
 (@) $\mathbb{Q}$ is not complete.
+
+__Theorem.__ Compact metric spaces are complete.
+
+_Proof._ Let $\{x_n\}$ be a Cauchy sequence in $X$. Since $X$ is compact, it is sequentially compact. So, there exists a subsequence $\{x_{n_k}\}$ converging to a point $x \in X$. Fix $\epsilon > 0$. The fact that sequence $\{x_n\}$ is a Cauchy sequence implies there exists $\mathcal{N}_1$ such that if $i, j \geq \mathcal{N}$ then $d(x_i, x_j) < \frac{\epsilon}{2}$. The fact that $\{x_{n_k}\}$ converges to $x$ implies there exists $\mathcal{N}_2$ such that if $n_k \geq \mathcal{N}_2$ then $d(x_{n_k}, x) < \frac{\epsilon}{2}$. Let $\mathcal{N} = \max\{\mathcal{N}_1, \mathcal{N}_2\}$. Fix any $n_k \geq \mathcal{N}$ and any $n \geq \mathcal{N}$. By triangle inequality, $d(x_n, x) \leq d(x_n, x_{n_k}) + d(x_{n_k}, x) < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$. Since $\{x_n\}$ is arbitary, $X$ is complete. QED.
+
+__Corollary.__ $[0, 1]$ is complete.
+
+__Corollary.__ $k$-cells in $\mathbb{R}^k$ are complete.
+
+__Corollary.__ Any closed subset of a compact set is complete.
+
+__Corollary.__ $\mathbb{R}^k$ is complete.
+
+_Proof._ If $\{x_n\}$ is Cauchy, it's bounded. So it's in some $k$-cell in $\mathbb{R}^k$. Hence, $\{x_n\}$ converges because $k$-cells are complete. QED.
+
+For example,
+
+(@) $x_n = 1 + \frac{1}{2} + \dots + \frac{1}{n}$ does not converge.
+
+    _Proof._ Given $n > m$, consider $|x_n - x_m| = \frac{1}{m + 1} + \frac{1}{m + 2} + \dots + \frac{1}{n} \geq \frac{n - m}{n} = 1 - \frac{m}{n}$. Let $n = 2m$. We have $|x_{2m} - x_m| \geq \frac{1}{2}$. So the sequence is not Cauchy. Thus, it does not converge. QED.
+
+(@) Let $x_1 = 1$, $x_2 = 2$, and $x_n = \frac{x_{n - 1} + x_{n - 2}}{2}$. Every subsequence of it is Cauchy so it is convergent.
+
+__Theorem.__ Every metric space $(X, d)$ has a _completion_ $(X^\star, d)$.
+
+Idea: Given $X$, let $X^\star$ be the set of all Cauchy sequences in $X$ under an equivalent relation $\sim$, where $\{p_n\} \sim \{q_n\}$ if $\lim\limits_{n \rightarrow \infty} d(p_n, q_n) = 0$. For $P, Q \in X^\star$, let $\Delta(P, Q) := \lim\limits_{n \rightarrow \infty} d(p_n, q_n)$, where $\{p_n\}$ and $\{q_n\}$ are representatives of $P$ and $Q$, respectively.
+
+# Bounded Sequences
+
+_Monotonically increasing_ sequences: $\dots \leq s_{n - 1} \leq s_n \leq \dots$
+
+_Monotonically decreasing_ sequences: $\dots \geq s_{n - 1} \geq s_n \geq \dots$
+
+__Theorem.__ Bounded monotonic sequences converge to their suprema (if increasing) or to their infima (if decreasing).
+
+_Proof._ Fix a bounded monotonically increasing sequence $\{x_n\}. Let $s = \sup(\text{range}\{x_n\})$. So, for all $\epsilon > 0$, there exists $\mathcal{N}$ such that $s - \epsilon \leq x_\mathcal{N} \leq s$. Then, for all $n \geq \mathcal{N}$, $s - \epsilon \leq x_\mathcal{N} \leq x_n \leq s$, as desired. QED.
+
+# Divergent Sequences
+
+Write $x_n \rightarrow +\infty$ if for all $\mathcal{M} \in \mathbb{R}$, there exist $\mathcal{N}$ such that $n \geq \mathcal{N}$ implies $x_n > \mathcal{M}$.
+
+Write $x_n \rightarrow -\infty$ if for all $\mathcal{M} \in \mathbb{R}$, there exist $\mathcal{N}$ such that $n \geq \mathcal{N}$ implies $x_n < \mathcal{M}$.
+
+Given sequence $\{x_n\}$, let $E$ be the set of all possible subsequential limits of $\{x_n\}$ (allowing $+\infty$ and $-\infty$, i.e. $E$ is in extended $\mathbb{R}$). Then $E$ is closed. Let $s^\star = \sup E$ and $s_\star = \inf E$. Then $\limsup\limits_{n \rightarrow \infty} s_n = s^\star$, called the _upper limit_ of $s_n$, and $\liminf\limits_{n \rightarrow \infty} s_n = s_\star$, called the _lower limit_ of $s_n$.
+
+Alternatively, $\limsup\limits_{n \rightarrow \infty} s_n = \lim\limits_{n \rightarrow \infty}\left(\sup\limits_{k \geq n} s_k\right)$. Similarly, $\liminf\limits_{n \rightarrow \infty} s_n = \lim\limits_{n \rightarrow \infty}\left(\inf\limits_{k \geq n} s_k\right)$.
+
+For example,
+
+(@) If $s_n \rightarrow s$ then $\liminf s_n = \limsup s_n = s$.
+(@) If $\{s_n\} = \{0.1, \frac{3}{2}, 0.11, \frac{4}{3}, 0.111, \frac{5}{4}, 0.1111, \frac{6}{5}, \dots\}$ then $\limsup s_n = 1$ and $\liminf s_n = \frac{1}{9}$.

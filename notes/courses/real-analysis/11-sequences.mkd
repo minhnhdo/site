@@ -81,11 +81,11 @@ __Corollary.__ Every bounded sequence in $\mathbb{R}^k$ contains a convergent su
 
 # Cauchy Sequence
 
-A sequence $\{p_n\}$ is a _Cauchy sequence_ if for every $\epsilon > 0$, there exists $\mathcal{N}$ such that $m, n \geq \mathcal{N}$ implies $d(p_m, p_n) < \epsilon$.
+A sequence $\{p_n\}$ is a _Cauchy sequence_ if for every $\epsilon > 0$, there exists $\mathcal{N}$ such that $m, n > \mathcal{N}$ implies $d(p_m, p_n) < \epsilon$.
 
 __Theorem.__ If $\{p_n\}$ converges, then $\{p_n\}$ is a Cauchy sequence.
 
-_Proof._ Given $\epsilon > 0$, there exists $\mathcal{N}$ such that if $n \geq \mathcal{N}$ then $|p_n - p| < \frac{\epsilon}{2}$. Then, for this $\mathcal{N}$, $m, n \geq \mathcal{N}$ implies $d(p_m, p_n) \leq d(p_m, p) + d(p_n, p) < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$, as desired. QED.
+_Proof._ Given $\epsilon > 0$, there exists $\mathcal{N}$ such that if $n \geq \mathcal{N}$ then $|p_n - p| < \frac{\epsilon}{2}$. Then, for this $\mathcal{N}$, $m, n > \mathcal{N}$ implies $d(p_m, p_n) \leq d(p_m, p) + d(p_n, p) < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$, as desired. QED.
 
 # Complete Spaces
 
@@ -97,7 +97,7 @@ For example,
 
 __Theorem.__ Compact metric spaces are complete.
 
-_Proof._ Let $\{x_n\}$ be a Cauchy sequence in $X$. Since $X$ is compact, it is sequentially compact. So, there exists a subsequence $\{x_{n_k}\}$ converging to a point $x \in X$. Fix $\epsilon > 0$. The fact that sequence $\{x_n\}$ is a Cauchy sequence implies there exists $\mathcal{N}_1$ such that if $i, j \geq \mathcal{N}$ then $d(x_i, x_j) < \frac{\epsilon}{2}$. The fact that $\{x_{n_k}\}$ converges to $x$ implies there exists $\mathcal{N}_2$ such that if $n_k \geq \mathcal{N}_2$ then $d(x_{n_k}, x) < \frac{\epsilon}{2}$. Let $\mathcal{N} = \max\{\mathcal{N}_1, \mathcal{N}_2\}$. Fix any $n_k \geq \mathcal{N}$ and any $n \geq \mathcal{N}$. By triangle inequality, $d(x_n, x) \leq d(x_n, x_{n_k}) + d(x_{n_k}, x) < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$. Since $\{x_n\}$ is arbitary, $X$ is complete. QED.
+_Proof._ Let $\{x_n\}$ be a Cauchy sequence in $X$. Since $X$ is compact, it is sequentially compact. So, there exists a subsequence $\{x_{n_k}\}$ converging to a point $x \in X$. Fix $\epsilon > 0$. The fact that sequence $\{x_n\}$ is a Cauchy sequence implies there exists $\mathcal{N}_1$ such that if $i, j > \mathcal{N}$ then $d(x_i, x_j) < \frac{\epsilon}{2}$. The fact that $\{x_{n_k}\}$ converges to $x$ implies there exists $\mathcal{N}_2$ such that if $n_k \geq \mathcal{N}_2$ then $d(x_{n_k}, x) < \frac{\epsilon}{2}$. Let $\mathcal{N} = \max\{\mathcal{N}_1, \mathcal{N}_2\}$. Fix any $n_k, n > \mathcal{N}$. By triangle inequality, $d(x_n, x) \leq d(x_n, x_{n_k}) + d(x_{n_k}, x) < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$. Since $\{x_n\}$ is arbitary, $X$ is complete. QED.
 
 __Corollary.__ $[0, 1]$ is complete.
 

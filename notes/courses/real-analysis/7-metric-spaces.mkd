@@ -31,8 +31,8 @@ For example,
 
 # Open Balls
 
-A _neighborhood_, or _open ball_, of radius $r$ is $N_r(x) = \{y : d(x, y) < r\}$. It tells us which points are nearby each other.
+A _neighborhood_, or _open ball_, of radius $r$ is $N_r(x) = \{y : d(x, y) < r\}$, alternatively denoted as $B_r(x)$ or $B(x; r)$. It tells us which points are nearby each other.
 
 # Closed Balls
 
-A _closed ball_ of radius $r$ is $\overline{N_r(x)} = \{y : d(x, y) \leq r\}$.
+A _closed ball_ of radius $r$ is $\overline{N_r(x)} = \{y : d(x, y) \leq r\}$, alternatively denoted as $B_r[x]$ or $B[x; r]$.

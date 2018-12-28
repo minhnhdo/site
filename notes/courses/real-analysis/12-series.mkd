@@ -56,3 +56,54 @@ For example,
     Its convergence is very rapid. Consider $e - s_n = \frac{1}{(n + 1)!} + \frac{1}{(n + 2)!} + \dots < \frac{1}{(n + 1)!}\underbrace{\left(1 + \frac{1}{n + 1} + \frac{1}{(n + 1)^2} + \dots\right)}_{\text{goes to } \frac{n+1}{n}}$, which goes to $\frac{1}{n!n}$.
 
     $e$ is irrational. If $e = \frac{m}{n}$ then $0 < \underbrace{n!(e - s_n)}_{\text{integer}} < \frac{1}{n}$. There is no integer between $0$ and $\frac{1}{n}$!
+
+__Theorem (root test).__ Given $\sum a_n$, let $\alpha = \limsup\limits_{n \rightarrow \infty} \sqrt[n]{|a_n|}$. If $\alpha < 1$, the series converges. If $\alpha > 1$, the series divergers. If $\alpha = 1$, the test is inconclusive.
+
+_Proof (by comparison with the geometric series)._ If $\alpha < 1$, choose $\beta$ such that $\alpha < \beta < 1$. Then, by the definition of $\limsup$, there exists $\mathcal{N}$ such that $n \geq \mathcal{N}$ implies $\sqrt[n]{|a_n|} < \beta$. So, $|a_n| < \beta^n|$ for $n \geq \mathcal{N}$. But $\sum \beta^n$ converges, so $\sum |a_n|$ converges. Hence, $\sum a_n$ converges. If $\alpha > 1$, there exists a subsequence $\sqrt[n_k]{|a_{n_k}|} \rightarrow \alpha > 1$. So, $|a_{n_k}| > 1$ for infinitely many terms. Hence, terms do not go to zero. Thus, the series does not converge. If $\alpha = 1$, note that $\sum \frac{1}{n}$ diverges and $\sum \frac{1}{n^2}$ converges, both of which have $\alpha = 1$. QED.
+
+__Theorem (ratio test).__ $\sum a_n$ converges if $\limsup\limits_{n \rightarrow \infty} \left|\frac{a_{n + 1}}{a_n}\right| < 1$. The series diverges if $\left|\frac{a_{n+1}}{a_n}\right| \geq 1$ for $n$ large enough.
+
+_Proof (by comparison)._ If $\limsup\limits_{n \rightarrow \infty} \left|\frac{a_{n + 1}}{a_n}\right| < 1$, there exists $\beta$ such that $\limsup\limits_{n \rightarrow \infty} \left|\frac{a_{n + 1}}{a_n}\right| < \beta < 1$. Then, by definition of $\limsup$, there exists $\mathcal{N}$ such that $\left|\frac{a_{n + 1}}{a_n}\right| < \beta < 1$ for all $n \geq \mathcal{N}$. So, $|a_{n + 1}| < \beta|a_n| < \beta^2|a_{n - 1}| < \beta^3|a_{n - 2}| < \dots$. Hence, $|a_{\mathcal{N} + k}| < \dots < \beta^k|a_\mathcal{N}|$. Thus, $\sum\limits_{k = 1}^n a_{\mathcal{N} + k} \leq a_\mathcal{N} \sum\limits_{k = 1}^n \beta^k$. But $\sum\limits_{k = 1}^n \beta^k$ converges. Thus, $\sum a_n$ converges. For the divergence case, the terms don't go to zero. QED.
+
+For example,
+
+(@) If $c_n$ and $z$ are complex, $\sum\limits_{n = 0}^\infty c_nz^n = c_0 + c_1z + c_2z^2 + \dots$ is the _power series_.
+
+__Theorem.__ If $\alpha = \limsup \sqrt[n]{|c_n|}$ and $R = \frac{1}{\alpha}$ then $\sum c_nz^n$ converges if $|z| < R$ and it diverges if $|z| > R$. $R$ is called the _radius of convergence_.
+
+Notice $\sqrt[n]{|c_nz^n|} = z\sqrt[n]{|c_n|}$, hence the radius.
+
+__Summation by Parts:__ Given sequences $\{a_n\}$ and $\{b_n\}$, let $A_n = \sum\limits_{k = 0}^n a_k$ for $n > 0$. Set $A_{-1} = 0$. Then $\sum\limits_{n = p}^q a_nb_n = \sum\limits_{n = p}^{q - 1} A_n(b_n - b_{n + 1}) + A_qb_q - A_{p - 1}b_p$.
+
+__Theorem.__ If $A_n$ is bounded and $b_n$ decreases and approaches $0$ then $\sum a_nb_n$ converges.
+
+_Proof._ Say $A_n \leq M$. Given $\epsilon > 0$, there exists $\mathcal{N}$ such that $b_\mathcal{N} \leq \frac{\epsilon}{2M}$. For $q \geq p \geq \mathcal{N}$, $\sum\limits_{n = p}^q a_nb_n = \sum\limits_{n = p}^{q - 1} A_n(b_n - b_{n + 1}) + A_qb_q - A_{p - 1}b_p \leq M\left|\sum\limits_{n = p}^{q - 1} (b_n - b_{n + 1}) + b_p + b_q\right| \leq 2Mb_p \leq 2Mb_\mathcal{N} < \epsilon$. Thus, $\sum a_nb_n$ converges. QED.
+
+__Corollary.__ If $|c_1| \geq |c_2| \geq \dots$, $c_i$ are alternating in sign and they go to zero then $c_n$ converges (use $a_n = (-1)^{n + 1}$ and $b = |c_n|$).
+
+# Absolute Convergence
+
+Given series $\sum a_n$ and $\sum b_n$, let $c_n = \sum\limits_{k = 0}^n a_kb_{n - k}$. The _product_ of the two series is defined as $\sum c_n$.
+
+__Theorem.__ If $\sum a_n$ converges to $A$ _absolutely_ and $\sum b_n$ converges to $B$ _absolutely_ then $\sum c_n$ converges to $AB$.
+
+Say $\sum a_n$ _converges alsolutely_ if $\sum |a_n|$ converges.
+
+For example,
+
+(@) The series $1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \dots$ converges, but not absolutely.
+
+__Theorem.__ If $\sum a_n$ converges absolutely then it converges.
+
+# Rearrangements
+
+Say $\sum a_n = A$. If the terms are rearranged, the series may not converge. If it does converge, it may not converge to $A$.
+
+__Theorem (due to Riemann).__ If $\sum a_n$ converges but not absolutely then a rearrangement can have any $\limsup$ and $\liminf$ you like. If it converges absolutely, all rearrangements have the same limits.
+
+For example,
+
+(@) $1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \dots = \ln 2$. One rearrangement that converges to $\pi$ is
+    $$
+    \overbrace{\underbrace{1 + \frac{1}{3} + \frac{1}{5} + \dots}_{> \pi} - \frac{1}{2} - \frac{1}{4} - \dots}^{< \pi} + \dots
+    $$

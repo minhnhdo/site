@@ -1,0 +1,19 @@
+---
+title: Real Analysis
+subtitle: Continuous Functions
+---
+
+# Continuity
+
+Let $X$ and $Y$ be metric spaces, $E \subset X$, $p \in E$, $f : E \rightarrow Y$. Say function $f$ is _continuous at $p$_ if for any $\epsilon > 0$, there exists $\delta > 0$ such that for any $x \in E$, $d(x, p) < \delta$ implies $d(f(x), f(p)) < \epsilon$.
+
+__Theorem.__ If $p$ is a limit point of $E$ then $f$ is continuous at $p$ if and only if $\lim\limits_{x \rightarrow p} f(x) = f(p)$. Also, if $x_n$ is a convergent sequence then $f$ is continous if and only if $\lim\limits_{n \rightarrow \infty} f(x_n) = f\left(\lim\limits_{n \rightarrow \infty} x_n\right)$.
+
+__Corollary.__ Given $Y \subset \mathbb{R}$, sums and products of continuous functions are continuous; quotients $\frac{f}{q}$ are continuous when $g \neq 0$.
+
+__Corollary.__ $f, g : X \rightarrow \mathbb{R}^k$ such that $f = (f_1, f_2, \dots, f_k)$.
+
+(a) $f$ is continuous if and only if each $f_i$ is continuous.
+(b) $f + g$ and $f \cdot g$ are continuous.
+
+__Theorem.__ $f : X \rightarrow Y$ is continuous if and only if for any open set $U \subset Y$, $f^-(U)$ is open in $X$.

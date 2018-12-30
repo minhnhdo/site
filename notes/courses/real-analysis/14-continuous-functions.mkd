@@ -16,4 +16,30 @@ __Corollary.__ $f, g : X \rightarrow \mathbb{R}^k$ such that $f = (f_1, f_2, \do
 (a) $f$ is continuous if and only if each $f_i$ is continuous.
 (b) $f + g$ and $f \cdot g$ are continuous.
 
-__Theorem.__ $f : X \rightarrow Y$ is continuous if and only if for any open set $U \subset Y$, $f^-(U)$ is open in $X$.
+__Theorem.__ $f : X \rightarrow Y$ is continuous if and only if for any open set $U \subset Y$, $f^{-1}(U)$ is open in $X$.
+
+_Proof._
+
+($\Rightarrow$): Given $U$ which is open in $Y$, consider $x \in f^{-1}(U)$. We'll show $x$ is an interior point. Since $U$ is open and $f(x) \in U$, there exists an open ball $B_\epsilon(f(x)) \subset U$. By continuity of $f$, there exists an open ball $B_\delta(x)$ that maps into $B_\epsilon(f(x)) \subset U$. This means $B_\delta(x) \subset f^{-1}(U)$. So $x$ is an interior point of $f^{-1}(U)$.
+
+($\Leftarrow$): Fix arbitrary $x \in X$ and $\epsilon > 0$. Consider $B_\epsilon(f(x))$. So, $x \in f^{-1}(B_\epsilon(f(x)))$, which is open by assumption. So $p$ is an interior point. Hence, there exists an open ball $B_\delta(x) \subset f^{-1}(B_\epsilon(f(x)))$. This $\delta$ has the required property. So $f$ is continuous. QED.
+
+## Consequences
+
+__Theorem.__ If $f : X \rightarrow Y$, $g : Y \rightarrow Z$, $f$ and $g$ are continuous then $g \circ f$ is continuous.
+
+_Proof._ Given $U$ open in $Z$, $g^{-1}(U)$ is open in $Y$, by continuity of $g$. So $f^{-1}(g^{-1}(U))$ is open in $X$, by continuity of $f$. But $f^{-1}(g^{-1}(U)) = (g \circ f)^{-1}(U)$. QED.
+
+__Theorem.__ $f : X \rightarrow Y$ is continuous if and only if for any closed set $K \subset Y$, $f^{-1}(K)$ is closed in $X$.
+
+__Theorem.__ If $f : X \rightarrow Y$, $f$ is continuous, and $X$ is compact, then $f(X)$ is compact.
+
+_Proof._ Consider any open cover $\{V_\alpha\}$ of $f(X)$. Let $U_\alpha = f^{-1}(V_\alpha)$. By compactness of $X$, there exists a finite subcover $\{U_1, \dots, U_n\}$. Then the corresponding $\{V_1, \dots V_n\}$ is a finite subcover for $f(X)$, as desired. QED.
+
+__Corollary.__ If $f : X \rightarrow \mathbb{R}^k$ and $X$ is compact then $f(X)$ is closed and bounded.
+
+__Corollary.__ If $f : X \rightarrow \mathbb{R}$ and $X$ is compact then $f$ achieves its maximum and minimum.
+
+__Theorem.__ If $f : X \rightarrow Y$, $f$ is a bijection and is continuous, and $X$ is compact then $f^{-1}$ is continuous.
+
+_Proof._ Suppose $U$ is open in $X$. So, $U^c$ is closed. Since $U^c$ is closed in a compact set $X$, $U^c$ is compact. Then its image $f(U^c)$ compact. Since $f(U^c)$ is compact, it is also closed. Hence $f(U)$ is open. Thus, $f^{-1}$ is continuous. QED.

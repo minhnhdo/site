@@ -43,3 +43,33 @@ __Corollary.__ If $f : X \rightarrow \mathbb{R}$ and $X$ is compact then $f$ ach
 __Theorem.__ If $f : X \rightarrow Y$, $f$ is a bijection and is continuous, and $X$ is compact then $f^{-1}$ is continuous.
 
 _Proof._ Suppose $U$ is open in $X$. So, $U^c$ is closed. Since $U^c$ is closed in a compact set $X$, $U^c$ is compact. Then its image $f(U^c)$ compact. Since $f(U^c)$ is compact, it is also closed. Hence $f(U)$ is open. Thus, $f^{-1}$ is continuous. QED.
+
+__Theorem.__ If $f : X \rightarrow Y$ is continuous, $E$ is a connected subset of $X$, then $f(E)$ is connected.
+
+_Proof (by contradiction)._ Suppose $f(E)$ is not connected. Then $f(E) = A \cup B$, a separation (i.e. $A \neq \emptyset$, $B \neq \emptyset$, and $\overline{A} \cap B = A \cap \overline{B} = \emptyset$). Notice $K_A = f^{-1}(\overline{A})$ and $K_B = f^{-1}(\overline{B})$ are closed since $f$ is continuous. Also notice $E_1 = f^{-1}(A) \cap E$ and $E_2 = f^{-1}(B) \cap E$ are disjoint and non-empty. Since $E_1 \subset K_A$, $\overline{E_1} \subset K_A$. Similarly, $\overline{E_2} \subset K_B$. Since $K_A = f^{-1}(\overline{A})$, $E_2 \subset f^{-1}(B)$, and $\overline{A} \cap B = \emptyset$, $K_A \cap E_2 = \emptyset$. Similarly, $K_B \cap E_1 = \emptyset$. Hence, $E$ is separated, which is a contradiction. QED.
+
+__Theorem (Intermediate Value).__ Given a continuous function $f : [a, b] \rightarrow \mathbb{R}$, where $f(a) < c < f(b)$, then there exists $x \in (a, b)$ such that $f(x) = c$.
+
+_Proof (by contradiction)._ Notice $[a, b]$ is connected. So, $f([a, b])$ is connected. But if $c$ is not achieved, then $((c, +\infty) \cap f([a, b])) \cup ((-\infty, c) \cap f([a, b]))$ is a separation of $f([a, b])$, a contradiction. QED.
+
+The converse of the intermediate value theorem is false. Consider the topologist's sine curve
+\begin{align}
+f(x) =
+\begin{cases}
+0 & \text{if } x = 0 \\
+\sin\left(\frac{1}{x}\right) & \text{otherwise}
+\end{cases}
+\end{align}
+The topologist's sine curve is not continuous at $0$ but it satisfies the intermediate value property.
+
+# Uniform Continuity
+
+A function $f : X \rightarrow Y$ is _uniform continuous_ on $X$ if for every $\epsilon > 0$, there exists $\delta > 0$ such that for every $x$ and $p$ in $X$, $d(x, p) < \delta$ implies $d(f(x), f(p)) < \epsilon$.
+
+If $K$ is closed, define $d(x, K) := \inf\limits_{y \in K} d(x, y)$. $d(x, K)$ is a continuous function of $x$.
+
+__Lebesgue Covering Lemma.__ If $\{U_\alpha\}$ is an open cover of a compact metric space $X$ then there exists $\delta > 0$ (called the _Lebesgue number of the cover_) such that for every $x \in X$, $B_\delta(x)$ is contained in some $U_\widehat{\alpha}$ of the cover.
+
+_Proof._ Since $X$ is compact, there exists a finite subcover $\{U_{\alpha_i}\}_{i = 1}^n$. Define $f(x) = \frac{1}{n} \sum\limits_{i = 1}^n d(x, U_{\alpha_i})$. $f$ is a continuous function on a compact set, so it must attain its minimum value $\delta$. Hence, if $f(x) \geq \delta$ then at least one of $d(x, U_{\alpha_i}) \geq \delta$. So, for this $i$, $B_\delta(x) \subset U_{\alpha_i}$. Notice $\delta > 0$ because $f(x) > 0$ at each $x$ due to $U_{\alpha_i}$. QED.
+
+__Theorem.__ Given $f : X \rightarrow Y$ and $X$ compact, $f$ is _uniformly continuous_ on $X$.

@@ -1,0 +1,60 @@
+---
+title: Real Analysis
+subtitle: Discontinuous Functions
+---
+
+# Discontinuity
+
+Consider $f : (a, b) \rightarrow \mathbb{R}$, which is discontinuous at $x$ with $f(x) = q$ and is continuous everywhere else. Write $f(x^+) \rightarrow q$ or $\lim\limits_{p \rightarrow x^+} f(p) = q$. Similarly, $f(x^-) \rightarrow q'$ or $\lim\limits_{p \rightarrow x^-} f(p) = q'$.
+
+$\lim\limits_{p \rightarrow x} f(p)$ exists if and only if $\lim\limits_{p \rightarrow x^+} f(p) = \lim\limits_{p \rightarrow x^-} f(p)$. If $f$ is discontinuous at $x$ but $\lim\limits_{p \rightarrow x^+} f(p)$ and $\lim\limits_{p \rightarrow x^-} f(p)$ exist, say $f$ has a _discontinuity of the first kind_ (or a _simple discontinuity_). Otherwise, say $f$ has a _discontinuity of the second kind_.
+
+For example,
+
+(@) Dirichlet function:
+    \begin{align}
+    f(x) =
+    \begin{cases}
+    1 & \text{if } x \in \mathbb{Q} \\
+    0 & \text{otherwise}
+    \end{cases}
+    \end{align}
+    $f$ has discontinuities of the second kind at every point.
+(@) \begin{align}
+    f(x) =
+    \begin{cases}
+    \frac{1}{q} & \text{if } x = \frac{p}{q} \text{ in lowest terms} \\
+    0 & \text{otherwise}
+    \end{cases}
+    \end{align}
+    $f$ has discontinuities of the first kind at rationals (all discontinuities are simple) but is continuous at irrationals.
+(@) \begin{align}
+    f(x) =
+    \begin{cases}
+    0 & \text{if } x \leq 0 \\
+    \sin\left(\frac{1}{x}\right) & \text{otherwise}
+    \end{cases}
+    \end{align}
+    $f$ has a discontinuity of the second kind at $0$.
+(@) \begin{align}
+    f(x) =
+    \begin{cases}
+    x^2 & \text{if } x \in \mathbb{Q} \\
+    0 & \text{otherwise}
+    \end{cases}
+    \end{align}
+    $f$ is continuous at $0$ and all the discontinuities are of the second kind.
+
+# Monotonic Functions
+
+A function $f : (a, b) \rightarrow \mathbb{R}$ is _monotonically increasing_ if $x \leq y$ implies $f(x) \leq f(y)$. A function $f : (a, b) \rightarrow \mathbb{R}$ is _monotonically decreasing_ if $x \leq y$ implies $f(x) \geq f(y)$.
+
+__Theorem.__ If $f : (a, b) \rightarrow \mathbb{R}$ is monotonically increasing then $\sup\limits_{t \in (a, x)} f(t) \leq f(x) \leq \inf\limits_{t \in (x, b)} f(t)$.
+
+__Theorem.__ If $f : (a, b) \rightarrow \mathbb{R}$ is monotonically increasing/decreasing on $(a, b)$ then $f(x^+)$ and $f(x^-)$ exist for all $x \in (a, b)$.
+
+__Corollary.__ Monotonic functions have no discontinuity of the second kind.
+
+__Theorem.__ If $f : (a, b) \rightarrow \mathbb{R}$ is monotone on $(a, b)$ then the set of points where $f$ is not continuous is countable.
+
+_Proof idea:_ let $D$ be the set of points where $f$ is discontinous. For every point $x \in D$, pick $r(x) \in \mathbb{Q}$ such that $f(x^-) < r(x) < f(x^+)$. If $x, y \in D$ then $r(x) \neq r(y)$ because $f$ is monotone. Get a 1-1 correspondence between $D$ and a subset of $\mathbb{Q}$.

@@ -1,0 +1,49 @@
+---
+title: Real Analysis
+subtitle: Differentiation
+---
+
+# Differentiation
+
+A function $f : [a, b] \rightarrow \mathbb{R}$ is _differentiable_ at $x \in [a, b]$ if there exists the limit
+$$
+f'(x) = \lim\limits_{t \rightarrow x} \frac{f(t) - f(x)}{t - x}
+$$
+where $t \in (a, b)$ and $t \neq x$. The function $f'$ is call the _derivative_ of $f$.
+
+For example,
+
+(@) If $f$ is continuous on $[a, b]$, $f$ is not necessarily differentiable on $[a, b]$.
+(@) If $f$ is differentiable on $[a, b]$, $f$ is continuous on $[a, b]$.
+
+    _Why?_ If $t \rightarrow x$ then $\lim\limits_{t \rightarrow x} f(t) - f(x) = \lim\limits_{t \rightarrow x} \frac{f(t) - f(x)}{t - x}(t - x) = f'(x) \cdot \lim\limits_{t \rightarrow x} t - x = f'(x) \cdot 0 = 0$.
+
+(@) If $f$ is differentiable on $[a, b]$, $f'$ is not necessarily continuous. However, $f'$ satisfies the intermediate value property but it does not have any simple discontinuities.
+
+    Consider a version of the topologist's sine curve.
+    \begin{align}
+    f(x)
+    \begin{cases}
+    0 & \text{if } x = 0 \\
+    x^\frac{4}{3}\sin\left(\frac{1}{x}\right) & \text{otherwise}
+    \end{cases}
+    \end{align}
+
+Call a function $f$ a $\mathcal{C}^1$-function if $f'$ exists and is continuous. Similarly, call a function $f$ a $\mathcal{C}^k$-function if it has a $k$^th^ derivative $f^{(k)}$ which is continuous. A function is a $\mathcal{C}^0$-function if it is continuous. A function is a $\mathcal{C}^\infty$-function if all of its derivatives exists and are continuous; alternatively, $\mathcal{C}^\infty$-functions are called _smooth_. As defined, $\mathcal{C}^k$-functions are also $\mathcal{C}^{k-1}$-functions.
+
+If $f'$ is a limit then the sum, product, and quotient rules follow.
+
+For example,
+
+(@) $(f + g)' = f' + g'$ because the sum of limits is the limit of the sums.
+(@) $(f \cdot g)' = f' \cdot g + f \cdot g'$.
+
+__Theorem.__ There exist functions that are continuous everywhere but are differentiable nowhere.
+
+For example,
+
+(@) Let $0 < b < 1$ and $a$ be an odd integer, where $ab > 1 + \frac{3 \pi}{2}$. Consider the following function.
+
+    $$
+    f(x) = \sum\limits_{n = 1}^\infty b^n cos(a^n \pi x)
+    $$

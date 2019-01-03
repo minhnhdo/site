@@ -47,3 +47,21 @@ For example,
     $$
     f(x) = \sum\limits_{n = 1}^\infty b^n cos(a^n \pi x)
     $$
+
+# The Mean Value Theorem
+
+__Theorem (the mean value theorem).__ If $f$ is continuous on $[a, b]$ and differentiable on $(a, b)$ then there exists a point $c \in (a, b)$ such that $f(b) - f(a) = (b - a)f'(c)$.
+
+$f(b) - f(a) = (b - a)f'(c)$ relates value of $f$ to value of $f'$ without involving limits.
+
+For example,
+
+(@) If $f'(x) > 0$ for all $x \in (a, b)$ then $f(b) > f(a)$.
+
+    _Proof._ By the mean value theorem, $f(b) - f(a) = (b - a)f'(c) > 0$ for some $c \in (a, b)$, as desired. QED.
+
+__Theorem (the generalized mean value theorem).__ If $f(x)$ and $g(x)$ are continuous on $[a, b]$ and differentiable on $(a, b)$ then there exists a point $c \in (a, b)$ such that $(f(b) - f(a))g'(c) = (g(b) - g(a))f'(c)$.
+
+If $g(x) = x$, we get the mean value theorem.
+
+Consider $h(x) = (f(b) - f(a))g'(c) - (g(b) - g(a))f'(c)$. Notice $h(a) = 0$ and $h(b) = 0$.

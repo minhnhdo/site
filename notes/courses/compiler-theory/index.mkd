@@ -1,0 +1,5 @@
+---
+title: Compiler Theory
+---
+
+These are my notes for the Compiler Theory course taught by Professor William Bowman (see [site](https://www.williamjbowman.com/teaching/2019/term-2/CPSC539B/index.html)).

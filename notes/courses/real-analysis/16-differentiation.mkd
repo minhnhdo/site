@@ -65,3 +65,14 @@ __Theorem (the generalized mean value theorem).__ If $f(x)$ and $g(x)$ are conti
 If $g(x) = x$, we get the mean value theorem.
 
 Consider $h(x) = (f(b) - f(a))g'(c) - (g(b) - g(a))f'(c)$. Notice $h(a) = 0$ and $h(b) = 0$.
+
+# Taylor's Theorem
+
+Suppose we know about $f(a)$. We want to approximate $f(b)$. The mean value theorem says $f(b) = f(a) + (b - a)f'(c)$ for some $c \in (a, b)$. $(b - a)f'(c)$ is an error term, not precisely known. This suggests $f(b) = f(a) + f'(a)(b - a) + e$ with $e$ as an error term. In fact, $e = \frac{f''(d)}{2}(b - a)^2$, for some $d \in (a, b)$.
+
+More generally, if $P_{n - 1}(x) = f(a) + f'(a)(x - a) + \frac{f''(a)}{2!}(x - a)^2 + \dots + \frac{f^{(n - 1)}(a)}{(n - 1)!}(x - a)^{n - 1}$, which is a polynomial with degree $n - 1$, then Taylor's theorem states that $P_{n - 1}(x)$ approximates $f(x)$ with a small error term.
+
+__Theorem (due to Taylor).__ If $f^{(n - 1)}$ is continuous on $[a, b]$ and $f^{(n)}$ exists on $(a, b)$ then $P_{n - 1}(x)$ approximates $f(x)$ and $f(x) = P_{n - 1}(x) + \frac{f^{(n)}(c)}{n!}(x - a)^n$ for some $c \in (a, b)$.
+
+- When $n = 1$, Taylor's theorem is the mean value theorem.
+- $P_n(x)$ is the "best" polynomial approximation of order $n$ at $a$.

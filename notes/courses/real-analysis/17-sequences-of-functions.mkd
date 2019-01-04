@@ -1,0 +1,45 @@
+---
+title: Real Analysis
+subtitle: Sequences of Functions
+---
+
+# Sequences of Functions
+
+## Pointwise Convergence
+
+Consider $\{f_n(x)\}$. For every point $x$, $f(x) = \lim\limits_{n \rightarrow \infty} f_n(x)$.
+
+For example,
+
+(@) $f_n(x) = \frac{x}{n} \xrightarrow{\text{pointwise}} f(x) = 0$.
+(@) Let the domain $E$ of $f_n$ be $[0, 1]$.
+    \begin{align}
+    f_n(x) = x^n \xrightarrow{\text{pointwise}} f(x) =
+    \begin{cases}
+    0 & \text{if } x \neq 1 \\
+    1 & \text{otherwise}
+    \end{cases}
+    \end{align}
+(@) $f_n(x) = \frac{1}{n}\sin(n^2x) \xrightarrow{\text{pointwise}} f(x) = 0$.
+
+This notion of limit does not preserve continuity, derivation, and integration.
+
+## Uniform Convergence
+
+Let $\|f\| = \sup\limits_{x \in E} |f(x)|$. Say $f_n \xrightarrow{\text{uniform}} f$ ($f_n$ _converges uniformly_ to $f$ on $E$) if for every $\epsilon > 0$, there exists $\mathcal{N}$ such that $n \geq \mathcal{N}$ implies $\|f_n - f\| < \epsilon$.
+
+Informally, we can draw an $\epsilon$-ribbon about the limit $f$ and $f_n$ eventually stays in the ribbon. The same $\mathcal{N}$ works for every $x \in E$.
+
+This is the usual convergence in metric space $\mathcal{C}_b(E)$, the continuous bounded functions on $E$, where $d(f, g) = \|f - g\|$.
+
+__Theorem.__ $\mathcal{C}_b(E)$ is complete when the image is in $\mathbb{R}^n$.
+
+So we have the Cauchy criterion.
+
+__Theorem.__ $f_n \xrightarrow{\text{uniform}} f$ on $E$ if and only if for every $\epsilon > 0$, there exists $\mathcal{N}$ such that for all $m, n > \mathcal{N}$ and $x \in E$, $|f_n(x) - f_m(x)| < \epsilon$.
+
+__Theorem.__ If $f_n \xrightarrow{\text{uniform}} f$ on $E$ and $f_n$ is continuous then $f$ is continuous.
+
+_Proof._ Clearly, $|f(x) - f(y)| \leq |f(x) - f_n(x)| + |f_n(x) - f_n(y)| + |f_n(y) - f(y)|$. Fix $x \in E$. For all $\epsilon > 0$, choose $f_n$ so that $\|f_n - f\| < \frac{\epsilon}{3}$. Thus, $|f(x) - f_n(x)| < \frac{\epsilon}{3}$ and $|f_n(y) - f(y)| < \frac{\epsilon}{3}$. Since $f_n$ is continuous, there exists $\delta > 0$ such that $|x - y| < \delta$ implies $|f_n(x) - f_n(y)| < \frac{\epsilon}{3}$. So, for every $\epsilon > 0$, we found $\delta > 0$ such that $|f(x) - f(y)| < \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3} = \epsilon$. QED.
+
+__Theorem.__ There exists $f : [0, 1] \rightarrow [0, 1]^2$ that is space filling.

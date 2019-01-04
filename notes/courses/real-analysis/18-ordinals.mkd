@@ -1,0 +1,71 @@
+---
+title: Real Analysis
+subtitle: Ordinals
+---
+
+# Ordinal Numbers
+
+Suppose there are sets $X$, $Y$, and orders on them, namely $(X, <)$ and $(Y, <)$. Say they have the same _order-type_ if there exists a bijection $f : X \rightarrow Y$ such that $x < y$ if and only if $f(x) < f(y)$. $f$ is called an _order-isomorphism_.
+
+Recall $X$ is _well-ordered_ if every non-empty subset of $X$ has a least element.
+
+Construct $\emptyset$, $\{\emptyset\}$, $\{\emptyset, \{\emptyset\}\}$, $\{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\}$, etc. Ordering on them is defined as set containment.
+
+An _ordinal_ is a set that is
+
+1. transitive/complete (every member is a subset), and
+2. strictly well-ordered by membership.
+
+## Observations
+
+1. If $\alpha$ is an ordinal then $S(\alpha) = \alpha \cup \{\alpha\}$ is an ordinal, called the _successor ordinal_.
+2. If $\alpha$ is an ordinal and $\beta \in \alpha$ then $\beta$ is an ordinal.
+3. If $A$ is a set of ordinals then $\sup A = \bigcup A$ is an ordinal.
+
+## Theorems
+
+__Theorem.__ Any well-ordered set is order-isomorphic to some ordinal $\alpha$.
+
+$\omega$, called the _limit ordinal_ is the first infinite ordinal. It is not the successor of any ordinal (i.e. $\omega \neq S(\alpha)$ for any ordinal $\alpha$). $\epsilon_0$ is the first ordinal such that $\epsilon_0 = \omega^{\epsilon_0}$. $\omega_1$ is the first uncountable ordinal.
+
+$$
+0, 1, 2, 3, \dots, \omega, \omega + 1, \omega + 2, \dots, \\
+\underbrace{\omega + \omega}_{\omega \cdot 2}, \omega \cdot 2 + 1, \dots, \omega \cdot 3, \dots, \\
+\underbrace{\omega\omega}_{\omega^2}, \omega^2 + 1, \dots, \omega^3, \dots, \\
+\omega^\omega, \omega^\omega + 1, \dots, \omega^{\omega^\omega}, \dots, \\
+\epsilon_0, \epsilon_0 + 1, \dots, \epsilon_1, \dots, \\
+\omega_1, \omega_1 + 1
+$$
+
+# Transfinite Induction
+
+Recall strong induction: Let $S_n = \{i \in \mathbb{N} : i < n\}$, called a _section_. $A \subset \mathcal{N}$ is _inductive_ if for all $n \in \mathcal{N}$, $S_n \subset A$ implies $n \in A$.
+
+Recall the principle of strong induction: If $A \subset \mathbb{N}$ is inductive then $A = \mathcal{N}$.
+
+_Proof (by contradiction)._ If $A \neq \mathbb{N}$ then $\mathbb{N} \setminus A$ has a smallest element $n$. But then $S_n \subset A$ which implies $n \in A$, a contradiction. QED.
+
+__Theorem.__ Every set can be well-ordered.
+
+The proof depends on the _axiom of choice_.
+
+Well-order the index set of statements $J$. Let $S_\alpha = \{\gamma \in J : \gamma < \alpha\}$, called a section. A set $A \subset J$ is _inductive_ if for all $\alpha \in J$, $S_\alpha \subset A$ implies $\alpha \in A$.
+
+The principle of transfinite induction: Suppose $J$ is well-ordered. A set $A \subset J$ is inductive implies $A = J$.
+
+## Applications
+
+__Theorem.__ There exists a set $K$ in $\mathbb{R}^2$ that intersect every line in the plane twice.
+
+_Proof (depends on the axiom of choice)._ Let $L$ be the set of all lines in $\mathbb{R}^2$ (so $|L| = |\mathbb{R}|$). Well-order $L$ with the type $J$ of the first ordinal with the same cardinality as $\mathbb{R}$ (all elements of $J$ have cardinality less than that of $\mathbb{R}$). Write $L = \{L_\alpha\}_{\alpha \in J}$. Let
+\begin{align}
+A = \{\alpha \in J : \exists \text{ set } K_\alpha \text{ such that } & (1) |K_\alpha| < |\mathbb{R}| \text{ and}\\
+& (2) \text{ no three points are colinear} \text{ and} \\
+& (3) |K_\alpha \cap L_\beta| = 2 \text{ if } \alpha \leq \beta \text{ and} \\
+& (4) K_\beta \subset K_\alpha \text{ if } \beta < \alpha\}
+\end{align}
+We need to show that $A$ is inductive, so $A = J$.
+
+Base case: Clearly, $1 \in A$ (let $K_1$ be the set of two points on $L_1$).
+
+Inductive step: If $S_\alpha \subset A$, let $K = \bigcup\limits_{\beta < \alpha} K_\beta$. $K$ has the same cardinality as $\mathbb{R}$ (by (1)) and has no three point colinear (by (2) and (3)). The set of all lines through $K_\alpha$ have cardinality less than that of $\mathbb{R}$ so it can't hit all of $L_\alpha$. Pick 1 or 2 points to form $K_\alpha = K \cup \{\text{1 or 2 extra points}\}$. So $\alpha \in A$. QED.

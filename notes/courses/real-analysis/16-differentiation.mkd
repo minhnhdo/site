@@ -72,7 +72,9 @@ Suppose we know about $f(a)$. We want to approximate $f(b)$. The mean value theo
 
 More generally, if $P_{n - 1}(x) = f(a) + f'(a)(x - a) + \frac{f''(a)}{2!}(x - a)^2 + \dots + \frac{f^{(n - 1)}(a)}{(n - 1)!}(x - a)^{n - 1}$, which is a polynomial with degree $n - 1$, then Taylor's theorem states that $P_{n - 1}(x)$ approximates $f(x)$ with a small error term.
 
-__Theorem (due to Taylor).__ If $f^{(n - 1)}$ is continuous on $[a, b]$ and $f^{(n)}$ exists on $(a, b)$ then $P_{n - 1}(x)$ approximates $f(x)$ and $f(x) = P_{n - 1}(x) + \frac{f^{(n)}(c)}{n!}(x - a)^n$ for some $c \in (a, b)$.
+__Theorem (due to Taylor).__ If $f^{(n - 1)}$ is continuous on $[a, b]$ and $f^{(n)}$ exists on $(a, b)$ then $P_{n - 1}(x)$ approximates $f(x)$ and $f(x) = P_{n - 1}(x) + \frac{f^{(n)}(c)}{n!}(x - a)^n$ for some $c \in (a, x)$.
 
 - When $n = 1$, Taylor's theorem is the mean value theorem.
 - $P_n(x)$ is the "best" polynomial approximation of order $n$ at $a$.
+
+_Proof._ Clearly, for some number $\mathcal{M}$, $f(b) = P_{n-1}(b) + \mathcal{M}(b - a)^n$. Let $g(x) = f(x) - P_{n-1}(x) - \mathcal{M}(x - a)^n$. Consider $g^{(n)}(x) = f^{(n)}(x) - \mathcal{M}n!$. So we have to show $g^{(n)}(c) = 0$ for some $c \in (a, b)$. Consider $g(a) = 0$, $g'(a) = 0$, $g''(a) = 0$, upto $g^{(n-1)}(a) = 0$. Also, $g(b) = 0$. Since $g(a) = g(b) = 0$, there exists $c_1 \in (a, b)$ such that $g'(c_1) = 0$. Since $g'(a) = g'(c_1) = 0$, there exists $c_2 \in (a, b)$ such that $g''(c_2) = 0$, and so on. So, there exists $c_{n - 1} \in (a, b)$ such that $g^{(n-1)}(c_{n-1}) = 0$. Since $g^{(n-1)}(a) = g^{(n-1)}(c_{n - 1}) = 0$, there exists $c \in (a, b)$ such that $g^{(n)}(c) = 0$. This shows $\mathcal{M} = \frac{f^{(n)}(c)}{n!}(x - a)^n$, as desired. QED.

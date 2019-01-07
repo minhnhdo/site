@@ -57,9 +57,9 @@ The solution passes the tests. Let's look at how to explain the code simply. The
 
 > There exists in set `s` an element that satisfies the predicate `p` when not all of the elements in `s` satisfies the negation of `p`.
 
-That makes sense. But lo and behold, the code reflects a mathematical truth, and it even looks like it is translated verbatim from mathematical symbols to programmatical symbols!
+That makes sense. But lo and behold, the code reflects a mathematical truth, and it even looks like it is translated verbatim from mathematical symbols to programmatic symbols!
 
-&exist;x:P(x) &equiv; &not;&forall;x:&not;P(x)
+&exist;x:P(x) &hArr; &not;&forall;x:&not;P(x)
 
 compared with
 

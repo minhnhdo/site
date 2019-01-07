@@ -79,6 +79,7 @@ siteCss =
       li ? float floatLeft
     pre # ".sourceCode" <> table # ".sourceCode" ? do
       fontFamily ["Monaco", "Inconsolata", "DejaVu Sans Mono", "Courier New", "Courier"] [monospace]
+      overflow auto
       table # ".sourceCode" <> star ? do
         fontFamily ["Monaco", "Inconsolata", "DejaVu Sans Mono", "Courier New", "Courier"] [monospace]
     code # ".sourceCode" ? do

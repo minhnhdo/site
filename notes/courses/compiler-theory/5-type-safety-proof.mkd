@@ -1,0 +1,137 @@
+---
+title: Compiler Theory
+subtitle: Type Safety Proof
+---
+
+# Prerequisites
+A type safety proof for our languages requires
+
+- principle of implication
+  - If P implies Q and P then Q
+- principle of induction
+  - Let J be some inductively defined judgment, defined by R₁, R₂, ..., Rₙ.
+  - To prove some property for J, i.e. P(J), it suffices to prove
+    1) If P(sub-derivations of R₀) then P(R₀)
+    2) If P(sub-derivations of R₁) then P(R₁)
+    3) and so on, up to Rₙ.
+
+# Examples
+We first have to define some equivalence relation `a` ≡ `b**, in order to talk about some results of `eval being equivalent.
+
+## [v ≡ᵥ v]{.boxed} Value equivalence
+```
+————————
+ n ≡ᵥ n
+```
+```
+————————
+ b ≡ᵥ b
+```
+```
+ v₁ ≡ᵥ v₁'     v₂ ≡ᵥ v₂'
+—————————————————————————
+ (v₁, v₂) ≡ᵥ (v₁', v₂')
+```
+
+## [a ≡ b]{.boxed} Equivalence
+```
+ a ≡ᵥ b
+————————
+ a ≡ b
+```
+```
+ a ≡ b     b ≡ c
+—————————————————
+      a ≡ c
+```
+
+## Theorems
+
+**Theorem:** for all `n`, `m` : `Nat`, `eval(n + add1 m)` ≡ `eval(add1 n + m)`.
+
+*Proof (by induction on `n`):*
+
+Case `0`: `eval(0 + add1 m)` ≡ `eval(add1 0 + m)`
+
+- Since `0 + add1 m` → `add1 m` and `add1 0 + m` → `0 + add1 m` → `add1 m`, `eval(0 + add1 m)` ≡ `eval(add1 0 + m)`, as desired.
+
+Case `add1 n'`: `eval(add1 n' + add1 m)` ≡ `eval(add1 (add1 n') + m)`.
+
+- Since `add1 n' + add1 m` → `n' + add1 (add1 m)` and `add1 (add1 n') + m` → `add1 n' + add1 m` → `n' + add1 (add1 m)`, `eval(add1 n' + add1 m)` ≡ `eval(add1 (add1 n') + m)`, as desired.
+
+QED.
+
+**Theorem:** for all `n`, `m` : `Nat`, `eval(add1 n + m)` ≡ `eval(add1 (n + m))`.
+
+*Proof (by induction on `n`):*
+
+Case `0`: `eval(add1 0 + m)` ≡ `eval(add1 (0 + m))`
+
+- Since `add1 0 + m` → `0 + add1 m` → `add1 m` and `add1 (0 + m)` → `add1 m`, `eval(add1 0 + m)` ≡ `eval(add1 (0 + m))`, as desired.
+
+Case `add1 n'`: `eval(add1 (add1 n') + m)` ≡ `eval(add1 (add1 n' + m))`
+
+- Our induction hypothesis is `eval(add1 n' + m)` ≡ `eval(add1 (n' + m))`
+
+- Since `add1 (add1 n') + m` → `add1 n' + add1 m` and `eval(add1 n' + add1 m)` ≡ `eval(add1 (n' + add1 m))` (by our induction hypothesis), `eval(add1 (add1 n') + m)` ≡ `eval(add1 (n' + add1 m))`.
+
+- Also, since `add1 (add1 n' + m)` → `add1 (n' + add1 m)`, `eval(add1 (add1 n' + m))` ≡ `eval(add1 (n' + add1 m))`.
+
+- Thus, `eval(add1 (add1 n') + m)` ≡ `eval(add1 (add1 n' + m))`, as desired.
+
+QED.
+
+**Theorem:** for all `n` : `Nat`, `eval(n + 0)` ≡ `eval(n)`.
+
+*Proof (by induction on `n`):*
+
+Case `0`: `eval(0 + 0)` ≡ `eval(0)`
+
+- Since `0 + 0` → `0`, `eval(0 + 0)` ≡ `eval(0)`, as desired.
+
+Case `add1 m`: `eval(add1 m + 0)` ≡ `eval(add1 m)`
+
+- Our induction hypothesis is `eval(m + 0)` ≡ `eval(m)`.
+
+- Since `eval(add1 m + 0)` ≡ `eval(add1 (m + 0))` and `eval(m + 0)` ≡ `eval(m)` (by our induction hypothesis), `eval(add1 m + 0)` ≡ `eval(add1 m)`, as desired.
+
+QED.
+
+**Theorem:** for all `n`, `m` : `Nat`, `eval(n + m)` ≡ `eval(m + n)`.
+
+*Proof (by induction on n):*
+
+Case `0`: `eval(0 + m)` ≡ `eval(m + 0)`
+
+- Since `0 + m` → `m`, `eval(0 + m)` ≡ `eval(m)`.
+
+- Since `eval(m + 0)` ≡ `eval(m)`, `eval(m + 0)` ≡ `eval(0 + m)`, as desired.
+
+Case `add1 n'`: `eval(add1 n' + m)` ≡ `eval(m + add1 n')`
+
+- Our induction hypothesis is `eval(n' + m)` ≡ `eval(m + n')`. Hence, `eval(add1 (n' + m))` ≡ `eval(add1 (m + n'))`.
+
+- Since `eval(add1 n' + m)` ≡ `eval(add1 (n' + m))`, `eval(m + add1 n')` ≡ `eval(add1 m + n')`, `eval(add1 m + n')` ≡ `eval(add1 (m + n'))`, and `eval(add1 (n' + m))` ≡ `eval(add1 (m + n'))`, we have `eval(add1 n' + m)` ≡ `eval(m + add1 n')`, as desired.
+
+QED.
+
+# Type safety proof
+*Proof (by induction on • ⊢ e : A):*
+
+Case `Nat`: if • ⊢ `n` : `Nat`, then `eval(n)` = `n`.
+
+- By definition of `eval`:
+  ```
+     ————————
+      n →* n
+  —————————————
+   eval(n) = n
+  ```
+  as desired.
+
+Case `Bool`: elided for brevity
+
+Case `If`: If • ⊢ e : `Bool` implies `eval(`e`)` = `v`, • ⊢ e₁ : A implies `eval(`e₁`)` = v₁, • ⊢ e₂ : A implies `eval(`e₂`)` = v₂, then • ⊢ `if` e `then` e₁ `else` e2 implies `eval(if` e `then` e₁ `else` e₂`)` = v₃.
+
+- This requires proof of canonical form.
+  - If Γ ⊢ `v` : `Bool`, then `v` = `true` or `v` = `false`.

@@ -77,6 +77,9 @@ siteCss =
       fontStyle italic
       clear both
       li ? float floatLeft
+    span # ".boxed" ? do
+      border solid (px 1) sBase03
+      sym padding (px 5)
     pre # ".sourceCode" <> table # ".sourceCode" ? do
       fontFamily ["Monaco", "Inconsolata", "DejaVu Sans Mono", "Courier New", "Courier"] [monospace]
       overflow auto

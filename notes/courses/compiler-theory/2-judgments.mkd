@@ -1,0 +1,63 @@
+---
+title: Compiler Theory
+subtitle: Judgments
+---
+
+# Judgments
+Everything in compiler theory is a judgement. A judgement has the following form.
+```
+ P₁  P₂  ...  Pₙ
+————————————————
+       J
+```
+which means J holds if Pᵢ holds for every i.
+
+## Examples
+
+### [`s is expr`]{.boxed}
+```
+——————————————
+ true is expr
+```
+```
+———————————————
+ false is expr
+```
+```
+ e₁ is expr     e₂ is expr
+———————————————————————————
+      e₁ + e₂ is expr
+```
+and so on.
+
+### [`n is nat`]{.boxed}
+```
+——————————
+ 0 is nat
+```
+```
+    n is expr
+—————————————————
+ (add1 n) is nat
+```
+(`n is expr` allows for `add1 (0 + 3)`)
+
+## Proofs involving judgments
+Since judgments are inductively defined, proofs involving judgments are by induction on the structure of the syntax. Theorems are usually of the following form.
+
+**Theorem:** P is true of s, where s is nat.
+
+*Proof (by induction on s is nat):*
+
+- Case
+  ```
+  0 is nat
+  ```
+  Prove P is true when s = 0.
+
+- Case
+  ```
+      s is expr
+  —————————————————
+   (add1 s) is nat
+  ```

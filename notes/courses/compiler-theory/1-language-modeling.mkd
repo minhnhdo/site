@@ -166,3 +166,40 @@ The evaluation function `eval` is then defined as follows.
 `eval(`e`)` = v `|` e → v
 
 which is read as the result of evaluating e is v given that e converts to v.
+
+# Extending the language
+
+Let's extend the language to support pairs.
+
+## Syntax extension
+e `::=` ... `| (`e`,`  e`) | fst` e `| snd` e
+
+## Semantic extensions
+### Reduction rules
+These should be the most primitive rules/operations.
+```
+fst (e₁, e₂) → e₁
+```
+```
+snd (e₁, e₂) → e₂
+```
+The rules for `fst` and `snd` are called elimination rules. The introduction rule for a pair is its constructor.
+
+### Conversion rules
+```
+ e₁ →* e₁'   e₂ →* e₂'
+——————————————————————— Congruence-Pair
+(e₁, e₂) →* (e₁', e₂')
+```
+```
+     e →* e'
+————————————————— Congruence-fst
+ fst e →* fst e'
+```
+```
+     e →* e'
+————————————————— Congruence-snd
+ snd e →* snd e'
+```
+
+Conversion rules let us work on sub-expressions.

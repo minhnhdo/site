@@ -38,9 +38,9 @@ A language is
 
 Language syntax is defined using a [BNF grammar](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form). This is an inductive construction.
 
-b `::= true | false`  
-n `::= 0 | 1 | 2 |` ... `| 42 |` ... `| 1000 |` ...  
-e `::=` n `|` b `|` e `+` e `|` e `-` e | `if` e `then` e `else` e  
+b `::=` `true` | `false`  
+n `::=` `0` | `1` | `2` | ... | `42` | ... | `1000` | ...  
+e `::=` n | b | e `+` e | e `-` e | `if` e `then` e `else` e  
 
 An alternative is using set notation, which is avoided due to its verbosity.
 
@@ -87,7 +87,7 @@ Operational semantics are defined using reduction relation (→) and conversion 
 
 Notation for reduction relations: expression → simpler expression, i.e. e → e'.
 
-In the following example, n `::= 0 | add1` e.
+In the following example, n `::=` `0` | `add1` e.
 
 `if true then` e~1~ `else` e~2~ → e~1~  
 `if false then` e~1~ `else` e~2~ → e~2~  
@@ -159,11 +159,11 @@ For example, consider `1 + 2`.
              1 + 2 → 3
 ```
 
-Valid output/value (can put output in registers, heaps, etc. here): v `::=` n `|` b
+Valid output/value (can put output in registers, heaps, etc. here): v `::=` n | b.
 
 The evaluation function `eval` is then defined as follows.
 
-`eval(`e`)` = v `|` e → v
+`eval(`e`)` = v | e → v
 
 which is read as the result of evaluating e is v given that e converts to v.
 

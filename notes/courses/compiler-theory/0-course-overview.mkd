@@ -32,12 +32,12 @@ Come to class with prepared questions and finished homework.
 Compilers are traditionally thought of as transformations from programs in a source language to programs in a target language.
 
                      transform
-    Source programs -----------> target programs
+    Source programs ———————————> target programs
 
 However, this course encourages us to think about compilers as transformations on languages.
 
                      transform
-    Source language -----------> target language
+    Source language ———————————> target language
 
 The transformations should preserve desirable properties. In other words, for all programs in the source language, the compiler produces programs in the target language, preserving desirable properties. When we talk about correctness of compilers, we are talking about this property preservation characteristic of compilers. Some examples of desirable properties are security (e.g. not leaking passwords) and data encapsulation properties (e.g. not exposing internal methods).
 
@@ -49,12 +49,12 @@ This course focuses on four correctness properties.
 
 - Separate compilation (correctness while linking with other code)
 
-  -------------- ------------------- --------------
-       $e$        $\dashrightarrow$       $L$
-   $\downarrow$   &nbsp;              $\downarrow$
-      $e'$        $\dashrightarrow$      $L'$
-  -------------- ------------------- --------------
-  where $e$ is a program in the source language, $e'$ is a corresponding program in the target language, $L$ is a library, $L'$ is a corresponding compiled library in the target language, $\dashrightarrow$ represents linking ($e$ is linked with $L$ and $e'$ is linked with $L'$), and $\downarrow$ represents compilation.
+  ---- ------ ---
+   e     —>    L
+   ↓   &nbsp;  ↓
+   e'    —>    L
+  ---- ------ ---
+  where e is a program in the source language, e' is a corresponding program in the target language, L is a library, L' is a corresponding compiled library in the target language, —> represents linking (e is linked with L and e' is linked with L'), and ↓ represents compilation.
 
 - Secure compilation (traditionally called full abstraction, this is a very abstract property, can represent any interesting property like not leaking passwords, interacting correctly with the outside world, etc.)
 

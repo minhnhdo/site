@@ -1,0 +1,113 @@
+---
+title: Compiler Theory
+subtitle: Type Systems
+---
+
+# A need for a type system
+As defined currently, we cannot say much about our programming language: there is no shared properties for programs in our language. One way to remedy that is to define a type system to rule out "bad" programs.
+
+# Check for no free variables
+
+Γ `::=` • | Γ,`x`
+
+[Γ ⊢ e]{.boxed}
+
+```
+———————
+ Γ ⊢ n
+```
+
+```
+———————
+ Γ ⊢ b
+```
+
+```
+ x ∈ Γ
+———————
+ Γ ⊢ x
+```
+
+```
+ Γ,x ⊢ e
+——————————
+ Γ ⊢ λx.e
+```
+
+and so on.
+
+[eval(e) = v]{.boxed}
+
+```
+ • ⊢ e     •, e →* M', v
+—————————————————————————
+      eval(e) = v
+```
+
+With Γ defined, we can check for invalid programs with free variables. However, we cannot prevent cases like `1 + true`. To prevent those, we need to add types.
+
+# Check for types
+A, B `::=` `Nat` | `Bool` | A `→` B
+
+Γ `::=` • | Γ,`x` : A
+
+[Γ ⊢ e : A]{.boxed}
+
+```
+ x : A ∈ Γ
+——————————— Type-Var
+ Γ ⊢ x : A
+```
+
+```
+————————————— Type-Nat
+ Γ ⊢ n : Nat
+```
+
+```
+—————————————— Type-Bool
+ Γ ⊢ b : Bool
+```
+
+```
+   Γ,x : A ⊢ e : B
+—————————————————————— Type-Lam
+ Γ ⊢ λx : A.e : A → B
+```
+
+```
+ Γ,e₁ : A → B     Γ ⊢ e₂ : A
+————————————————————————————— Type-App
+       Γ ⊢ e₁ e₂ : B
+```
+
+```
+ Γ ⊢ e₁ : Nat     Γ ⊢ e₂ : Nat
+——————————————————————————————— Type-Add
+       Γ ⊢ e₁ + e₂ : Nat
+```
+
+[eval(e) = v]{.boxed}
+
+```
+ • ⊢ e : A     •, e →* M', v
+—————————————————————————————
+        eval(e) = v
+```
+
+Our type system, as defined, rules out cases like `eval((λx.x) 0) = 0`; instead, we have to write `eval((λx:Nat.x) 0) = 0`. Similarly, we have to write the identity function for each type, e.g. `λx:Bool.x` for `Bool`.
+
+However, defining type systems is not a concern of the compiler writer.
+
+# Shared property: type safety
+With a type system defined, programs in our language now have a shared property, namely type safety.
+
+**Theorem (type safety):** If • ⊢ e : A, then eval(e** = v.
+
+In languages with non-termination and errors, a type safety property is as follows.
+
+**Theorem (type safety, generalized):** If • ⊢ e : A, then either
+
+- eval(e) = v (terminated with value),
+- eval(e) = Ω (non-termination), or
+- eval(e) = Error.

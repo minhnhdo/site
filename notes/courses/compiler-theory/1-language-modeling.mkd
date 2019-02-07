@@ -44,9 +44,9 @@ e `::=` n `|` b `|` e `+` e `|` e `-` e | `if` e `then` e `else` e
 
 An alternative is using set notation, which is avoided due to its verbosity.
 
-b = $\{$`true`, `false`$\}$  
-n = $\mathbb{N}$  
-e = b $\cup$ n $\cup$ $\{$ e~1~ `+` e~2~ $:$ e~1~ $\in$ e, e~2~ $\in$ e$\} \cup \dots$
+b = {`true`, `false`}  
+n = ℕ  
+e = b ∪ n ∪ { e~1~ `+` e~2~ : e~1~ ∈ e, e~2~ ∈  e } ∪ ...
 
 Examples expressions in this languages are
 
@@ -71,65 +71,98 @@ Denotational semantics interpret expressions as math, e.g.
 - domain theory
 - logics (first-order logic, [CTL](https://en.wikipedia.org/wiki/Computation_tree_logic), [LTL](https://en.wikipedia.org/wiki/Linear_temporal_logic), etc.)
 
-For example, consider the semantic function $[\![]\!]$ `: Expression -> SetExpression`.
+For example, consider the semantic function 〚〛 `: Expression -> SetExpression`.
 
-$[\![$ `n` $]\!] = \mathbb{N}$  
-$[\![$ e~1~ `+` e~2~ $]\!] = [\![$ e~1~ $]\!] + [\![$ e~2~ $]\!]$  
-$[\![$ e~1~ `-` e~2~ $]\!] = [\![$ e~1~ $]\!] - [\![$ e~2~ $]\!]$  
+〚`n`〛 = ℕ  
+〚e~1~ `+` e~2~〛 = 〚e~1~〛+〚e~2~〛  
+〚e~1~ `-` e~2~〛 = 〚e~1~〛-〚e~2~〛  
 
-The evaluation function `eval` is then defined using the semantic function $[\![]\!]$.
+The evaluation function `eval` is then defined using the semantic function 〚〛.
 
-`eval(`e`)` $= [\![$ e $]\!]$
+`eval(`e`)` = 〚e〛
 
 ## Operational Semantics
 
-Operational semantics are defined using reduction relation ($\rightarrow$) and conversion relation ($\rightarrow^\star$), assuming some existing language.
+Operational semantics are defined using reduction relation (→) and conversion relation (→*), assuming some existing language.
 
-Notation for reduction relations: expression $\rightarrow$ simpler expression, i.e. e $\rightarrow$ e'.
+Notation for reduction relations: expression → simpler expression, i.e. e → e'.
 
-In the following example, `n ::= 0 | add1 e`.
+In the following example, n `::= 0 | add1` e.
 
-`if true then` e~1~ `else` e~2~ $\rightarrow$ e~1~  
-`if false then` e~1~ `else` e~2~ $\rightarrow$ e~2~  
-`0 + ` e~2~ $\rightarrow$ e~2~  
-`add1 0 + ` e~2~ $\rightarrow$ e~2~  
+`if true then` e~1~ `else` e~2~ → e~1~  
+`if false then` e~1~ `else` e~2~ → e~2~  
+`0 + ` e~2~ → e~2~  
+`add1 0 + ` e~2~ → e~2~  
 
-For example, `1 + 2`, which is short for `add1 0 + add1 (add1 0)`, $\rightarrow$ `0 + add1 (add1 (add1 0))` $\rightarrow$ `add1 (add1 (add1 0))`, i.e. `3`.
+For example, `1 + 2`, which is short for `add1 0 + add1 (add1 0)`, → `0 + add1 (add1 (add1 0))` → `add1 (add1 (add1 0))`, i.e. `3`.
 
-Inference rule notation: $\frac{P_1 \quad P_2 \quad \dots \quad P_n}{C}$, where $P_i$ are premises and $C$ is the conclusion.
+Inference rule notation:
+```
+P₁  P₂  ...  Pₙ
+———————————————
+       C
+```
+where Pᵢ are premises and C is the conclusion.
 
-Notation for reduction relations: expression $\rightarrow^\star$ expression, i.e. e $\rightarrow^\star$ e'.
+Notation for reduction relations: expression →* expression, i.e. e →* e'.
 
 For example,
 
-$$
-\frac{}{e \rightarrow^\star e}\text{Reflexive} \\
-\frac{e_1 \rightarrow e_2 \quad e_2 \rightarrow^\star e_3}{e_1 \rightarrow^\star e_3}\text{Transitive} \\
-$$
+```
+————————— Reflexive
+ e →* e'
+```
+
+```
+ e₁ → e₂    e₂ →* e₃
+————————————————————— Transitive
+      e₁ →* e₃
+```
+
 The rest of the rules are congruence rules.
-$$
-\frac{e_1 \rightarrow^\star e_1' \quad e_2 \rightarrow^\star e_2'}{e_1 + e_2 \rightarrow e_1' + e_2'}\text{Congruence-Addition} \\
-\frac{e \rightarrow^\star e'}{\texttt{if } e \texttt{ then } e_1 \texttt{ else } e_2 \rightarrow^\star \texttt{if } e' \texttt{ then } e_1 \texttt{ else } e_2}\text{Congruence-If} \\
-$$
+
+```
+ e₁ →* e₁'    e₂ →* e₂'
+———————————————————————— Congruence-Addition
+  e₁ + e₂ →* e₁' + e₂'
+```
+
+```
+                    e →* e'
+——————————————————————————————————————————————— Congruence-If
+ if e then e₁ else e₂ →* if e' then e₁ else e₂
+```
+
 etc.
 
-Equivalence relation: e $\equiv$ e'
+Equivalence relation: e ≡ e'
 
-$$
-\frac{e \rightarrow^\star e'}{e \equiv e'} \\
-\frac{e' \equiv e}{e \equiv e'} \\
-$$
+```
+ e →* e'
+—————————
+  e ≡ e'
+```
+
+```
+ e ≡ e'
+————————
+ e' ≡ e
+```
 
 For example, consider `1 + 2`.
 
-$$
-\frac{\texttt{1 + 2} \rightarrow \texttt{0 + 3} \quad \frac{\texttt{0 + 3} \rightarrow^\star \texttt{3} \quad 3 \rightarrow^\star 3}{\texttt{0 + 3} \rightarrow^\star \texttt{3}}}{\texttt{1 + 2} \rightarrow \texttt{3}}
-$$
+```
+                   0 + 3 → 3   3 →* 3
+                  ————————————————————
+ 1 + 2 → 0 + 3         0 + 3 →* 3
+———————————————————————————————————————
+             1 + 2 → 3
+```
 
 Valid output/value (can put output in registers, heaps, etc. here): v `::=` n `|` b
 
 The evaluation function `eval` is then defined as follows.
 
-`eval(`e`)` = v `|` e $\rightarrow$ v
+`eval(`e`)` = v `|` e → v
 
 which is read as the result of evaluating e is v given that e converts to v.

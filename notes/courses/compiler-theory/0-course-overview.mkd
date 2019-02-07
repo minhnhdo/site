@@ -31,11 +31,13 @@ Come to class with prepared questions and finished homework.
 
 Compilers are traditionally thought of as transformations from programs in a source language to programs in a target language.
 
-    compiler : SourceLanguage program -> TargetLanguage program
+                     transform
+    Source programs -----------> target programs
 
 However, this course encourages us to think about compilers as transformations on languages.
 
-    compiler : language -> language
+                     transform
+    Source language -----------> target language
 
 The transformations should preserve desirable properties. In other words, for all programs in the source language, the compiler produces programs in the target language, preserving desirable properties. When we talk about correctness of compilers, we are talking about this property preservation characteristic of compilers. Some examples of desirable properties are security (e.g. not leaking passwords) and data encapsulation properties (e.g. not exposing internal methods).
 

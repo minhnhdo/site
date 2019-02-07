@@ -11,11 +11,11 @@ e `::=` ... | `λx.`e | `(`e e`)` | `x` | `y` | ... | `xᵢ`, where `x`, `y`, ..
 The introduction rule for functions is `λx.`e.
 
 ## Semantics
-[e → e]{.boxed} Reductions
 
+### [e → e]{.boxed} Reductions
 `(λx.`e`)` e' → e[e'/`x`]
 
-[e[e'/`x`] = e]{.boxed} Substitutions
+### [e[e'/`x`] = e]{.boxed} Substitutions
 ```
 ———————————————————
  true[e'/x] = true
@@ -38,6 +38,7 @@ For dynamic scoping, we only need one rule.
 ——————————————————————
  (λx.e)[e'/y] = λx.e₂
 ```
+
 For static scoping, we need two rules.
 ```
  fresh x₁    e[e'/y] = e₂   e₁[e'/y] = e₂   x ≠ y

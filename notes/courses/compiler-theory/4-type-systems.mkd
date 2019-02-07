@@ -10,34 +10,28 @@ As defined currently, we cannot say much about our programming language: there i
 
 Γ `::=` • | Γ,`x`
 
-[Γ ⊢ e]{.boxed}
-
+## [Γ ⊢ e]{.boxed}
 ```
 ———————
  Γ ⊢ n
 ```
-
 ```
 ———————
  Γ ⊢ b
 ```
-
 ```
  x ∈ Γ
 ———————
  Γ ⊢ x
 ```
-
 ```
  Γ,x ⊢ e
 ——————————
  Γ ⊢ λx.e
 ```
-
 and so on.
 
-[eval(e) = v]{.boxed}
-
+## [eval(e) = v]{.boxed}
 ```
  • ⊢ e     •, e →* M', v
 —————————————————————————
@@ -51,44 +45,37 @@ A, B `::=` `Nat` | `Bool` | A `→` B
 
 Γ `::=` • | Γ,`x` : A
 
-[Γ ⊢ e : A]{.boxed}
-
+## [Γ ⊢ e : A]{.boxed}
 ```
  x : A ∈ Γ
 ——————————— Type-Var
  Γ ⊢ x : A
 ```
-
 ```
 ————————————— Type-Nat
  Γ ⊢ n : Nat
 ```
-
 ```
 —————————————— Type-Bool
  Γ ⊢ b : Bool
 ```
-
 ```
    Γ,x : A ⊢ e : B
 —————————————————————— Type-Lam
  Γ ⊢ λx : A.e : A → B
 ```
-
 ```
  Γ,e₁ : A → B     Γ ⊢ e₂ : A
 ————————————————————————————— Type-App
        Γ ⊢ e₁ e₂ : B
 ```
-
 ```
  Γ ⊢ e₁ : Nat     Γ ⊢ e₂ : Nat
 ——————————————————————————————— Type-Add
        Γ ⊢ e₁ + e₂ : Nat
 ```
 
-[eval(e) = v]{.boxed}
-
+## [eval(e) = v]{.boxed}
 ```
  • ⊢ e : A     •, e →* M', v
 —————————————————————————————

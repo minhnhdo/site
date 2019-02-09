@@ -1,0 +1,5 @@
+---
+title: Theory of Computing
+---
+
+These are my notes for the Theory of Computing course, taught by Professor Harvey Nick (see [site](https://www.cs.ubc.ca/~nickhar/F18-421/)).

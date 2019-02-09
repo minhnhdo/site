@@ -1,0 +1,79 @@
+---
+title: Theory of Computing
+subtitle: Push-down Automata
+---
+
+# Push-down automata
+Memory is an infinite-sized stack.
+
+Basically, it is a non-deterministic finite automaton with an infinite stack.
+
+It turns out that
+
+- NFA + queue = Turing machine
+- NFA + two stacks = Turing machine
+- DFA + stack = deterministic push-down automaton
+
+PDAs can recognize context-free languages.
+
+Transitions of NFA becomes: if in state q and see symbol a (or ε) in the input string and see symbol b on top of stack (or ignore it) then pop it, push c onto stack (or ε), go to state q'.
+
+- Transition label: input symbol read, stack symbol popped → stack symbol pushed
+
+Two alphabets: input alphabet Σ and stack alphabet Γ.
+
+## Definition
+Push-down automaton
+: is a 6-tuple (Q, Σ, Γ, δ, q₀, F) where
+
+    - Q is a finite set of states
+    - Σ is a finite set of symbol, called the input alphabet
+    - Γ is a finite set of symbol, called the stack alphabet
+    - δ : Q × (Σ ∪ {ε}) × (Γ ∪ {ε}) → 2^Q\ ×\ (Γ\ ∪\ {ε})^ is the transition function
+    - q₀ is the starting state
+    - F ⊆ Q is a finite set of accepting states
+
+# Context-free grammars
+
+## Notations
+- Yield: u → v
+- Derive: u →* v
+
+## Example context-free grammar
+- Terminals: Σ = {a, b}
+- Variables: {S}
+- Start variable: S
+- Rules:
+  - S → Sa
+  - S → Sb
+  - S → ε
+
+## Deriving strings from grammars
+Suppose u, v, and w are strings of variables and terminals. Suppose there is a rule A → w. From the string uAv, we can obtain uwv. We write uAv → uwv, which is read as uAv yields uwv.
+
+If u₁ → u₂ → ... → uₖ (finite number of arrows), then u₁ →* uₖ, read as u₁ derives uₖ.
+
+Given a grammar G, the language derived by the grammar is L(G) = {ω ∈ Σ* : S →* ω}, where S is the start variable.
+
+In the above example, L(G) = {a, b}*.
+
+- S → Sa → Saa → Sbaa → baa. So baa ∈ L(G).
+
+The following grammar derives nothing, i.e. L(G) = ∅.
+
+- A → Ba
+- B → Aa
+
+## Meaning of "context-free"
+- The left hand side of rules is a single variable. The right hand side is any strings of variables, and terminals, and ε.
+- Example: L = {0ⁿ1ⁿ : n ≥ 0} is derived by S → 0S1 | ε.
+
+## Context-free languages
+Context-free language
+: is one that can be derived from a context-free grammar.
+
+## Ambiguity
+A grammar is ambiguous when it has multiple left-most derivations for the same string.
+
+# Equivalence of PDA and CFG
+**Theorem:** a language L is recognized by a PDA if and only if L is described by a CFG.

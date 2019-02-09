@@ -1,0 +1,56 @@
+---
+title: Theory of Computing
+subtitle: Cardinality
+---
+
+# Cardinality
+Cardinality
+: Two sets A and B have the same *cardinality* if there exists a bijection f : A → B.
+
+Finite set
+: a set is called *finite* if it has a bijection to {1..n} for some natural number n.
+
+Natural number
+: ℕ = {1, 2, 3, ...}.
+
+Countable infinity
+: A set is *countably infinite* if it has the same cardinality as ℕ.
+
+**Lemma (even natural numbers):** Let E = {n : n ∈ ℕ and n is even}. E is countably infinite.
+
+*Proof:* one bijection is f : ℕ → E, where f(x) = 2x.
+
+**Lemma (languages are countable):** Let L be a language. L is countable.
+*Proof:* we can enumerate all strings in Σ* using a lexicographical order.
+
+  - ε, 0, 1, 00, 01, ...
+  - Then restrict the listing to those in L.
+  - 00, 100, ...
+  - which gives a bijection with ℕ.
+
+**Lemma:** The set of all Turing machines is countable.
+
+Let B be the set of all infinite bit-sequences.
+
+**Lemma:** The set B is not countable.
+
+Proof by diagonalization.
+
+**Lemma:** There are uncountably many languages.
+*Proof:*
+
+- Enumerate all strings in Σ* (in any order).
+  - ε, a, b, aa, ab, ...
+- Each language L contains some subset of them.
+  - L = {a, ab, ...}
+- There is a bijection between languages and infinite bit sequences
+  - L ↔ 00010010011...
+Conclusion: the set of all languages 2^{Σ*}, has the same cardinality as B (uncountable infinite).
+
+**Lemma:** there are countably many recognizable languages.
+
+- Since there are countably many Turing machines.
+
+**Lemma:** there are countably many decidable languages.
+
+- This follows from recognizable languages being countable.

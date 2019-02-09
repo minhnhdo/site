@@ -1,0 +1,46 @@
+---
+title: Theory of Computing
+subtitle: Encodings
+---
+
+# Encodings
+Turing machine inputs are always strings.
+
+- Need to represent complex objects as strings.
+- Same idea as serialization, e.g. JSON.
+
+If we have object O (e.g. a graph) then ⟨O⟩ is a string representation of it.
+
+- E.g. L = {⟨G⟩ : G is a connected graph}.
+
+Turing machines must reject invalid encodings as well
+
+- But normally, this is an easy step and we don't discuss the details.
+
+We can represent Turing machines as strings.
+
+- E.g. HALT~TM~ = {⟨M, ω⟩ : M is a Turing machine, ω ∈ Σ*, M halts on input ω}, a.k.a. the halting problem.
+- E.g. A~TM~ = {⟨M, ω⟩ : M accepts ω}.
+  - What strings are in A~TM~?
+    1) If x is of the form ⟨M, ω⟩ and M accepts ω, then x ∈ A~TM~.
+    2) If x is of the form ⟨M, ω⟩ and M rejects ω or runs forever, then x ∉ A~TM~.
+    3) If x is not of the form ⟨M, ω⟩ then x ∉ A~TM~.
+  - A~TM~ is recognizable.
+    - Definition of U, which recognizes A~TM~.
+      - On input x:
+        - If x = ⟨M, ω⟩ where M is a Turing machine and ω ∈ Σ*,
+          - Simulate M on input ω.
+            - If M enters accept state, accept.
+            - If M enters reject state, reject.
+        - Else, reject.
+    - Behavior of U
+
+      +--------------+-------------------+
+      | M on input ω | U on input ⟨M, ω⟩ |
+      +==============+===================+
+      | accepts      | accepts           |
+      +--------------+-------------------+
+      | rejects      | rejects           |
+      +--------------+-------------------+
+      | runs forever | runs forever      |
+      +--------------+-------------------+

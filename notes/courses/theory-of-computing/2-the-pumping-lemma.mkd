@@ -1,0 +1,48 @@
+---
+title: Theory of Computing
+subtitle: The Pumping Lemma
+---
+
+# The pumping lemma
+**Lemma (the pumping lemma):** every regular language satisfies the pumping condition.
+
+# The pumping condition
+The pumping condition
+: there exists an integer p such that for every string ω ∈ L with |ω| ≥ p, there exist strings x, y, z ∈ Σ* such that ω = xyz, y ≠ ε, |xy| ≤ p, so that xyⁱz ∈ L ∀i ≥ 0.
+
+    - Intuitively, a language cannot be regular if it requires comparing lots of things that are far apart or involves counting something.
+    - If the computation path of a finite automaton on an input string ω is longer than its number of states, the computation path must have a cycle.
+      - Let x be the part of input that was processed before arriving at the beginning of the cycle (call that state q).
+      - While going around the cycle, the finite automaton read y from the input.
+      - After the cycle, it reads z from the input.
+      - What if the input were xyyz?
+        - The finite automaton must also accept: it just traverses the cycle twice.
+      - Message: if language L is regular, then for sufficiently long input ω ∈ L, we can repeat its special substring y to get another string in L.
+        - Refinement:
+          - Let p = number of states of the finite automaton.
+          - If |ω| ≥ p then the computation path has length ≥ p + 1.
+          - By pigeonhole principle, a cycle exists.
+          - So we can assume |xy| ≤ p, which is enough to get a cycle.
+      - Important point: we can (usually) use the pumping lemma to prove that a language is not regular by proving that it satisfies the negation of the pumping condition.
+        - We cannot use the pumping lemma to prove that a language is regular.
+
+# Negation of the pumping condition
+Negation of the pumping condition
+: For all integers p, there exists a string ω ∈ L with |ω| ≥ p, for all x, y, z ∈ Σ* satisfying (1) ω = xyz, (2) y ≠ ε, and (3) |xy| ≤ p, then there exists an integer i (i = 0 or i ≥ 2) such that xyⁱz ∉ L.
+
+# Example usage
+**Theorem:** L = {0ⁿ1ⁿ : n ≥ 0} is not regular.
+
+*Proof:*
+
+- Let p ≥ 1 be arbitrary.
+- Choose ω = 0^p/2^1^p/2^.
+- Consider all decompositions of ω = xyz such that |xy| ≤ p and |y| ≥ 1.
+- There are three possibilities.
+  - Case 1: x = 0ʲ, y = 00ᵏ, z = 0ˡ1^j\ +\ k\ +\ l\ +\ 1^
+    - If i = 0, then xz has more ones than zeros so xz ∉ L.
+    - If i > 1, then xyⁱz has more zeros than ones xyⁱz ∉ L.
+  - Case 2: x = 0^j\ +\ k\ +\ l\ +\ 1^1ʲ, y = 11ᵏ, z = 1ˡ
+    - Similarly
+  - Case 3: x = 0ʲ, y = 0ᵏ1ˡ, z = 1^j\ +\ k\ -\ l^
+    - Similarly

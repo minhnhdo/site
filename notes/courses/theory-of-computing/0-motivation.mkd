@@ -1,0 +1,62 @@
+---
+title: Theory of Computing
+subtitle: Motivation
+---
+
+# Abstract models of computation
+- Restricted models: finite automata (FA), push down automata (PDA)
+- General models: Turing machine
+
+# Computability
+- What can be computed?
+- What models are equivalent?
+
+# What is a computational problem?
+## Examples
+1) Sorting a list of names
+2) Given a polynomial, find its roots
+3) Given an integer, find its prime factors
+
+## Representation issues
+How to encode inputs and outputs? String representation
+
+## Definitions
+Alphabet
+: an alphabet is a finite, non-empty set, denoted Σ, Γ (think ASCII or Unicode), e.g. Σ = {0, 1}.
+
+String
+: a string is a finite sequence of zero or more symbols from Σ.
+
+Σ*
+: is a the set of all strings over the alphabet Σ.
+
+ε
+: is the empty string.
+
+Problem
+: a problem is a mapping of strings to strings (must be a function). E.g. for problem 3:
+
+    ```
+   f("6") = "2,3"
+   f("30") = "2,3,5"
+   f("z8mT") = "error"
+   ```
+
+Decision problem
+: a decision problem is a problem whose output is yes/no (or often (accept/reject).
+
+    1) Is this list sorted?
+    2) given integers (x, y), does x have prime factors less than y? e.g. `f("35,4") = "reject"`.
+
+Language
+: a language is a set of strings, i.e. any set S ⊆ Σ* is a language, even ∅.
+
+Thus, decision problems are languages. E.g. L = { s : s is a string of the form s = "p" where p is an integer that is a prime } is equivalent to the decision problem f(s) = "accept" if s = "p" and p is prime else "reject"
+
+Still has to deal with garbage inputs, e.g. `z8mT`.
+
+## Important concept
+   A decision problem can equivalently be thought of as the set of strings for which the function output "accept".
+
+# Theme of the course
+  To understand the relationship between classes of machines, classes of languages, and their properties; equivalently, the classes of problems they can solve.

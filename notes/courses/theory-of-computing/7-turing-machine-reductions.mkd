@@ -1,0 +1,104 @@
+---
+title: Theory of Computing
+subtitle: Turing Machine Reductions
+---
+
+# Turing machine reductions
+
+## Notation
+- ≤~T~
+  - Read as "reduces to", or "can be solved using"
+  - T is for Turing machine
+- L₁ ≤~T~ L₂
+  - Read as
+    - deciding L₁ is no harder than deciding L₂
+    - L₂ is as least as head as L₁
+  - There is a Turing machine that decides L₁ that uses a Turing machine that decides L₂.
+
+## Reduction as a tool
+- Goal: show problem 2 is hard
+- Known: problem 1 is hard
+- Method: reduce problem 1 to problem 2
+- Logic: if problem 1 is hard, then problem 2 is hard
+- Notation: problem 1 ≤~T~ problem 2
+- Conclusion: problem 2 is hard
+- Key point: in order to show problem 2 is hard, we reduce problem 1 to problem 2.
+
+## Example
+Recap: A~TM~ = {⟨M, ω⟩ : M accepts ω}. HALT~TM~ = {⟨M, ω⟩ : M halts on input ω}.
+
+**Theorem:** HALT~TM~ is undecidable.
+
+We already know A~TM~ is undecidable. So we need to show A~TM~ ≤~T~ HALT~TM~.
+
+*Proof (by contradiction):*
+
+Suppose we had a Turing machine R that decides HALT~TM~. Then we want to create a Turing machine S that decides A~TM~.
+
+- S = "on input x:
+  - reject if x is not of the form ⟨M, ω⟩.
+  - run R on input ⟨M, ω⟩
+    - if R accepts (then we know M halts on in put ω),
+      - simulate M on input ω.
+      - accept if M accepts; otherwise, reject.
+    - else (M runs forever on input ω)
+      - reject."
+
+S is a decider for A~TM~, which is a contradiction.
+
+∴ HALT~TM~ is undecidable.
+
+QED.
+
+## Lemmas
+**Lemma:** suppose L and Σ* \ L are recognizable. Then L is decidable, and so is Σ* \ L).
+
+*Proof:*
+
+Let M₁ and M₂ be Turing machines that recognize L and Σ* \ L, respectively. Define a new Turing machine M₃ as follows.
+
+- M₃ = "on input x:
+  - In parallel, simulate both M₁ and M₂ on x.
+  - If M₁ halts and accepts then accept.
+  - If M₂ halts and accepts then reject."
+
+Suppose x ∈ L then M₁ accepts x so M₃ accepts x.
+
+Suppose x ∉ L then M₂ accepts x so M₃ rejects x.
+
+So M₃ decides L.
+
+∴ L is decidable (and similarly, so is Σ* \ L).
+
+QED.
+
+**Corollary:** Σ* \ A~TM~ is not recognizable.
+
+*Proof (by contradiction):* If it were recognizable, claim would imply A~TM~ is decidable, which is a contradiction. Therefore, Σ* \ A~TM~ is not recognizable. QED.
+
+**Lemma:** E~TM~ = {⟨N⟩ : N is a Turing machine such that L(N) = ∅} is undecidable.
+
+*Proof (by contradiction):*
+
+We know A~TM~ is undecidable, so it remains to show that A~TM~ reduces to E~TM~. Assume R is a Turing machine that decides E~TM~. Construct a Turing machine S that decides A~TM~.
+
+- S = "on input x:
+  - if x is not of the form ⟨M, ω⟩, reject.
+  - construct Turing machine N = "on input y:
+    - if y ≠ ω, reject.
+    - else
+      - simulate M on input ω.
+      - if M accepts, accept.
+      - if M rejects, reject."
+  - run R on ⟨N⟩.
+  - accept if R rejects; otherwise, reject."
+
+Suppose M accepts ω. Hence, R rejects ⟨N⟩ (due to L(N) = {ω}) and thus S accepts.
+
+Suppose M rejects or run forever on ω. Hence, R accepts ⟨N⟩ (due to L(N) = ∅) and thus S rejects.
+
+Therefore, S is a decider for A~TM~, which is a contradiction.
+
+∴ E~TM~ is undecidable.
+
+QED.

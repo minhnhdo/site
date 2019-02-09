@@ -1,0 +1,128 @@
+---
+title: Theory of Computing
+subtitle: Turing Machines
+---
+
+
+# Turing machines
+Church-Turing thesis: intuitive notion of algorithm = Turing machine.
+
+Turing-complete means equivalent to an arbitrary Turing machine.
+
+Amazing ideas
+
+1) Definition of algorithms
+2) Some problems have no algorithmic solution
+3) Natural problems like problem E, Hilbert's 10th problem, or halting problem has no algorithmic solution.
+
+## Comparison
+A Turing machine has an infinitely long tape to the right (towards the "end" of the tape).
+
+Differences between DFAs and TMs
+
+- Input is on tape.
+- Can write to tape.
+- Can move left and right on tape.
+- Immediately halt when reaching the accepting state or the rejecting state.
+- The rejecting state must exist but may not be shown (with implicit transitions).
+
+## Transitions
+a → b, R
+: if tape symbol is a, write b and move head right
+
+a → R
+: if tape symbol is a, move head right
+
+a, b, c → R
+: if tape symbol is a, b, or c, move head right
+
+## Definition
+Turing machine
+: is a 7-tuple (Q, Σ, Γ, δ, q₀, q~accept~, q~reject~) where
+
+    - Q is a finite set of states
+    - Σ is a finite set of symbols, called the input alphabet
+    - Γ is a finite set of symbols, called the tape alphabet
+    - δ : Q × Γ → Q × Γ × {L, R} is the transition function
+    - q₀ ∈ Q is the start state
+    - q~accept~ ∈ Q is the accept state
+    - q~reject~ ∈ Q is the reject state
+
+Notes
+
+- q~reject~ ≠ q~accept~
+- Σ ⊆ Γ
+- the blank symbol ␣ ∈ Γ \ Σ
+
+## Outcomes when running a Turing machine
+On input x, a Turing machine has 3 possibilities
+
+1) Accept
+2) Reject
+3) Run in an infinite loop
+   - This option is new because NFA and PDA must read input once.
+
+## Recognizers and deciders
+The language recognized by a Turing machine M is L(M) = {x : on input x, M halts in q~accept~}.
+
+A language is recognizable if some Turing machine recognizes it.
+
+If a Turing machine M halts for all inputs then M is a decider and L(M) is the language decided by M.
+
+L(M) is a decidable language.
+
+## Configurations
+A configuration is a way to describe the entire state of the Turing machine.
+
+It is a string aqb where a ∈ Γ\*, q ∈ Q, b ∈ Γ\*.
+
+- q is the current state of the finite controller.
+- tape contents are ab.
+- head is pointing to the first symbol of b.
+
+A Turing machine halts with
+
+- accept if it is in any configuration of the form aq~accept~b for any ab,
+- reject if it is in any configuration of the form aq~reject~b for any ab.
+
+Config(i) uniquely defines Config(i+1).
+
+# Multi-tape Turing machines
+A k-tape Turing machine is a useful variant of Turing machines.
+
+- Input on leftmost squares of tape 1.
+- Rest of squares are all blanks on all tapes.
+- At each point, take a step determined by current k symbols on the tape heads and the current state q.
+
+**Theorem:** every k-tape Turing machine has an equivalent single tape Turing machine.
+
+# Non-deterministic Turing machines
+A non-deterministic Turing machine
+: is a 7-tuple M = (Q, Σ, Γ, δ, q₀, q~accept~, q~reject~) where the only difference from a deterministic Turing machine is δ : Q × Γ → 2^Q\ ×\ Γ\ ×\ {L,\ R}^.
+
+## Acceptance
+A non-deterministic Turing machine accepts its input if and only if some node in the configuration tree has q~accept~.
+
+- Formally, input ω is accepted if ∃configurations c₀, c₁, ..., cₖ where
+  - c₀ = q~start~ω.
+  - c₁ ⇒* c~i+1~, where c~i+1~ is a possible configuration from cᵢ, following the transition function δ).
+
+A non-deterministic Turing machine does not accept its input if and only if the configuration tree grows forever (infinite loop) or no node in the tree has q~accept~.
+
+## Outcomes of running a non-deterministic Turing machine
+1) A string ω is accepted: any node in the tree is an accepting configuration.
+2) A string ω is explicitly rejected: the tree is finite but no node is an accepting configuration, i.e. all leaves are rejecting configurations.
+3) The non-deterministic Turing machine runs forever on ω: the tree is infinite but no node is an accepting configuration.
+
+## Non-deterministic Turing machine deciders
+A non-deterministic Turing machine is a decider if for all inputs, case 1 or 2 happens.
+
+# Equivalence of non-deterministic Turing machines and deterministic Turing machines
+**Theorem:** every non-deterministic Turing machine has an equivalent deterministic Turing machine.
+
+Given a non-deterministic Turing machine M we can construct a deterministic Turing machine M' such that L(M) = L(M').
+
+**Theorem:** If NTM M is a decider, we can make DTM M' a decider as well.
+
+# Language hierarchy
+Regular languages ⊆ context-free languages ⊆ decidable languages ⊆ recognizable languages.

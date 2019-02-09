@@ -1,0 +1,108 @@
+---
+title: Compiler Theory
+subtitle: Logical Relations
+---
+
+# Logical relations
+Logical relations is a proof technique which strengthens the induction hypothesis. In order to use logical relations, we break the original theorem/lemma to be proven into two lemmas.
+
+**Lemma (fundamental property):** if Γ ⊢ e : A then P(e)
+
+**Lemma:** If P(e** then the desired property holds.
+
+# Example: strong normalization, via [e SN(A)]{.boxed}
+Note that the name SN is highly suggestive, but is not strong normalization.
+
+We want to prove that our language strongly normalizes, i.e. e →* i. Applying logical relation proof technique, we get the following two lemmas.
+
+**Lemma:** Γ ⊢ e : A implies e SN(A).
+
+**Lemma:** e SN(A) implies e →* i.
+
+Previously, we have defined well-typed programs with [⊢ e]{.boxed}. Now, we define well-typed components, [Γ ⊢ e]{.boxed}.
+
+## [Γ ⊢ e]{.boxed} Well-typed components
+```
+ Γ ⊢ e : Nat
+—————————————
+    Γ ⊢ e
+```
+```
+ Γ ⊢ e : Bool
+—————————————
+    Γ ⊢ e
+```
+
+## [γ(e) = e']{.boxed} Linking
+Linking is also called closing substitution because after substitution, the expression is closed.
+
+γ `::=` • | γ[`x` ↦ e]
+
+```
+——————————
+ •(e) = e
+```
+```
+  γ(e₂[e₁/x]) = e'
+————————————————————
+ γ[x ↦ e₁](e₂) = e'
+```
+
+## [Γ ⊢ γ]{.boxed} Well-typed substitution
+```
+———————
+ • ⊢ •
+```
+```
+ Γ ⊢ γ     • ⊢ e : A
+—————————————————————
+  Γ,x : A ⊢ γ[x ↦ e]
+```
+
+## Lemma
+If e is a well-typed component and γ is a well-typed substitution for e then e linked using γ is well-typed and closed. Or, more formally,
+
+**Lemma:** if Γ ⊢ e and Γ ⊢ γ then ⊢ γ(e).
+
+## [i SN(A)]{.boxed} Value in relation at type A
+```
+———————————
+ n SN(Nat)
+```
+```
+————————————
+ b SN(Bool)
+```
+```
+ ∀e' SN(A'), e[e'/x] SN(B)
+———————————————————————————
+   (λx:A'. e) SN(A → B)
+```
+
+## [e SN(A)] Expression in relation at type A
+```
+ e →* i     i SN(A)
+————————————————————
+      e SN(A)
+```
+
+For ease of proving, we further construct [γ SN(Γ)]{.boxed}.
+
+## [γ SN(Γ)]
+```
+—————————
+ • SN(̱•)
+```
+```
+ e SN(A)      γ SN(Γ)
+——————————————————————
+ γ[x ↦ e] SN(Γ,x : A)
+```
+
+## Proof of the fundamental property
+**Lemma (fundamental property):** if Γ ⊢ e : A, Γ ⊢ γ, and γ SN(Γ) then γ(e) SN(A).
+
+Proof is by induction on Γ ⊢ e : A.
+
+## Strong normalization theorem
+**Theorem (strong normalization):** if ⊢ e then e →* i.

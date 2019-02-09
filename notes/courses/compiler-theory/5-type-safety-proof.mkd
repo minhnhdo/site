@@ -135,3 +135,76 @@ Case `If`: If • ⊢ e : `Bool` implies `eval(`e`)` = `v`, • ⊢ e₁ : A imp
 
 - This requires proof of canonical form.
   - If Γ ⊢ `v` : `Bool`, then `v` = `true` or `v` = `false`.
+
+Case `λ`: If `x` : A ⊢ e : B implies then • ⊢ `λx:`A`.`e : A → B implies `eval(λx:`A`.`e`)` = v.
+
+- We are stuck in this case.
+
+## A way out
+In order to prove type safety, we need to strengthen the theorem: we have to prove progress and preservation instead. In addition, for convenience, we define irreducibles and call values observables.
+
+i `::=` `x` | v | `λx:`A.`e
+
+**Lemma (progress):** if • ⊢ e : A then either e is irreducible or e → e'.
+
+**Lemma (preservation):** if Γ ⊢ e : A and e → e' then Γ ⊢ e' : A.
+
+Furthermore, we define valid top level programs [⊢ e]{.boxed} in order to rule out evaluating λs at the top level.
+
+### [⊢ e]{.boxed} Valid top level programs
+```
+ • ⊢ e : Nat
+—————————————
+     ⊢ e
+```
+```
+ • ⊢ e : Bool
+——————————————
+      ⊢ e
+```
+
+## Type safety, redefined
+**Theorem (type safety):** if ⊢ e then `eval(`e`)` = v or `eval(`e`)** = Ω.
+
+*Proof:* By progress, since • ⊢ e : A, either e is irreducible or e → e'.
+
+Case e is irreducible: by canonical form, `eval(`e`)` = v, either e = n or e = b.
+
+Case e → e': we must show that either e' is a value or by progress, e' can continue computing, i.e. `eval(`e`)` = Ω.
+
+# Proof of progress
+In order to prove progress, we have to change our model to include congruence closure.
+
+We also change syntax for reduction relation to [e ⊳ e]{.boxed}.
+
+The older syntax [e → e]{.boxed} is now reserved for congruence closure has all congruence rules (hence the name).
+
+Conversion rules [e →* e]{.boxed} now only contain reflexivity and transitivity rules.
+
+Also, congruence closure has a new rule.
+```
+ e ⊳ e'
+————————
+ e → e'
+```
+
+*Proof (for progress):*
+
+Case `Var`: impossible
+
+Case `Add`:
+```
+ • ⊢ e₁ : Nat     • ⊢ e₂ : Nat
+———————————————————————————————
+      • ⊢ e₁ + e₂ : Nat
+```
+- By the induction hypothesis, e₁ is either irreducible or e₁ → e₁'
+- Case e₁ → e₁': we have e₁ + e₂ → e₁' + e₂, as desired.
+- Case e₁ is irreducible:
+  - Case e₂ → e₂': By Congruence-Add1 rule, i + e₂ → i + e₂'.
+  - Case e₂ is irreducible: by canonical form, i₁ + i₂ must step to their sum.
+
+And so on.
+
+# Note
+Progress and preservation is a particular proof technique to prove type safety.

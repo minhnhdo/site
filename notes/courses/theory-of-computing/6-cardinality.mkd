@@ -45,7 +45,7 @@ Proof by diagonalization.
   - L = {a, ab, ...}
 - There is a bijection between languages and infinite bit sequences
   - L ↔ 00010010011...
-Conclusion: the set of all languages 2^{Σ*}, has the same cardinality as B (uncountable infinite).
+Conclusion: the set of all languages 2^Σ*^, has the same cardinality as B (uncountable infinite).
 
 **Lemma:** there are countably many recognizable languages.
 

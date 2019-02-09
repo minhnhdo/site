@@ -34,7 +34,7 @@ Deterministic finite automaton
 A finite automaton M accepts intput string ω = ω₁ω₂...ωₙ ∈ Σ* if there exists a sequence of states r₀,r₁,...,rₙ ∈ Q such that
 
 - r₀ = q₀
-- rᵢ = δ(r_{i-1}, ωᵢ) ∀i = 1..n
+- rᵢ = δ(r~i-1~, ωᵢ) ∀i = 1..n
 - rₙ ∈ F
 
 r₀,r₁,...,rₙ are the sequence of states visited during the machine's computation.
@@ -58,7 +58,7 @@ An NFA accepts the string ω = ω₁ω₂...ωₙ if there exists a string y = y
 
 - ω = y₁ ∘ y₂ ∘ ... ∘ yₘ, i.e. y is ω with some ε inserted
 - r₀ = q₀
-- rᵢ ∈ δ(r_{i-1}, qᵢ) ∀i = 1..m
+- rᵢ ∈ δ(r~i-1~, qᵢ) ∀i = 1..m
 - rₘ ∈ F
 
 # Regular expressions

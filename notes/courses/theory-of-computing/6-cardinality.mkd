@@ -37,6 +37,7 @@ Let B be the set of all infinite bit-sequences.
 Proof by diagonalization.
 
 **Lemma:** There are uncountably many languages.
+
 *Proof:*
 
 - Enumerate all strings in Σ* (in any order).
@@ -45,12 +46,15 @@ Proof by diagonalization.
   - L = {a, ab, ...}
 - There is a bijection between languages and infinite bit sequences
   - L ↔ 00010010011...
-Conclusion: the set of all languages 2^Σ*^, has the same cardinality as B (uncountable infinite).
+
+∴ The set of all languages 2^Σ\*^, has the same cardinality as B (uncountable infinite).
+
+QED.
 
 **Lemma:** there are countably many recognizable languages.
 
-- Since there are countably many Turing machines.
+Since there are countably many Turing machines.
 
 **Lemma:** there are countably many decidable languages.
 
-- This follows from recognizable languages being countable.
+This follows from recognizable languages being countable.

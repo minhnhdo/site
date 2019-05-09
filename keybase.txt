@@ -1,0 +1,85 @@
+==================================================================
+https://keybase.io/minh
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://minhdo.org
+  * I am minh (https://keybase.io/minh) on keybase.
+  * I have a public key with fingerprint 4515 ADD7 F018 6E3B D304  F3FD 7FC7 BA38 FDA7 1950
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101f6dc76e8fd8eab6781b0edf8a7feb25c8d1d17fdc5b3944d66f74a5285bb005b0a",
+      "fingerprint": "4515add7f0186e3bd304f3fd7fc7ba38fda71950",
+      "host": "keybase.io",
+      "key_id": "7fc7ba38fda71950",
+      "kid": "0101f6dc76e8fd8eab6781b0edf8a7feb25c8d1d17fdc5b3944d66f74a5285bb005b0a",
+      "uid": "32ba5a27466ecb5de99ce5497b4d2f00",
+      "username": "minh"
+    },
+    "merkle_root": {
+      "ctime": 1557420628,
+      "hash_meta": "8b796a6ae3517ef89442770dbc3ab4c58e71061a27df5b317a60cc89fef102b7",
+      "seqno": 5337036
+    },
+    "revoke": {
+      "sig_ids": [
+        "5087f77b8f1271a27b26969d9ed83eef3becc86c698a1ce5a2a4f1c2ff717f610f"
+      ]
+    },
+    "service": {
+      "hostname": "minhdo.org",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1557420641,
+  "expire_in": 157680000,
+  "prev": "7dbefbb13fc203cbd817bca509914085bdad672bd3af3616f59e19cd98281ae4",
+  "seqno": 9,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+
+owGtU3tQFVUcvgiFyNSgIw05hbqaVhJz9nl28ZHjSPxBatpDIfF6zp5z7l3w7r3u
+vYCKRD6aRE1NzBeWpYk5DVa+cDQL0HRQlHzUzceklvmYkUbGChCEzjI5NU1/tv/s
+7G+/3/d9v+/8zqpHYj29Y8qOHdDvb3/8pZgTt7Bn+rncQImAg2SukFEiFNCeF51F
+aDjiLbCIkCEAEYhMIybUqM6IThHWoC5iQAnTEWQUS6qpE5GIkBFTxbKhKETTGFSQ
+KukqxgCoGCAhTWCW7aNOyLHsCKdVVFFFhEAGRF2jMiYyUJjMeMGEGMlcCkHRUAFv
+9AfDbgc3h1GYpltBXuMf3h57/4H/n30X9tDJEkYqkqCiadTEKqGGYVJVMSBWiMSA
+q1sYpo6NApSjA5btF0rThAB1CmZRrxMMRtxgzYjl/hZVFSoS0CSdD4fCfm+ARhDv
+0jE0NKQhKqsipEznliQIAcGmjLBiqjqFItBE7oIw7liESAOmqRuMMhFIGHIPYTrb
+DgoZqixDIGvcgUOLggXUFQ9bPh5ZWMh4XVCBDhmEuDakM1GCLiOWNEMziEGJLlPK
+ZEw5s2Zqho5EPiiSkMJEU2IM8sA0ETAhr9SVc4oss4fePaV/TE+C6UHHxx2FnGAk
+aAZn8bo/EgmFM9xcInNDLrCYYu9fFF5s2YRvCO8ook7YCto8J478V2SKmCbQOSHL
+oV7LRahQ0wF/XB1a5O4DwZRhLMrMlIBsYqKLEJtIBYYhKoAfLEFEgxLfN8RkTdSY
+alDRMImhS7qIqPJ3hga3iXyckgdno0ihQ4XSPuW95DhPTG/Pk48NjstMro7eSbFH
+no27e//BpXqol3ujPH0Skh5UCuuSPNuuxG9q0a4/NXnT89Ebiz6JCl+F6g6Eykdv
+WX951/4UFZbkXBiyNLVp4dVV5yIf1ewuT9Dz7gw/dbytYteKqSemBjrsi+b9lJzE
+9qfHNs3zDxs1KnV9worh1dcOZm2df2/mjqpLS1oze6d4uxPyd16qDWzZ9/W4bf1P
+e17O9fZZ5Ftbtffh2s7cJCn7/IgJZ5OvOVMys8Yf8dXPT/38rRVtw668UftN1ZIN
+8rRlCSXlDY3pE4+0FC9O/Li+YvuFmPrOMYHZzfCLvi0dmysb4JTBZfF7KlezQOcE
+e0F2Teide892Xby7sqar9WDp5qFz+htWRcEvn7Zfk6SRp3MHXByy9Lk/VtaH3rx+
+pt/43dPWxc9uraorjr1zYFK0sNLXPfbc5daajVs62O30vC+zDjcufWHBuFHCKd+6
+SeYTnXvza6PYiN+fuS+t3+Ujm4QR7+f4Y32PDstfHVjbWBWTHW3fM8Guba7ax17J
+O5X8e/VkuTK2mVQPGgP3DwqvOd/92+r2s1u7ju+ykHW4cWel58eO9+6eBKk39jRs
+PmHnpOd1trz24YZtC4d+e+ztd9t+7v5p6uKG4X2bumZAdUji8XH9XzwUBZU7hh49
+VP7MxonFKLl55rzmisTR8LO2upPTIaj/bl5cWYuvLv+mv9+go98vn3Gz7AdPL7oo
+6erAgbfXjJj2QQGI/7VpChoQd2tZ/oabr55Zn/0n
+=T949
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/minh
+
+==================================================================

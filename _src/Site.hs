@@ -21,6 +21,10 @@ main = hakyll $ do
     route idRoute
     compile copyFileCompiler
 
+  match "keybase.txt" $ do
+    route idRoute
+    compile copyFileCompiler
+
   create ["CNAME"] $ do
     route idRoute
     compile $ makeItem ("minhdo.org" :: String)

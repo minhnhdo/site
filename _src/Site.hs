@@ -38,9 +38,10 @@ main = hakyll $ do
   match postsPattern $ do
     route $ setExtension "html"
     compile $ pandocCompilerWith defaultHakyllReaderOptions writerOptions
-          >>= loadAndApplyTemplate "_templates/comment-section.html" defaultContext
           >>= loadAndApplyTemplate "_templates/post.html" (postCtxWithTags tags)
-          >>= loadAndApplyTemplate "_templates/default.html" postCtx
+          >>= loadAndApplyTemplate
+                "_templates/default.html"
+                (constField "commentSection" "true" <> postCtx)
           >>= relativizeUrls
 
   tagsRules tags $ \tag pattern -> do
@@ -90,8 +91,9 @@ main = hakyll $ do
   match coursesPattern $ do
     route $ setExtension "html"
     compile $ pandocCompilerWith defaultHakyllReaderOptions writerOptions
-          >>= loadAndApplyTemplate "_templates/comment-section.html" defaultContext
-          >>= loadAndApplyTemplate "_templates/default.html" defaultContext
+          >>= loadAndApplyTemplate
+                "_templates/default.html"
+                (constField "commentSection" "true" <> defaultContext)
           >>= relativizeUrls
 
   match cheatSheetsPattern $ do

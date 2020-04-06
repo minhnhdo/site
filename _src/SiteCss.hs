@@ -2,7 +2,7 @@
 
 module SiteCss (siteCss) where
 
-import Prelude hiding ((**), div, span)
+import Prelude hiding ((**), div, rem, span)
 import Data.Monoid ((<>))
 import Clay
 
@@ -25,30 +25,41 @@ siteCss =
       sCyan     = rgb 0x2a 0xa1 0x98
       sGreen    = rgb 0x85 0x99 0x00
       pageWidth = pct 90
+      codeFontFamily = ["Inconsolata", "DejaVu Sans Mono", "Courier New"]
+      textFontFamily = ["PT Sans", "Helvetica", "Arial"]
   in do
     html ? do
       color sBase02
-      fontFamily ["Helvetica", "Arial"] [sansSerif]
+      fontFamily textFontFamily [sansSerif]
     star ? color sBase02
     h1 <> h2 <> h3 <> h4 <> h5 <> h6 ? do
+      fontFamily ("Lato" : textFontFamily) [sansSerif]
       color sBase03
       borderColor sBase03
       fontWeight bold
+      lineHeight (pct 125)
+      marginBottom (rem 0.5)
+      textRendering optimizeLegibility
+    h1 # "#pagetitle" <> h1 # firstOfType ? do
+      fontSize (rem 2.25)
+    h1 ? fontSize (rem 2)
+    h2 ? fontSize (rem 1.5)
+    h3 ? do
+      marginTop (rem 1.5)
+      fontSize (rem 1.25)
+    h4 <> h5 <> h6 ? do
+      marginTop (rem 1)
+      fontSize (rem 1)
     a ? color sBase02
     a # visited ? color sBase01
     a # active <> a # hover ? color sCyan
-    h1 # "#pagetitle" <> h1 # firstOfType ? do
-      fontSize (px 30)
-      marginTop (px 0)
-      marginBottom (px 20)
-      lineHeight (pct 100)
     body ? do
       width pageWidth
-      fontSize (px 16)
-      sym2 margin (px 0) auto
+      fontSize (px 20)
+      sym2 margin (pct 0) auto
     header ? do
-      sym2 margin (px 10) auto
-      sym2 padding (px 10) 0
+      sym2 margin (rem 0.5) auto
+      sym2 padding (rem 0.5) 0
       borderBottom solid (px 1) sBase00
       a <> a # visited ? do
         color sBase03
@@ -56,35 +67,35 @@ siteCss =
         textDecoration none
       a # active <> a # hover ? color sBlue
       div # "#logo" ? do
-        a ? fontSize (px 36)
+        fontFamily ("PT Sans" : textFontFamily) [sansSerif]
+        a ? fontSize (rem 2.25)
       div # "#navigation" ? do
+        fontFamily ("PT Sans" : textFontFamily) [sansSerif]
         a ? do
-          fontSize (px 18)
-          marginRight (px 18)
+          fontSize (rem 1.1)
+          marginRight (rem 1.1)
     article ? do
-      sym2 margin (px 0) auto
-      sym2 padding (px 30) 0
+      sym2 margin (pct 0) auto
+      padding (rem 1) 0 (rem 3) 0
     footer ? do
       color sBase01
-      fontSize (px 12)
+      fontSize (rem 0.75)
       textAlign end
-      sym2 margin (px 5) auto
-    h1 ? fontSize (px 24)
-    h2 ? fontSize (px 20)
+      sym2 margin (rem 0.25) auto
     div # ".info" <> div # ".tags" ? do
-      color sBase01
-      fontSize (px 14)
-      fontStyle italic
+      color sBase1
       clear both
       li ? float floatLeft
     span # ".boxed" ? do
       border solid (px 1) sBase03
-      sym padding (px 5)
-    pre # ".sourceCode" <> table # ".sourceCode" ? do
-      fontFamily ["Monaco", "Inconsolata", "DejaVu Sans Mono", "Courier New", "Courier"] [monospace]
+      sym padding (rem 0.25)
+    code <> pre ? do
+      color sRed
+    code <> pre <> table # ".sourceCode" ? do
+      fontFamily codeFontFamily [monospace]
       overflow auto
       table # ".sourceCode" <> star ? do
-        fontFamily ["Monaco", "Inconsolata", "DejaVu Sans Mono", "Courier New", "Courier"] [monospace]
+        fontFamily codeFontFamily [monospace]
     code # ".sourceCode" ? do
       span # ".al" ? do -- Alert
         color (rgb 0xff 0x00 0x00)
